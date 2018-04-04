@@ -15,8 +15,9 @@ body {
     position: absolute;
     display: inline-block;
     height: 80vh;
-    width: 15vw;
+    width: 20vw;
     top: 18%;
+    left: 5%;
 
 }
 
