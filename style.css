@@ -24,7 +24,7 @@ body {
 .turnInfo {
     position: relative;
     display: inline-block;
-    height: 25%;
+    height: 30%;
     width: 100%;
 
 }
@@ -65,37 +65,44 @@ body {
 .scoreTitle {
     position: relative;
     display: inline-block;
-    height: 20%;
+    height: 10%;
     width: 100%;
+    font-size: 4vh;
+
 }
 
 .scoreP1 {
     position: relative;
     display: inline-block;
-    height: 40%;
+    height: 45%;
     width: 50%;
+    background-color: #761c19;
+
 }
 
 .scoreP1Count {
     position: relative;
     display: inline-block;
-    height: 40%;
+    height: 45%;
     width: 50%;
+    background-color: black;
 
 }
 
 .scoreP2 {
     position: relative;
     display: inline-block;
-    height: 40%;
+    height: 45%;
     width: 50%;
+    background-color: #761c19;
+
 
 }
 
 .scoreP2Count {
     position: relative;
     display: inline-block;
-    height: 40%;
+    height: 45%;
     width: 50%;
 
 }
