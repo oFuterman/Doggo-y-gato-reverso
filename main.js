@@ -1,9 +1,7 @@
 var whiteTurn=true;
 var currentPlayer = 1;
 var oppositePlayer = 2;
-// $(".instructionModal").on("click", function(){
-//     $(".instructionModal").addClass("hideModals");
-// });
+$(document).ready(initializeApp);
 
 /*-----------------Dylan's Code-----------------*/
 
@@ -127,11 +125,14 @@ function resetGame() {
 
 /*-----------------Omer's Code-----------------*/
 
-$(document).ready(initializeApp);
 
 function initializeApp(){
-    addClickHandler();
-    determineValidMove(oppositePlayer);
+    addClickHandler();//-----------
+    determineValidMove(oppositePlayer);//---------
+    $("*").on("click", function(){
+        $(".instructionModal").removeClass("instructionModal");
+    });
+    $('.square').on('click',addPiece);
 }
 
 function addPiece(){
@@ -146,13 +147,11 @@ function addPiece(){
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=true;
     }
-    determineValidMove();
+    determineValidMove();//------------
 }
 
 function clicked(rowNum,colNum){
     var outterSquareSelector='div[row='+rowNum+'][column='+colNum+']';
-    var squareSelector='div[row='+rowNum+'][column='+colNum+']>div';
-    var squareTarget=$(squareSelector);
     for(var i=0;i<8;i++){
         switch(i){
             case 0:
@@ -294,7 +293,7 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
 }
 
 function endTurn(){
-    removeClickHandlers();
+    removeClickHandlers();//--------------
     updateStats(countPieces());
 
 }
@@ -319,5 +318,5 @@ function countPieces(){//when called returns an array with the amount of white a
 function updateStats(arr){
     var whiteScore=arr[0];
     var blackScore=arr[1];
-    
+
 }
