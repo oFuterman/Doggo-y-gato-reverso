@@ -48,44 +48,82 @@ function addPiece(){
         $('div',this).addClass('black');
         whiteTurn=true;
     }
-    clicked($(this).attr('squareNumber'));
+    clicked($(this).attr('row'),$(this).attr('column'));
 }
 
-function clicked(squareNum){
-    var squareSelector='div[squareNumber='+squareNum+']>div';
+//<div class=*** row=4 column=6
+
+function clicked(rowNum,colNum){
+    var squareSelector='div[row='+rowNum+'][column='+colNum+']>div';
     var squareTarget=$(squareSelector);
     for(var i=0;i<8;i++){
         switch(i){
             case 0:
-                sideCheck(0);
+                sideFlip(0, squareTarget);
+                i+=10;
                 break;
             case 1:
-                sideCheck(1);
+                sideFlip(1, squareTarget);
                 break;
             case 2:
-                sideCheck(2);
+                sideFlip(2, squareTarget);
                 break;
             case 3:
-                sideCheck(3);
+                sideFlip(3, squareTarget);
                 break;
             case 4:
-                sideCheck(4);
+                sideFlip(4, squareTarget);
                 break;
             case 5:
-                sideCheck(5);
+                sideFlip(5, squareTarget);
                 break;
             case 6:
-                sideCheck(6);
+                sideFlip(6, squareTarget);
                 break;
             case 7:
-                sideCheck(7);
+                sideFlip(7, squareTarget);
                 break;
         }
     }
 }
 
-function sideCheck(num){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and returns 0 if its the same number, 1 if its the opposite number, and 2 if its empty or end of board
-    
+function sideFlip(num, squareOn){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and returns 0 if its the same number, 1 if its the opposite number, and 2 if its empty or end of board
+    var sideNumber=0;
+    var currRow=parseInt(squareOn.attr('row'));
+    var currCol=parseInt(squareOn.attr('col'));
+    console.log('row: '+currRow+' col: '+currCol);
+    switch(num){
+        case 0:
+            sideNumber=-9;
+            break;
+        case 1:
+            sideNumber=-8;
+            break;
+        case 2:
+            sideNumber=-7;
+            break;
+        case 3:
+            sideNumber=1;
+            break;
+        case 4:
+            sideNumber=9;
+            break;
+        case 5:
+            sideFlip(5);
+            break;
+        case 6:
+            sideFlip(6);
+            break;
+        case 7:
+            sideFlip(7);
+            break;
+    }
+
+    for(var i=0;i<7;i++){
+        if(whiteTurn){
+
+        }
+    }
 }
 
 function endTurn(){
