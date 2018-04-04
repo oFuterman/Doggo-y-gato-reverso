@@ -25,6 +25,7 @@ body {
     display: inline-block;
     height: 15vh;
     width: 100vw;
+    font-size: 4vh;
 }
 
 .gameBoard {
@@ -35,6 +36,7 @@ body {
     width: 80vh;
     top: 18%;
     left: 30%;
+    background-color: #761c19;
 }
 
 .square {
@@ -52,5 +54,26 @@ body {
     top: 10%;
     left: 10%;
     border-radius: 50%;
+    background-color: white;
+
+}
+
+.black {
+    position: relative;
+    height: 80%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 50%;
+    background-color: black;
+
+}
+
+.instructions {
+    position: absolute;
+    display: inline-block;
+    height: 80vh;
+    width: 15vw;
+    top: 18%;
 
 }
