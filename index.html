@@ -18,22 +18,27 @@
         <div class="turnInfo">
             <div class="turnTitle">Turn:</div>
             <div class="turnIcon">
-                <div class="turnIconSquare"></div>
+                <div class="turnIconSquare">
+                    <div class="black"></div>
+                </div>
+                <div class="turnNeighbor"></div>
             </div>
         </div>
         <div class="scoreArea">
-            <div class="scoreTitle"></div>
-            <div class="scoreP1"></div>
+            <div class="scoreTitle">Score:</div>
+            <div class="scoreP1">
+                <div class="white"></div>
+            </div>
             <div class="scoreP1Count"></div>
-            <div class="scoreP2"></div>
+            <div class="scoreP2">
+                <div class="black"></div>
+            </div>
             <div class="scoreP2Count"></div>
         </div>
         <div class="gameReset">
-        <button class="resetButton"></button>
+        <button class="resetButton">Reset Game</button>
         </div>
     </div>
-
-
     <div class="gameBoard">
         <div class="square" row="0" column="0">
             <div class="empty"></div>
@@ -228,11 +233,15 @@
             <div class="empty"></div>
         </div>
     </div>
-    <div class="instructions">
-
+    <div class="instructionModal">
+        <p class="para1"></p>
+        <p class="para2"></p>
+        <p class="para3"></p>
+        <p class="para4"></p>
+        <p class="para5"></p>
     </div>
+    <div class="winModal"></div>
     <footer class="footer">
-
     </footer>
 
 </body>
