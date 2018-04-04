@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    border: 1px black solid;
+    border: .25px black solid;
 }
 html {
     border: none;
@@ -34,6 +34,7 @@ body {
     display: inline-block;
     height: 25%;
     width: 100%;
+    font-size: 4vh;
 }
 
 .turnIcon {
@@ -41,6 +42,16 @@ body {
     display: inline-block;
     height: 75%;
     width: 100%;
+
+
+}
+
+.turnIconSquare {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    background-color: #761c19;
 
 }
 
