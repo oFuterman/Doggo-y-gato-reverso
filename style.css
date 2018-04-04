@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    border: 1px black solid;
+    border: .25px black solid;
 }
 html {
     border: none;
@@ -11,14 +11,111 @@ body {
     border: none;
 }
 
-.scoreArea {
+.gameInfo {
     position: absolute;
     display: inline-block;
     height: 80vh;
-    width: 15vw;
+    width: 20vw;
     top: 18%;
+    left: 5%;
 
 }
+
+.turnInfo {
+    position: relative;
+    display: inline-block;
+    height: 25%;
+    width: 100%;
+
+}
+
+.turnTitle {
+    position: relative;
+    display: inline-block;
+    height: 25%;
+    width: 100%;
+    font-size: 4vh;
+}
+
+.turnIcon {
+    position: relative;
+    display: inline-block;
+    height: 75%;
+    width: 100%;
+
+
+}
+
+.turnIconSquare {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    background-color: #761c19;
+
+}
+
+.scoreArea {
+    position: relative;
+    display: inline-block;
+    height: 60%;
+    width: 100%;
+}
+
+.scoreTitle {
+    position: relative;
+    display: inline-block;
+    height: 20%;
+    width: 100%;
+}
+
+.scoreP1 {
+    position: relative;
+    display: inline-block;
+    height: 40%;
+    width: 50%;
+}
+
+.scoreP1Count {
+    position: relative;
+    display: inline-block;
+    height: 40%;
+    width: 50%;
+
+}
+
+.scoreP2 {
+    position: relative;
+    display: inline-block;
+    height: 40%;
+    width: 50%;
+
+}
+
+.scoreP2Count {
+    position: relative;
+    display: inline-block;
+    height: 40%;
+    width: 50%;
+
+}
+
+.gameReset {
+    position: relative;
+    display: inline-block;
+    height: 15%;
+    width: 100%;
+}
+
+.resetButton {
+    position: relative;
+    display: inline-block;
+    height: 50%;
+    width: 50%;
+    top: 25%;
+    left: 25%;
+}
+
 
 .header {
     position: absolute;
