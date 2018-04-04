@@ -75,93 +75,142 @@ function resetGame() {
 $(document).ready(initializeApp);
 
 function initializeApp(){
-    $('div[squareNumber]').on('click',addPiece);
+    $('.square').on('click',addPiece);
 }
 
 function addPiece(){
     if(whiteTurn){
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
+        clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=false;
     }else{
         $('div',this).removeClass('empty');
         $('div',this).addClass('black');
+        clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=true;
     }
-    clicked($(this).attr('row'),$(this).attr('column'));
 }
 
-//<div class=*** row=4 column=6
-
 function clicked(rowNum,colNum){
+    var outterSquareSelector='div[row='+rowNum+'][column='+colNum+']';
     var squareSelector='div[row='+rowNum+'][column='+colNum+']>div';
     var squareTarget=$(squareSelector);
     for(var i=0;i<8;i++){
         switch(i){
             case 0:
-                sideFlip(0, squareTarget);
-                i+=10;
+                sideFlip(0, outterSquareSelector);
                 break;
             case 1:
-                sideFlip(1, squareTarget);
+                sideFlip(1, outterSquareSelector);
                 break;
             case 2:
-                sideFlip(2, squareTarget);
+                sideFlip(2, outterSquareSelector);
                 break;
             case 3:
-                sideFlip(3, squareTarget);
+                sideFlip(3, outterSquareSelector);
                 break;
             case 4:
-                sideFlip(4, squareTarget);
+                sideFlip(4, outterSquareSelector);
                 break;
             case 5:
-                sideFlip(5, squareTarget);
+                sideFlip(5, outterSquareSelector);
                 break;
             case 6:
-                sideFlip(6, squareTarget);
+                sideFlip(6, outterSquareSelector);
                 break;
             case 7:
-                sideFlip(7, squareTarget);
+                sideFlip(7, outterSquareSelector);
                 break;
         }
     }
 }
 
-function sideFlip(num, squareOn){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and returns 0 if its the same number, 1 if its the opposite number, and 2 if its empty or end of board
-    var sideNumber=0;
+function sideFlip(num, squareSelector){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and flips the tokens that need to be flipped
+    var squareOn=$(squareSelector);
     var currRow=parseInt(squareOn.attr('row'));
-    var currCol=parseInt(squareOn.attr('col'));
-    console.log('row: '+currRow+' col: '+currCol);
+    var currCol=parseInt(squareOn.attr('column'));
+    var colChange=0;
+    var rowChange=0;
+
     switch(num){
         case 0:
-            sideNumber=-9;
+            rowChange=-1;
+            colChange=-1;
             break;
         case 1:
-            sideNumber=-8;
+            rowChange=-1;
+            colChange=0;
             break;
         case 2:
-            sideNumber=-7;
+            rowChange=-1;
+            colChange=1;
             break;
         case 3:
-            sideNumber=1;
+            rowChange=0;
+            colChange=1;
             break;
         case 4:
-            sideNumber=9;
+            rowChange=1;
+            colChange=1;
             break;
         case 5:
-            sideFlip(5);
+            rowChange=1;
+            colChange=0;
             break;
         case 6:
-            sideFlip(6);
+            rowChange=1;
+            colChange=-1;
             break;
         case 7:
-            sideFlip(7);
+            rowChange=0;
+            colChange=-1;
             break;
     }
 
     for(var i=0;i<7;i++){
         if(whiteTurn){
+            if($('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').hasClass('black')){
+                $('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').addClass('tag');
+                currRow=parseInt(squareOn.attr('row'));
+                currCol=parseInt(squareOn.attr('column'));
+                var j=2;
+                while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
+                    if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('black')){
+                        $('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').addClass('tag');
+                    }else if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('white')){
+                        $('.tag').removeClass('black');
+                        $('.tag').addClass('white');
+                        j+=10;
+                    }else{
+                        j+=10;
+                    }
 
+                    j++;
+                }
+                $('.tag').removeClass('tag');
+            }
+        }else{
+            if($('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').hasClass('white')){
+                $('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').addClass('tag');
+                currRow=parseInt(squareOn.attr('row'));
+                currCol=parseInt(squareOn.attr('column'));
+                var j=2;
+                while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
+                    if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('white')){
+                        $('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').addClass('tag');
+                    }else if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('black')){
+                        $('.tag').removeClass('white');
+                        $('.tag').addClass('black');
+                        j+=10;
+                    }else{
+                        j+=10;
+                    }
+
+                    j++;
+                }
+                $('.tag').removeClass('tag');
+            }
         }
     }
 }
