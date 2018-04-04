@@ -124,6 +124,7 @@ function clicked(rowNum,colNum){
                 break;
         }
     }
+    endTurn();
 }
 
 function sideFlip(num, squareSelector){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and flips the tokens that need to be flipped
@@ -168,21 +169,39 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
             break;
     }
 
+    var squareOverSelector='div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div';
+    var squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
+
+    //goes through all adjacent squares starting from north-west, going clockwise
     for(var i=0;i<7;i++){
         if(whiteTurn){
-            if($('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').hasClass('black')){
-                $('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').addClass('tag');
+
+            //if the square being checked is black (opposite)
+            if($(squareOverSelector).hasClass('black')){
+                $(squareOverSelector).addClass('tag');//give it tag class
                 currRow=parseInt(squareOn.attr('row'));
                 currCol=parseInt(squareOn.attr('column'));
                 var j=2;
+
+                //performs check on squares in the same direction (automatically stops if out of bounds)
                 while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
-                    if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('black')){
-                        $('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').addClass('tag');
-                    }else if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('white')){
+                    squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
+
+                    //if its black (opposite)
+                    if($(squareOverSelectorJ).hasClass('black')){
+                        $(squareOverSelectorJ).addClass('tag');
+                    }
+
+                    //if its white (same)
+                    else if($(squareOverSelectorJ).hasClass('white')){
+                        //changes anything with tag class to white
                         $('.tag').removeClass('black');
                         $('.tag').addClass('white');
                         j+=10;
-                    }else{
+                    }
+
+                    //if its empty or out of bounds
+                    else{
                         j+=10;
                     }
 
@@ -191,15 +210,17 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
                 $('.tag').removeClass('tag');
             }
         }else{
-            if($('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').hasClass('white')){
-                $('div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div').addClass('tag');
+            //does the same of everything above but for the opposite color (black)
+            if($(squareOverSelector).hasClass('white')){
+                $(squareOverSelector).addClass('tag');
                 currRow=parseInt(squareOn.attr('row'));
                 currCol=parseInt(squareOn.attr('column'));
                 var j=2;
                 while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
-                    if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('white')){
-                        $('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').addClass('tag');
-                    }else if($('div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div').hasClass('black')){
+                    squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
+                    if($(squareOverSelectorJ).hasClass('white')){
+                        $(squareOverSelectorJ).addClass('tag');
+                    }else if($(squareOverSelectorJ).hasClass('black')){
                         $('.tag').removeClass('white');
                         $('.tag').addClass('black');
                         j+=10;
