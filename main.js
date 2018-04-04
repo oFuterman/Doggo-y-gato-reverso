@@ -27,7 +27,7 @@ function determineValidMove(oppositePlayer) {
     // var diagonalUpLeft = (squareNumber - 9);
     // var diagonalUpRight = (squareNumber - 7);
     // var abovePiece = (squareNumber - 8);
-    // var rightPiece = (squareNum`ber + 1);
+    // var rightPiece = (squareNumber + 1);
     // var leftPiece = (squareNumber - 1);
     // var diagonalDownLeft = (squareNumber + 7);
     // var diagonalDownRight = (squareNumber + 9);
@@ -43,10 +43,18 @@ function determineValidMove(oppositePlayer) {
 
     for(var y = 0; y < 8; y++) {
         for(var x = 0; x < 8; x++) {
-            if (gameBoardArray[x][y] === currentPlayer) {
+            if (gameBoardArray[y][x] === currentPlayer) {
                 // North
-                for(var yIndex = y; yIndex > 0; yIndex--) {
-                    if(yIndex === )
+                for(var yIndex = y; yIndex >= 0; ) {
+                    if(gameBoardArray[yIndex - 1][x] === oppositePlayer) {
+                        yIndex = yIndex - 1
+                    } else if (gameBoardArray[yIndex - 1][x] === 0) {
+                        addClickHandler();
+                    }
+                }
+                //East
+                for(var xIndex = x; xIndex > 0; xIndex++) {
+
                 }
             }
         }
