@@ -291,7 +291,9 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
 }
 
 function endTurn(){
-    removeClickHandlers()
+    removeClickHandlers();
+    updateStats(countPieces());
+
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -309,4 +311,10 @@ function countPieces(){//when called returns an array with the amount of white a
     }
     var pieceCountArr=[whiteCount, blackCount];
     return pieceCountArr;
+}
+
+function updateStats(arr){
+    var whiteScore=arr[0];
+    var blackScore=arr[1];
+    
 }
