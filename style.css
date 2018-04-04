@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    border: 1px black solid;
+}
+html {
+    border: none;
+}
+body {
+    margin: 0;
+    border: none;
+}
+
+.scoreArea {
+    position: absolute;
+    display: inline-block;
+    height: 80vh;
+    width: 15vw;
+    top: 18%;
+
+}
+
+.header {
+    position: absolute;
+    display: inline-block;
+    height: 15vh;
+    width: 100vw;
+}
+
+.gameBoard {
+
+    position: absolute;
+    display: inline-block;
+    height: 80vh;
+    width: 80vw;
+    top: 18%;
+    left: 18%
+}
