@@ -10,6 +10,7 @@ function determineValidMove() {
     /* Location of adjacent pieces */
     var squareNumber =  parseInt($(this).attr("squareNumber"));
 
+
     var diagonalUpLeft = (squareNumber - 9);
     var diagonalUpRight = (squareNumber - 7);
     var abovePiece = (squareNumber - 8);
@@ -34,6 +35,16 @@ function addClickHandlerTest() {
     $(".square").click(determineValidMove);
 }
 
+
+
+
+
+
+
+
+function resetGame() {
+
+}
 
 
 
