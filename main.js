@@ -1,68 +1,120 @@
 var whiteTurn=true;
+var currentPlayer = 1;
+var oppositePlayer = 2;
 
 /*-----------------Dylan's Code-----------------*/
 
-$(document).ready(function() {
-    addClickHandlerTest();
-});
+function determineValidMove(player) {
 
-function determineValidMove() {
-    /* Location of adjacent pieces */
-    var squareNumber =  parseInt($(this).attr("squareNumber"));
+    var gameBoardArray =
+        [
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 2, 0, 0, 0],
+            [0, 0, 0, 2, 1, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0]
+        ];
 
-    var diagonalUpLeft = (squareNumber - 9);
-    var diagonalUpRight = (squareNumber - 7);
-    var abovePiece = (squareNumber - 8);
-    var rightPiece = (squareNumber + 1);
-    var leftPiece = (squareNumber - 1);
-    var diagonalDownLeft = (squareNumber + 7);
-    var diagonalDownRight = (squareNumber + 9);
-    var belowPiece = (squareNumber + 8);
+    //Player 1 turn (white, 1)
+    for (var y = 0; y < 8; y++) {
+        for (var x = 0; x < 8; x++) {
+            if (gameBoardArray[y][x] === player) {
+                // North
+                for (var yIndex = y; yIndex >= 0;) {
+                    if (gameBoardArray[yIndex - 1][x] !== player) {
+                        yIndex -= 1;
+                    } else if (gameBoardArray[yIndex - 1][x] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+                //East
+                for (var xIndex = x; xIndex < 8; ) {
+                    if(gameBoardArray[y][xIndex + 1] !== player) {
+                        xIndex += 1;
+                    } else if (gameBoardArray[y][xIndex + 1] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+                //South
+                for (var yIndex = y; yIndex < 8;) {
+                    if (gameBoardArray[yIndex + 1][x] !== player) {
+                        yIndex += 1;
+                    } else if (gameBoardArray[yIndex + 1][x] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+                //West
+                for (var xIndex = x; xIndex > 0; ) {
+                    if(gameBoardArray[y][xIndex -1 ] !== player) {
+                        xIndex -= 1;
+                    } else if (gameBoardArray[y][xIndex - 1] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+                // NorthEast
+                for (var yIndex = y, xIndex = x; yIndex >= 0, xIndex < 8;) {
+                    if (gameBoardArray[yIndex - 1][xIndex + 1] !== player) {
+                        yIndex -= 1;
+                        xIndex += 1;
+                    } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+                //SouthEast
+                for (var yIndex = y, xIndex = x; yIndex < 8, xIndex < 8;) {
+                    if (gameBoardArray[yIndex + 1][xIndex + 1] !== player) {
+                        yIndex += 1;
+                        xIndex += 1;
+                    } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+                //SouthWest
+                for (var yIndex = y, xIndex = x; yIndex < 8, xIndex >= 0;) {
+                    if (gameBoardArray[yIndex + 1][xIndex - 1] !== player) {
+                        yIndex += 1;
+                        xIndex -= 1;
+                    } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+                //NorthWest
+                for (var yIndex = y, xIndex = x; yIndex >= 0, xIndex >= 0;) {
+                    if (gameBoardArray[yIndex - 1][xIndex - 1] !== player) {
+                        yIndex -= 1;
+                        xIndex -= 1;
+                    } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0) {
+                        addClickHandler(y, x);
+                    }
+                }
+            }
+        }
+    }
 
-
-
-
-}
-
-function removeClickHandlers() {
-    if($(".square").hasClass("clicked")) {
-
+    if (oppositePlayer === 1) {
+        currentPlayer = 1;
+        oppositePlayer = 2;
+    } else {
+        currentPlayer = 2;
+        oppositePlayer = 1;
     }
 }
 
-function addClickHandlerTest() {
-    $(".square").click(determineValidMove);
+
+function addClickHandler(row, column) {
+    $('div[row='+row+'][column='+column+']').click(addPiece);
 }
 
-
-
-
-
-
-
+function removeClickHandlers() {
+    $('*').off("click");
+}
 
 function resetGame() {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -75,7 +127,8 @@ function resetGame() {
 $(document).ready(initializeApp);
 
 function initializeApp(){
-    $('.square').on('click',addPiece);
+    addClickHandler();
+    determineValidMove(oppositePlayer);
 }
 
 function addPiece(){
@@ -90,6 +143,7 @@ function addPiece(){
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=true;
     }
+    determineValidMove();
 }
 
 function clicked(rowNum,colNum){
@@ -237,7 +291,7 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
 }
 
 function endTurn(){
-
+    removeClickHandlers()
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
