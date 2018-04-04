@@ -33,18 +33,18 @@
 $(document).ready(initializeApp);
 
 function initializeApp(){
-    $('div[squareNumber]').on('click',clickTest);
+    $('div[squareNumber]').on('click',clickTest2);
 }
 
-function clickTest(){//test function, adds or removes class of white/black
+function clickTest2(){
     debugger
-    if($(this).hasClass('white')){
-        $(this).removeClass('white');
-        $(this).addClass('black');
-    }else if($(this).hasClass('black')){
-        $(this).removeClass('black');
+    if($('div',this).hasClass('white')){
+        $('div',this).removeClass('white');
+        $('div',this).addClass('black');
+    }else if($('div',this).hasClass('black')){
+        $('div',this).removeClass('black');
     }else{
-        $(this).addClass('white')
+        $('div',this).addClass('white')
     }
 }
 
