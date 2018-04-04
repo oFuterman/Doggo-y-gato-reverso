@@ -6,21 +6,27 @@ $(document).ready(function() {
 
 function determineValidMove() {
     /* Location of adjacent pieces */
-    var square =  $(this);
-    var diagonalUpLeft = (parseInt(square.attr("squareNumber")) - 9);
-    var diagonalUpRight = (parseInt(square.attr("squareNumber")) - 7);
-    var abovePiece = (parseInt(square.attr("squareNumber")) - 8);
-    var rightPiece = (parseInt(square.attr("squareNumber")) + 1);
-    var leftPiece = (parseInt(square.attr("squareNumber")) - 1);
-    var diagonalDownLeft = (parseInt(square.attr("squareNumber")) + 7);
-    var diagonalDownRight = (parseInt(square.attr("squareNumber")) + 9);
-    var belowPiece = (parseInt(square.attr("squareNumber")) + 8);
+    var squareNumber =  parseInt($(this).attr("squareNumber"));
+
+    var diagonalUpLeft = (squareNumber - 9);
+    var diagonalUpRight = (squareNumber - 7);
+    var abovePiece = (squareNumber - 8);
+    var rightPiece = (squareNumber + 1);
+    var leftPiece = (squareNumber - 1);
+    var diagonalDownLeft = (squareNumber + 7);
+    var diagonalDownRight = (squareNumber + 9);
+    var belowPiece = (squareNumber + 8);
 
 
 
 
 }
 
+function removeClickHandlers() {
+    if($(".square").hasClass("clicked")) {
+
+    }
+}
 
 function addClickHandlerTest() {
     $(".square").click(determineValidMove);
