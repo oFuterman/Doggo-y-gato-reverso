@@ -93,11 +93,15 @@ body {
 }
 
 .scoreP1Count {
+    vertical-align: top;
     position: relative;
     display: inline-block;
     height: 45%;
     width: 50%;
     background-color: #761c19;
+    text-align: center;
+    font-size: 15vh;
+
 
 }
 
@@ -112,11 +116,14 @@ body {
 }
 
 .scoreP2Count {
+    vertical-align: top;
     position: relative;
     display: inline-block;
     height: 45%;
     width: 50%;
     background-color: #761c19;
+    text-align: center;
+    font-size: 15vh;
 
 
 }
@@ -195,16 +202,40 @@ body {
 
 .instructionModal {
     position: absolute;
-    display: inline-block;
+    display: none;
+    text-align: center;
     height: 80vh;
     width: 25vw;
     top: 10%;
-    border: 5px solid navy;
+    border: 2px solid navy;
     background-color: #2e6da4;
     left: 38%;
 
 }
+.instrucPara1 {
+    font-size: 4vh;
+}
+
+.instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+    font-size: 3vh;
+
+}
+
+.winModal {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    height: 80vh;
+    width: 25vw;
+    top: 10%;
+    border: 2px solid navy;
+    background-color: #2e6da4;
+    left: 38%;
+}
+
+
 
 .hideModals {
     display: none;
 }
+
