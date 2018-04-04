@@ -26,6 +26,7 @@ body {
     height: 15vh;
     width: 100vw;
     font-size: 4vh;
+    text-align: center;
 }
 
 .gameBoard {
@@ -75,5 +76,6 @@ body {
     height: 80vh;
     width: 15vw;
     top: 18%;
+    display: none;
 
 }
