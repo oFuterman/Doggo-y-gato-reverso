@@ -4,7 +4,11 @@ $(document).ready(function() {
     addClickHandlerTest();
 });
 
-function determineValidMove() {
+
+var currentPlayer = 1;
+var oppositePlayer = 2;
+
+function determineValidMove(oppositePlayer) {
     /* Location of adjacent pieces */
     var squareNumber =  parseInt($(this).attr("squareNumber"));
 
@@ -29,31 +33,32 @@ function determineValidMove() {
     // var diagonalDownRight = (squareNumber + 9);
     // var belowPiece = (squareNumber + 8);
 
-    //Player 1 turn (black, 1)
+    // for the entire grid, look for color of current player
+    // from that current color, look all the way up, up right, right, down right, down, down left, left, and up left until empty space or same color.
+    // if empty space after opposite color, add click handler
+
+
+
+    //Player 1 turn (white, 1)
 
     for(var y = 0; y < 8; y++) {
-        for(var x = 0; x<8; x++) {
-            if(gameBoardArray[x][y] === 1) {
-                if (gameBoardArray[x-1][y] === 0) {
-
+        for(var x = 0; x < 8; x++) {
+            if (gameBoardArray[x][y] === currentPlayer) {
+                // North
+                for(var yIndex = y; yIndex > 0; yIndex--) {
+                    if(yIndex === )
                 }
             }
         }
     }
 
-//     Determine legal move for black:
-// // look through entire grid until find a piece
-// // check color of piece
-// // if white,
-//     Look at all piece bottom right until black piece
-//     If top left(opposite direction) empty,
-//         Add click handler to top left
-//     Repeat for all directions
-
-
-
-
-
+    if(oppositePlayer === 1) {
+        currentPlayer = 1;
+        oppositePlayer = 2;
+    } else {
+        currentPlayer = 2;
+        oppositePlayer = 1;
+    }
 }
 
 function addClickHandlerTest() {
