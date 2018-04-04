@@ -6,9 +6,10 @@ $(document).ready(function() {
     addClickHandlerTest();
 });
 
+
 function determineValidMove() {
     /* Location of adjacent pieces */
-    var squareNumber =  parseInt($(this).attr("squareNumber"));
+    var squareNumber = parseInt($(this).attr("squareNumber"));
 
 
     var diagonalUpLeft = (squareNumber - 9);
@@ -21,59 +22,107 @@ function determineValidMove() {
     var belowPiece = (squareNumber + 8);
 
 
+    var currentPlayer = 1;
+    var oppositePlayer = 2;
+
+    function determineValidMove(oppositePlayer) {
+        /* Location of adjacent pieces */
+        var squareNumber = parseInt($(this).attr("squareNumber"));
+
+        var gameBoardArray =
+            [
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 1, 2, 0, 0, 0],
+                [0, 0, 0, 2, 1, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0]
+            ];
+
+        // var diagonalUpLeft = (squareNumber - 9);
+        // var diagonalUpRight = (squareNumber - 7);
+        // var abovePiece = (squareNumber - 8);
+        // var rightPiece = (squareNumber + 1);
+        // var leftPiece = (squareNumber - 1);
+        // var diagonalDownLeft = (squareNumber + 7);
+        // var diagonalDownRight = (squareNumber + 9);
+        // var belowPiece = (squareNumber + 8);
+
+        // for the entire grid, look for color of current player
+        // from that current color, look all the way up, up right, right, down right, down, down left, left, and up left until empty space or same color.
+        // if empty space after opposite color, add click handler
 
 
-}
+        //Player 1 turn (white, 1)
 
-function removeClickHandlers() {
-    if($(".square").hasClass("clicked")) {
+        for (var y = 0; y < 8; y++) {
+            for (var x = 0; x < 8; x++) {
+                if (gameBoardArray[y][x] === currentPlayer) {
+                    // North
+                    for (var yIndex = y; yIndex >= 0;) {
+                        if (gameBoardArray[yIndex - 1][x] === oppositePlayer) {
+                            yIndex -= 1;
+                        } else if (gameBoardArray[yIndex - 1][x] === 0) {
+                            addClickHandler();
+                        }
+                    }
+                    //East
+                    for (var xIndex = x; xIndex < 8; ) {
+                        if(gameBoardArray[y][xIndex + 1] === oppositePlayer) {
+                            xIndex += 1;
+                        } else if (gameBoardArray[y][xIndex + 1] === 0) {
+                            addClickHandler();
+                        }
+                    }
+                    //South
+                    for (var yIndex = y; yIndex < 8;) {
+                        if (gameBoardArray[yIndex + 1][x] === oppositePlayer) {
+                            yIndex += 1;
+                        } else if (gameBoardArray[yIndex + 1][x] === 0) {
+                            addClickHandler();
+                        }
+                    }
+                    //West
+                    for (var xIndex = x; xIndex > 0; ) {
+                        if(gameBoardArray[y][xIndex -1 ] === oppositePlayer) {
+                            xIndex -= 1;
+                        } else if (gameBoardArray[y][xIndex - 1] === 0) {
+                            addClickHandler();
+                        }
+                    }
+                    // NorthEast
+                    for (var yIndex = y, xIndex = x; yIndex >= 0, xIndex < 8;) {
+                        if (gameBoardArray[yIndex - 1][xIndex + 1] === oppositePlayer) {
+                            yIndex -= 1;
+                            xIndex += 1;
+                        } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0) {
+                            addClickHandler();
+                        }
+                    }
+                }
+            }
+        }
 
+        if (oppositePlayer === 1) {
+            currentPlayer = 1;
+            oppositePlayer = 2;
+        } else {
+            currentPlayer = 2;
+            oppositePlayer = 1;
+        }
     }
 }
 
-function addClickHandlerTest() {
-    $(".square").click(determineValidMove);
+function addClickHandler() {
+
 }
-
-
-
-
-
-
 
 
 function resetGame() {
 
 }
-
-
-
-
-
-
-
-function resetGame() {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -86,7 +135,7 @@ function resetGame() {
 $(document).ready(initializeApp);
 
 function initializeApp(){
-    $('.square').on('click',addPiece);
+    addClickHandler();
 }
 
 function addPiece(){
@@ -101,6 +150,7 @@ function addPiece(){
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=true;
     }
+    determineValidMove();
 }
 
 function clicked(rowNum,colNum){
