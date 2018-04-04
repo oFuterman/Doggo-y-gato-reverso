@@ -204,3 +204,7 @@ body {
     left: 38%;
 
 }
+
+.hideModals {
+    display: none;
+}
