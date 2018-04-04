@@ -1,6 +1,9 @@
 var whiteTurn=true;
 var currentPlayer = 1;
 var oppositePlayer = 2;
+// $(".instructionModal").on("click", function(){
+//     $(".instructionModal").addClass("hideModals");
+// });
 
 /*-----------------Dylan's Code-----------------*/
 
