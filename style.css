@@ -284,10 +284,9 @@ body {
     top: 10%;
     left: 10%;
     border-radius: 50%;
-    background-color: rgba(218, 111, 219, 0.73);
 }
 .legalMove {
-
+    background-color: rgba(218, 111, 219, 0.73);
 }
 
 
