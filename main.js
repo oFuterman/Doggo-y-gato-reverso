@@ -493,6 +493,7 @@ function countDown(){
             startTimeSeconds=59;
         }else if(startTimeMinutes===0&&startTimeSeconds===0){
             clearTimeout(timer);
+            gameOver(countPieces());
         }else if(startTimeSeconds>0){
             startTimeSeconds--;
         }
