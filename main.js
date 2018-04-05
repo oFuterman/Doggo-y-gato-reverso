@@ -344,22 +344,8 @@ function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // recreateBoard();
-=======
-  recreateBoardArray();
-  // for (var y = 0; y < 8; y++) {
-  //     for (var x = 0; x < 8; x++) {
-  //         if (gameBoardArray[y][x] === 3) {
-  //             gameBoardArray[y][x] = 0;
-  //         }
-  //     }
-  // }
->>>>>>> 0c0723b7ae17f7546349dbdd022c4c335af5240d
-=======
 
->>>>>>> 955f062583bd574efc4251370839a316c51d737d
+  recreateBoardArray();
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -386,21 +372,7 @@ function updateStats(arr){
     $('.scoreP1Count').text(whiteScore);
     $('.scoreP2Count').text(blackScore);
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-// var recreatedArray = [];
-// function recreateBoardArray() {
-//
-//     for(var y=0;y<=7;y++){
-//         for(var x=0;x<=7;x++){
-//
-//         }
-// }
-=======
-=======
-
->>>>>>> 955f062583bd574efc4251370839a316c51d737d
 var newBoard=[
     [],
     [],
@@ -426,8 +398,4 @@ function recreateBoardArray() {
     }
     console.log(newBoard);
 }
-<<<<<<< HEAD
->>>>>>> 0c0723b7ae17f7546349dbdd022c4c335af5240d
-=======
 
->>>>>>> 955f062583bd574efc4251370839a316c51d737d
