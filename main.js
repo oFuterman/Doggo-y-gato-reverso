@@ -8,6 +8,11 @@ $(document).ready(initializeApp);
 
 /*-----------------Dylan's Code-----------------*/
 
+function muteAudio() {
+
+}
+
+
 var gameBoardArray =
     [
         [0, 0, 0, 0, 0, 0, 0, 0],
@@ -287,8 +292,7 @@ function initializeApp(){
 
     $(".winModal").hide();
     //$('.square').on('click',addPiece);
-
-
+    $(".audioMute").click(muteAudio);
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
