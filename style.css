@@ -246,3 +246,6 @@ body {
     display: none;
 }
 
+.legalMove {
+    background-color: darkgreen;
+}
