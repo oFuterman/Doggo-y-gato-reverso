@@ -275,9 +275,9 @@ body {
     position: absolute;
     display: inline-block;
     text-align: center;
-    height: 80vh;
+    height: 95vh;
     width: 25vw;
-    top: 10%;
+    top: 2%;
     /*border: 2px solid navy;*/
     background-color: rgba(147, 112, 219, 0.98);
 
@@ -290,6 +290,8 @@ body {
 .winPara1, .winPara2 {
     display: inherit;
     font-size: 4vh;
+    position: relative;
+    top: 10%;
 }
 
 .winReset {
@@ -312,4 +314,13 @@ body {
 
 .legalMove {
     background-color: darkgreen;
+}
+
+.winImage {
+    position: relative;
+    height: 30%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 50%;
 }
