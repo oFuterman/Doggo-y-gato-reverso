@@ -1,6 +1,7 @@
 var whiteTurn=true;
 var currentPlayer = 1;
 var oppositePlayer = 2;
+var mute = false;
 $(document).ready(initializeApp);
 
 
@@ -219,6 +220,9 @@ function removeClickHandlers() {
 }
 
 function clickAudio(turn) {
+    if (mute === true) {
+        return;
+    }
     // Making use of traditional if else conditional statements
     var clickSound;
     if (turn) {
@@ -235,8 +239,15 @@ function clickAudio(turn) {
 }
 
 function winSound () {
+    if (mute === true) {
+        return;
+    }
     var winTone = new Audio("sounds/win.mp3");
     winTone.play();
+}
+
+function muteAudio () {
+
 }
 
 function resetGame() {
