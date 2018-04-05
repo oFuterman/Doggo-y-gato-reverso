@@ -159,9 +159,9 @@ function resetGame() {
 
 
 function initializeApp(){
-    $("*").on("click", function(){
-        $(".instructionModal").removeClass("instructionModal");
-    });
+    // $("*").on("click", function(){
+    //     $(".instructionModal").removeClass("instructionModal");
+    // });
     //$('.square').on('click',addPiece);
     updateStats(countPieces());
     addClickHandler();
