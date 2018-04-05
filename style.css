@@ -313,3 +313,28 @@ body {
 .legalMove {
     background-color: darkgreen;
 }
+
+.animate{
+    animation-name: magic;
+    background-image: none;
+    animation-duration: 0.75s;
+}
+
+.animate2{
+    background-image: none;
+    animation: magic2 750ms infinite linear;
+}
+
+@keyframes magic{
+    0% {background-color: mediumpurple}
+    33% {background-color: hotpink}
+    66% {background-color: deepskyblue}
+    100% {background-color: mediumpurple}
+}
+
+@keyframes magic2{
+    0% {background-color: mediumpurple}
+    33% {background-color: hotpink}
+    66% {background-color: deepskyblue}
+    100% {background-color: mediumpurple}
+}

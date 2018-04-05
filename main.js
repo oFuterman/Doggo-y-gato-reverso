@@ -6,6 +6,7 @@ $(document).ready(initializeApp);
 
 
 
+
 /*-----------------Dylan's Code-----------------*/
 
 var gameBoardArray =
@@ -239,6 +240,7 @@ function resetGame() {
     $(".winModal").hide();
     $('.scoreP1>div').addClass('white');
     $('.scoreP2>div').addClass('black');
+    $('.animate').removeClass('animate')
 }
 
 
@@ -261,7 +263,6 @@ function initializeApp(){
     });
 
     $(".winModal").hide();
-    //$('.square').on('click',addPiece);
 
 
     updateStats(countPieces());
@@ -395,6 +396,8 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
                     else if($(squareOverSelectorJ).hasClass('white')){
                         //changes anything with tag class to white
                         $('.tag').removeClass('black');
+                        $('.tag').addClass('animate');
+                        setTimeout(function(){$('.animate').removeClass('animate')},800);
                         $('.tag').addClass('white');
                         j+=10;
                     }
@@ -421,6 +424,8 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
                         $(squareOverSelectorJ).addClass('tag');
                     }else if($(squareOverSelectorJ).hasClass('black')){
                         $('.tag').removeClass('white');
+                        $('.tag').addClass('animate');
+                        setTimeout(function(){$('.animate').removeClass('animate')},800);
                         $('.tag').addClass('black');
                         j+=10;
                     }else{
@@ -433,7 +438,6 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
             }
         }
     }
-    // updateGameBoard($(this).attr("row"),$(this).attr("column"));
 }
 
 function endTurn() {
@@ -501,6 +505,129 @@ function gameOver(arr){
     }else{
         console.log('holy shit you tied!');
     }
+    overRainbow();
+}
+
+function overRainbow(){
+    var rainbowCount=0;
+    var rowStart=0;
+    var colStart=0;
+    $('.white').removeClass('white');
+    $('.black').removeClass('black');
+    $('.empty').removeClass('empty');
+    $('.square>div').addClass('white');
+    //$('.square>div').addClass('empty');
+    var timer=setInterval(function(){
+        switch(rainbowCount){
+            case 0:
+                rowStart=0;
+                colStart=0;
+                for(var i=0;i<1;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 1:
+                rowStart=0;
+                colStart=1;
+                for(var i=0;i<=2;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 2:
+                rowStart=0;
+                colStart=2;
+                for(var i=0;i<=3;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 3:
+                rowStart=0;
+                colStart=3;
+                for(var i=0;i<=4;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 4:
+                rowStart=0;
+                colStart=4;
+                for(var i=0;i<=5;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 5:
+                rowStart=0;
+                colStart=5;
+                for(var i=0;i<=6;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 6:
+                rowStart=0;
+                colStart=6;
+                for(var i=0;i<=7;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 7:
+                rowStart=0;
+                colStart=7;
+                for(var i=0;i<=8;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 8:
+                rowStart=1;
+                colStart=7;
+                for(var i=0;i<=7;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 9:
+                rowStart=2;
+                colStart=7;
+                for(var i=0;i<=6;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 10:
+                rowStart=3;
+                colStart=7;
+                for(var i=0;i<=5;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 11:
+                rowStart=4;
+                colStart=7;
+                for(var i=0;i<=4;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 12:
+                rowStart=5;
+                colStart=7;
+                for(var i=0;i<=3;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 13:
+                rowStart=6;
+                colStart=7;
+                for(var i=0;i<=2;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                break;
+            case 14:
+                rowStart=7;
+                colStart=7;
+                for(var i=0;i<=1;i++){
+                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+                }
+                clearTimeout(timer);
+                break;
+        }
+        rainbowCount++;
+    },200);
 }
 
 var startTimeMinutes=30;
