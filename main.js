@@ -188,12 +188,31 @@ function addClickHandler(row, column) {
 }
 
 function removeClickHandlers() {
-    $('*').off("click");
+    $('.square').off("click");
     $('*').removeClass("legalMove");
 }
 
-function resetGame() {
 
+function resetGame() {
+    whiteTurn=true;
+    currentPlayer = 1;
+    oppositePlayer = 2;
+    $('.white').removeClass('white');
+    $('.black').removeClass('black');
+    $('div[row='+3+'][column='+3+']>div').addClass("white");
+    $('div[row='+3+'][column='+4+']>div').addClass("black");
+    $('div[row='+4+'][column='+3+']>div').addClass("black");
+    $('div[row='+4+'][column='+4+']>div').addClass("white");
+    recreateBoardArray();
+    removeClickHandlers();
+    updateStats(countPieces());
+    determineValidMove(1, 2);
+    $("#player1Marker").addClass('white');
+    $("#player2Marker").addClass('black');
+    $("#player1Marker").show();
+    $("#player2Marker").hide();
+    $('.scoreP1>div').addClass('white');
+    $('.scoreP2>div').addClass('black');
 }
 
 
@@ -214,6 +233,7 @@ function initializeApp(){
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
     $("#player2Marker").hide();
+    $('.resetButton').click(resetGame);
 }
 
 function addPiece(){
@@ -432,6 +452,5 @@ function recreateBoardArray() {
             }
         }
     }
-    console.log(gameBoardArray);
 }
 
