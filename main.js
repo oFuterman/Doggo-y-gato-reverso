@@ -5,18 +5,19 @@ $(document).ready(initializeApp);
 
 /*-----------------Dylan's Code-----------------*/
 
+var gameBoardArray =
+    [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 2, 0, 0, 0],
+        [0, 0, 0, 2, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ];
+
 function determineValidMove(player, antiPlayer) {
-    var gameBoardArray =
-        [
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 1, 2, 0, 0, 0],
-            [0, 0, 0, 2, 1, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0]
-        ];
 
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
@@ -328,13 +329,6 @@ function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
-  for (var y = 0; y < 8; y++) {
-      for (var x = 0; x < 8; x++) {
-          if (gameBoardArray[y][x] === 3) {
-              gameBoardArray[y][x] = 0;
-          }
-      }
-  }
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
