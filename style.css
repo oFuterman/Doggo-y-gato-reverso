@@ -304,6 +304,7 @@ body {
 }
 
 .audio {
+    display: inherit;
     width: 115%;
 }
 
