@@ -41,6 +41,7 @@
             <button class="resetButton">Reset Game</button>
         </div>
     </div>
+    <div class="audioMute"><img class="audioIcon" src="images/audioIcon.svg"></div>
     <div class="gameBoard">
         <div class="square" row="0" column="0">
             <div class="empty"></div>
@@ -245,14 +246,25 @@
     </div>
 
     <div class="winModal">
+        <div class="winImage"></div>
+        <br>
         <p class="winPara1">Player X has Won!</p>
 
         <p class="winPara2">Thank you for Playing!</p>
         <p class="winPara3"></p>
         <button class="winReset">Would you like to play again?</button>
     </div>
-    <footer class="footer">
-    </footer>
+    <div class="timer">
+
+    </div>
+
+    <div class="audioControls">
+        <audio controls autoplay loop class="audio">
+            <source src="sounds/background-music.mp3">
+        </audio>
+    </div>
+
+
 
 </body>
 </html>

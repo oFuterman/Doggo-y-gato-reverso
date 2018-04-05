@@ -1,6 +1,7 @@
 var whiteTurn=true;
 var currentPlayer = 1;
 var oppositePlayer = 2;
+var mute = false;
 $(document).ready(initializeApp);
 
 
@@ -8,6 +9,11 @@ $(document).ready(initializeApp);
 
 
 /*-----------------Dylan's Code-----------------*/
+
+function muteAudio() {
+
+}
+
 
 var gameBoardArray =
     [
@@ -39,8 +45,7 @@ function determineValidMove(player, antiPlayer) {
     }
     var totalCount = whiteCount + blackCount;
     if(totalCount === 64) {
-        console.log("game over");
-        //winGameFunction();
+        gameOver(countPieces());
     }
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
@@ -186,8 +191,10 @@ function determineValidMove(player, antiPlayer) {
     }
 
     if(blackCount === 0) {
+        $(".winPara1").text("Doggo wins!");
         console.log("white win");
     } else if (whiteCount === 0) {
+        $(".winPara1").text("Gato wins!");
         console.log("black win");
     }
 
@@ -200,6 +207,7 @@ function determineValidMove(player, antiPlayer) {
     }
     if(countPossibleMoves===0){
         gameOver(countPieces());
+        $(".winModal").css("display", "block");
     }
 }
 
@@ -214,6 +222,37 @@ function addClickHandler(row, column) {
 function removeClickHandlers() {
     $('.square').off("click");
     $('*').removeClass("legalMove");
+}
+
+function clickAudio(turn) {
+    if (mute === true) {
+        return;
+    }
+    // Making use of traditional if else conditional statements
+    var clickSound;
+    if (turn) {
+        clickSound = new Audio('sounds/player1.mp3');
+    } else {
+        clickSound = new Audio('sounds/player2.mp3');
+    }
+    clickSound.play();
+
+    // // Determining which audio file to play with a ternary
+    // var playerTurn = turn ? 'sounds/player1.mp3' : 'sounds/player2.mp3';
+    // var clickSound = new Audio(playerTurn);
+    // clickSound.play();
+}
+
+function winSound () {
+    if (mute === true) {
+        return;
+    }
+    var winTone = new Audio("sounds/win.mp3");
+    winTone.play();
+}
+
+function muteAudio () {
+
 }
 
 function resetGame() {
@@ -253,18 +292,19 @@ function resetGame() {
 
 var pageClicks=0;
 function initializeApp(){
-
+    $(".timer").hide();
     $("*").on("click", function(){
         if(pageClicks===0){
             $(".instructionModal").addClass("hideModals");
+            $(".timer").show();
             countDown();
         }
         pageClicks++;
     });
 
     $(".winModal").hide();
-
-
+    //$('.square').on('click',addPiece);
+    $(".audioMute").click(muteAudio);
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
@@ -276,6 +316,7 @@ function initializeApp(){
 function addPiece(){
     var updateBoardRow = $(this).attr("row");
     var updateBoardColumn = $(this).attr("column");
+    clickAudio(whiteTurn);
     if(whiteTurn){
         $("#player1Marker").hide();
         $("#player2Marker").show();
@@ -384,7 +425,7 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
                 var j=2;
 
                 //performs check on squares in the same direction (automatically stops if out of bounds)
-                while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
+                while(currCol + colChange * j <= 7 && currCol + colChange * j >= 0 && currRow + rowChange * j <= 7 && currRow + rowChange * j >= 0){
                     squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
 
                     //if its black (opposite)
@@ -418,7 +459,7 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
                 currRow=parseInt(squareOn.attr('row'));
                 currCol=parseInt(squareOn.attr('column'));
                 var j=2;
-                while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
+                while(currCol + colChange * j <= 7 && currCol + colChange * j >= 0 && currRow + rowChange * j <= 7 && currRow + rowChange * j >= 0 ){
                     squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
                     if($(squareOverSelectorJ).hasClass('white')){
                         $(squareOverSelectorJ).addClass('tag');
@@ -498,12 +539,15 @@ function recreateBoardArray() {
 }
 
 function gameOver(arr){
+    winSound();
     if(arr[0]>arr[1]){
-        console.log('player one wins!');
+        $(".winPara1").text("Doggo wins!");
+        $(".winImage").addClass("white");
     }else if(arr[1]>arr[0]){
-        console.log('player two wins!');
+        $(".winPara1").text("Gato wins!");
+        $(".winImage").addClass("black");
     }else{
-        console.log('holy shit you tied!');
+        $(".winPara1").text("Hekin' Wao! You Tied!");
     }
     overRainbow();
 }
@@ -635,20 +679,20 @@ var startTimeSeconds=0;
 function countDown(){
     var time='';
     var timer=setInterval(function(){
-        if(startTimeSeconds===0&&startTimeMinutes>0){
+        if(startTimeSeconds === 0 && startTimeMinutes > 0){
             startTimeMinutes--;
-            startTimeSeconds=59;
-        }else if(startTimeMinutes===0&&startTimeSeconds===0){
+            startTimeSeconds = 59;
+        }else if(startTimeMinutes === 0 && startTimeSeconds === 0){
             clearTimeout(timer);
             gameOver(countPieces());
-        }else if(startTimeSeconds>0){
+        }else if(startTimeSeconds > 0){
             startTimeSeconds--;
         }
-        if(startTimeSeconds<10){
-            time=startTimeMinutes+':0'+startTimeSeconds;
+        if(startTimeSeconds < 10){
+            time = startTimeMinutes + ':0' + startTimeSeconds;
         } else {
             time = startTimeMinutes + ':' + startTimeSeconds;
         }
-        //$('.headerTitle').text(time);
+        $('.timer').text(time);
     },1000);
 }
