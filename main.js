@@ -186,7 +186,6 @@ function determineValidMove(player, antiPlayer) {
         currentPlayer = 2;
         oppositePlayer = 1;
     }
-    console.log(countPossibleMoves);
     if(countPossibleMoves===0){
         gameOver(countPieces());
     }
