@@ -345,6 +345,7 @@ function endTurn() {
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
 
+  recreateBoardArray();
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
