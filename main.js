@@ -430,6 +430,5 @@ function recreateBoardArray() {
             }
         }
     }
-    console.log(gameBoardArray);
 }
 
