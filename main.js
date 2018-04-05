@@ -343,9 +343,8 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
 function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
-  determineValidMove(currentPlayer, oppositePlayer);
-
   recreateBoardArray();
+  determineValidMove(currentPlayer, oppositePlayer);
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
