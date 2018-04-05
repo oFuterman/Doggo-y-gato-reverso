@@ -330,4 +330,5 @@ body {
 
 .audioIcon {
     width: 10%;
+    position: absolute;
 }
