@@ -3,6 +3,9 @@ var currentPlayer = 1;
 var oppositePlayer = 2;
 $(document).ready(initializeApp);
 
+
+
+
 /*-----------------Dylan's Code-----------------*/
 
 var gameBoardArray =
@@ -178,17 +181,22 @@ function initializeApp(){
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
+    $("#player2Marker").hide();
 }
 
 function addPiece(){
     var updateBoardRow = $(this).attr("row");
     var updateBoardColumn = $(this).attr("column");
     if(whiteTurn){
+        $("#player1Marker").hide();
+        $("#player2Marker").show();
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=false;
     }else{
+        $("#player1Marker").show();
+        $("#player2Marker").hide();
         $('div',this).removeClass('empty');
         $('div',this).addClass('black');
         clicked($(this).attr('row'),$(this).attr('column'));
