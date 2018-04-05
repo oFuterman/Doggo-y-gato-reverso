@@ -26,6 +26,8 @@ function updateGameBoard(row, column) {
 }
 
 function determineValidMove(player, antiPlayer) {
+    
+    var countPossibleMoves=0;
     // clear any previously declared valid moves
     for (var y = 0; y < 8; y++) {
         for (var x = 0; x < 8; x++) {
@@ -48,6 +50,7 @@ function determineValidMove(player, antiPlayer) {
                     if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
                         yIndex -= 1;
                     } else if (gameBoardArray[yIndex - 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(yIndex-1, x);
                         gameBoardArray[yIndex-1][x] = 3;
                         break;
@@ -63,6 +66,7 @@ function determineValidMove(player, antiPlayer) {
                     if(gameBoardArray[y][xIndex + 1] === antiPlayer) {
                         xIndex += 1;
                     } else if (gameBoardArray[y][xIndex + 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(y, xIndex + 1);
                         gameBoardArray[y][xIndex + 1] = 3;
                         break;
@@ -78,6 +82,7 @@ function determineValidMove(player, antiPlayer) {
                     if (gameBoardArray[yIndex + 1][x] === antiPlayer) {
                         yIndex += 1;
                     } else if (gameBoardArray[yIndex + 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(yIndex + 1, x);
                         gameBoardArray[yIndex + 1][x] = 3;
                         break;
@@ -93,6 +98,7 @@ function determineValidMove(player, antiPlayer) {
                     if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
                         xIndex -= 1;
                     } else if (gameBoardArray[y][xIndex - 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(y, xIndex - 1);
                         gameBoardArray[y][xIndex - 1] = 3;
                         break;
@@ -109,6 +115,7 @@ function determineValidMove(player, antiPlayer) {
                         yIndex -= 1;
                         xIndex += 1;
                     } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(yIndex-1, xIndex + 1);
                         gameBoardArray[yIndex-1][xIndex + 1] = 3;
                         break;
@@ -125,6 +132,7 @@ function determineValidMove(player, antiPlayer) {
                         yIndex += 1;
                         xIndex += 1;
                     } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(yIndex + 1, xIndex + 1);
                         gameBoardArray[yIndex + 1][xIndex + 1] = 3;
                         break;
@@ -141,6 +149,7 @@ function determineValidMove(player, antiPlayer) {
                         yIndex += 1;
                         xIndex -= 1;
                     } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(yIndex + 1, xIndex - 1);
                         gameBoardArray[yIndex + 1][xIndex - 1] = 3;
                         break;
@@ -157,6 +166,7 @@ function determineValidMove(player, antiPlayer) {
                         yIndex -= 1;
                         xIndex -= 1;
                     } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                        countPossibleMoves++;
                         addClickHandler(yIndex - 1, xIndex - 1);
                         gameBoardArray[yIndex - 1][xIndex - 1] = 3;
 
@@ -176,8 +186,11 @@ function determineValidMove(player, antiPlayer) {
         currentPlayer = 2;
         oppositePlayer = 1;
     }
+    console.log(countPossibleMoves);
+    if(countPossibleMoves===0){
+        gameOver(countPieces());
+    }
 }
-
 
 function addClickHandler(row, column) {
     $('div[row='+row+'][column='+column+']').click(addPiece);
@@ -191,7 +204,6 @@ function removeClickHandlers() {
     $('.square').off("click");
     $('*').removeClass("legalMove");
 }
-
 
 function resetGame() {
     whiteTurn=true;
@@ -454,3 +466,12 @@ function recreateBoardArray() {
     }
 }
 
+function gameOver(arr){
+    if(arr[0]>arr[1]){
+        console.log('player one wins!');
+    }else if(arr[1]>arr[0]){
+        console.log('player two wins!');
+    }else{
+        console.log('holy shit you tied!');
+    }
+}
