@@ -343,7 +343,7 @@ function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
-  recreateBoard();
+  // recreateBoard();
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -371,9 +371,11 @@ function updateStats(arr){
     $('.scoreP2Count').text(blackScore);
 }
 
-function recreateBoard() {
-    // for(var y=0;y<=7;x++){
-    //     for(var x=0;x<=7;y++){
-    //         if ()
-    //     }
-}
+// var recreatedArray = [];
+// function recreateBoardArray() {
+//
+//     for(var y=0;y<=7;y++){
+//         for(var x=0;x<=7;x++){
+//
+//         }
+// }
