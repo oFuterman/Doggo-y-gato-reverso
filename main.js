@@ -159,14 +159,11 @@ function resetGame() {
 
 
 function initializeApp(){
-
-    $("*").on("click", function(){
-        $(".instructionModal").addClass("hideModals");
-    });
-    $('.square').on('click',addPiece);
-
+    // $("*").on("click", function(){
+    //     $(".instructionModal").removeClass("instructionModal");
+    // });
+    //$('.square').on('click',addPiece);
     updateStats(countPieces());
-
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
 }
@@ -332,6 +329,13 @@ function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
+  for (var y = 0; y < 8; y++) {
+      for (var x = 0; x < 8; x++) {
+          if (gameBoardArray[y][x] === 3) {
+              gameBoardArray[y][x] = 0;
+          }
+      }
+  }
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
