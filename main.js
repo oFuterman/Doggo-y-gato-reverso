@@ -38,8 +38,7 @@ function determineValidMove(player, antiPlayer) {
     }
     var totalCount = whiteCount + blackCount;
     if(totalCount === 64) {
-        console.log("game over");
-        //winGameFunction();
+        gameOver(countPieces());
     }
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
@@ -503,14 +502,11 @@ function gameOver(arr){
     if(arr[0]>arr[1]){
         $(".winPara1").text("Doggo wins!");
         $(".winImage").addClass("white");
-        console.log('player one wins!');
     }else if(arr[1]>arr[0]){
         $(".winPara1").text("Gato wins!");
         $(".winImage").addClass("black");
-        console.log('player two wins!');
     }else{
         $(".winPara1").text("Hekin' Wao! You Tied!");
-        console.log('holy shit you tied!');
     }
 }
 
