@@ -111,7 +111,6 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //NorthWest
                 for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex >= 0;) {
-                    debugger;
                     if (gameBoardArray[yIndex - 1][xIndex - 1] === antiPlayer) {
                         yIndex -= 1;
                         xIndex -= 1;
