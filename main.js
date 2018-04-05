@@ -38,6 +38,8 @@ function determineValidMove(player, antiPlayer) {
     for (var y = 0; y < 8; y++) {
         for (var x = 0; x < 8; x++) {
             if (gameBoardArray[y][x] === player) {
+                yIndex = y;
+                xIndex = x;
                 // North
                 for (var yIndex = y; yIndex >= 0;) {
                     if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
