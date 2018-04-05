@@ -280,6 +280,7 @@ function addPiece(){
     if(whiteTurn){
         $("#player1Marker").hide();
         $("#player2Marker").show();
+        $(".square").click();
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
         clicked($(this).attr('row'),$(this).attr('column'));
