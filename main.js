@@ -351,9 +351,8 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
 function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
-  determineValidMove(currentPlayer, oppositePlayer);
-
   recreateBoardArray();
+  determineValidMove(currentPlayer, oppositePlayer);
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -381,29 +380,19 @@ function updateStats(arr){
     $('.scoreP2Count').text(blackScore);
 }
 
-var newBoard=[
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-];
 function recreateBoardArray() {
     for(var y=0;y<=7;y++) {
         for (var x = 0; x <= 7; x++) {
             var squareSelector = 'div[row='+y+'][column='+x+']>div';
             if($(squareSelector).hasClass('white')){
-                newBoard[y][x]=1;
+                gameBoardArray[y][x]=1;
             }else if($(squareSelector).hasClass('black')){
-                newBoard[y][x]=2;
+                gameBoardArray[y][x]=2;
             }else{
-                newBoard[y][x]=0;
+                gameBoardArray[y][x]=0;
             }
         }
     }
-    console.log(newBoard);
+    console.log(gameBoardArray);
 }
 
