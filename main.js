@@ -17,8 +17,19 @@ var gameBoardArray =
         [0, 0, 0, 0, 0, 0, 0, 0]
     ];
 
-function determineValidMove(player, antiPlayer) {
+function updateGameBoard(row, column) {
+    gameBoardArray[row][column] = currentPlayer;
+}
 
+function determineValidMove(player, antiPlayer) {
+    // clear any previously declared valid moves
+    for (var y = 0; y < 8; y++) {
+        for (var x = 0; x < 8; x++) {
+            if (gameBoardArray[y][x] === 3) {
+                gameBoardArray[y][x] = 0;
+            }
+        }
+    }
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
         for (var x = 0; x < 8; x++) {
@@ -73,10 +84,10 @@ function determineValidMove(player, antiPlayer) {
                 }
                 // NorthEast
                 for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                    if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer) {
                         yIndex -= 1;
                         xIndex += 1;
-                    } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0) {
+                    } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
                         addClickHandler(yIndex-1, xIndex + 1);
                         gameBoardArray[yIndex-1][xIndex + 1] = 3;
                         break;
@@ -86,10 +97,10 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //SouthEast
                 for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                    if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer) {
                         yIndex += 1;
                         xIndex += 1;
-                    } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0) {
+                    } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
                         addClickHandler(yIndex + 1, xIndex + 1);
                         gameBoardArray[yIndex + 1][xIndex + 1] = 3;
                         break;
@@ -99,10 +110,10 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //SouthWest
                 for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex >= 0;) {
-                    if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                    if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer) {
                         yIndex += 1;
                         xIndex -= 1;
-                    } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0) {
+                    } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
                         addClickHandler(yIndex + 1, xIndex - 1);
                         gameBoardArray[yIndex + 1][xIndex - 1] = 3;
                         break;
@@ -169,6 +180,8 @@ function initializeApp(){
 }
 
 function addPiece(){
+    var updateBoardRow = $(this).attr("row");
+    var updateBoardColumn = $(this).attr("column");
     if(whiteTurn){
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
@@ -180,7 +193,7 @@ function addPiece(){
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=true;
     }
-    determineValidMove(currentPlayer, oppositePlayer);
+    updateGameBoard(updateBoardRow, updateBoardColumn);
 }
 
 function clicked(rowNum,colNum){
@@ -323,19 +336,14 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
             }
         }
     }
+    // updateGameBoard($(this).attr("row"),$(this).attr("column"));
 }
 
 function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
-  for (var y = 0; y < 8; y++) {
-      for (var x = 0; x < 8; x++) {
-          if (gameBoardArray[y][x] === 3) {
-              gameBoardArray[y][x] = 0;
-          }
-      }
-  }
+  recreateBoard();
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -361,4 +369,11 @@ function updateStats(arr){
     var blackScore=arr[1];
     $('.scoreP1Count').text(whiteScore);
     $('.scoreP2Count').text(blackScore);
+}
+
+function recreateBoard() {
+    // for(var y=0;y<=7;x++){
+    //     for(var x=0;x<=7;y++){
+    //         if ()
+    //     }
 }
