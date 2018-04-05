@@ -10,6 +10,14 @@ $(document).ready(initializeApp);
 /*-----------------Dylan's Code-----------------*/
 
 function muteAudio() {
+   if (mute === false) {
+       mute = true;
+       $(".audioIcon").attr("src", "images/mute-icon.svg")
+   } else {
+       mute = false;
+       $(".audioIcon").attr("src", "images/audio-icon.svg")
+
+   }
 
 }
 
@@ -251,9 +259,6 @@ function winSound () {
     winTone.play();
 }
 
-function muteAudio () {
-
-}
 
 function resetGame() {
     startTimeMinutes=30;
