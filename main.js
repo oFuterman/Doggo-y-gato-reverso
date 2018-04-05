@@ -34,6 +34,11 @@ function determineValidMove(player, antiPlayer) {
             }
         }
     }
+    var totalCount = whiteCount + blackCount;
+    if(totalCount === 64) {
+        console.log("game over");
+        //winGameFunction();
+    }
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
         for (var x = 0; x < 8; x++) {
@@ -167,6 +172,12 @@ function determineValidMove(player, antiPlayer) {
                 }
             }
         }
+    }
+
+    if(blackCount === 0) {
+        console.log("white win");
+    } else if (whiteCount === 0) {
+        console.log("black win");
     }
 
     if (oppositePlayer === 1) {
@@ -387,9 +398,12 @@ function endTurn() {
   determineValidMove(currentPlayer, oppositePlayer);
 }
 
+var whiteCount=0;
+var blackCount=0;
+
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
-    var whiteCount=0;
-    var blackCount=0;
+    whiteCount=0;
+    blackCount=0;
     var squareSelector='';
     for(var x=0;x<=7;x++){
         for(var y=0;y<=7;y++){
