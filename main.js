@@ -1,9 +1,7 @@
 var whiteTurn=true;
 var currentPlayer = 1;
 var oppositePlayer = 2;
-// $(".instructionModal").on("click", function(){
-//     $(".instructionModal").addClass("hideModals");
-// });
+$(document).ready(initializeApp);
 
 /*-----------------Dylan's Code-----------------*/
 
@@ -159,9 +157,12 @@ function resetGame() {
 
 /*-----------------Omer's Code-----------------*/
 
-$(document).ready(initializeApp);
 
 function initializeApp(){
+    $("*").on("click", function(){
+        $(".instructionModal").removeClass("instructionModal");
+    });
+    $('.square').on('click',addPiece);
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
 }
@@ -183,8 +184,6 @@ function addPiece(){
 
 function clicked(rowNum,colNum){
     var outterSquareSelector='div[row='+rowNum+'][column='+colNum+']';
-    var squareSelector='div[row='+rowNum+'][column='+colNum+']>div';
-    var squareTarget=$(squareSelector);
     for(var i=0;i<8;i++){
         switch(i){
             case 0:
@@ -325,16 +324,18 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
     }
 }
 
+
 function endTurn() {
-    removeClickHandlers();
-    determineValidMove(currentPlayer, oppositePlayer);
-    for (var y = 0; y < 8; y++) {
-        for (var x = 0; x < 8; x++) {
-            if (gameBoardArray[y][x] === 3) {
-                gameBoardArray[y][x] = 0;
-            }
-        }
-    }
+  updateStats(countPieces());
+  removeClickHandlers();
+  determineValidMove(currentPlayer, oppositePlayer);
+  for (var y = 0; y < 8; y++) {
+      for (var x = 0; x < 8; x++) {
+          if (gameBoardArray[y][x] === 3) {
+              gameBoardArray[y][x] = 0;
+          }
+      }
+  }
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -352,4 +353,10 @@ function countPieces(){//when called returns an array with the amount of white a
     }
     var pieceCountArr=[whiteCount, blackCount];
     return pieceCountArr;
+}
+
+function updateStats(arr){
+    var whiteScore=arr[0];
+    var blackScore=arr[1];
+
 }
