@@ -162,7 +162,8 @@ function initializeApp(){
     $("*").on("click", function(){
         $(".instructionModal").removeClass("instructionModal");
     });
-    $('.square').on('click',addPiece);
+    //$('.square').on('click',addPiece);
+    updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
 }
@@ -324,7 +325,6 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
     }
 }
 
-
 function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
@@ -342,13 +342,14 @@ function countPieces(){//when called returns an array with the amount of white a
     var whiteCount=0;
     var blackCount=0;
     var squareSelector='';
-
-    for(var i=1;i<=64;i++){
-        squareSelector = 'div[squareNumber='+i+']';
-        if($(squareSelector).hasClass('white')){
-            whiteCount++;
-        }else if($(squareSelector).hasClass('black')){
-            blackCount++;
+    for(var x=0;x<=7;x++){
+        for(var y=0;y<=7;y++){
+            squareSelector = 'div[row='+x+'][column='+y+']>div';
+            if($(squareSelector).hasClass('white')){
+                whiteCount++;
+            }else if($(squareSelector).hasClass('black')){
+                blackCount++;
+            }
         }
     }
     var pieceCountArr=[whiteCount, blackCount];
@@ -358,5 +359,6 @@ function countPieces(){//when called returns an array with the amount of white a
 function updateStats(arr){
     var whiteScore=arr[0];
     var blackScore=arr[1];
-
+    $('.scoreP1Count').text(whiteScore);
+    $('.scoreP2Count').text(blackScore);
 }
