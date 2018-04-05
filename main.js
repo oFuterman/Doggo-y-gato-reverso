@@ -234,6 +234,11 @@ function clickAudio(turn) {
     // clickSound.play();
 }
 
+function winSound () {
+    var winTone = new Audio("sounds/win.mp3");
+    winTone.play();
+}
+
 function resetGame() {
     startTimeMinutes=30;
     startTimeSeconds=0;
@@ -515,6 +520,7 @@ function recreateBoardArray() {
 }
 
 function gameOver(arr){
+    winSound();
     if(arr[0]>arr[1]){
         $(".winPara1").text("Doggo wins!");
         $(".winImage").addClass("white");
