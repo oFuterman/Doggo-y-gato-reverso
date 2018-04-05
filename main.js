@@ -185,8 +185,10 @@ function determineValidMove(player, antiPlayer) {
     }
 
     if(blackCount === 0) {
+        $(".winPara1").text("Doggo wins!");
         console.log("white win");
     } else if (whiteCount === 0) {
+        $(".winPara1").text("Gato wins!");
         console.log("black win");
     }
 
@@ -200,6 +202,7 @@ function determineValidMove(player, antiPlayer) {
     console.log(countPossibleMoves);
     if(countPossibleMoves===0){
         gameOver(countPieces());
+        $(".winModal").css("display", "block");
     }
 }
 
@@ -496,10 +499,15 @@ function recreateBoardArray() {
 
 function gameOver(arr){
     if(arr[0]>arr[1]){
+        $(".winPara1").text("Doggo wins!");
+        $(".winImage").addClass("white");
         console.log('player one wins!');
     }else if(arr[1]>arr[0]){
+        $(".winPara1").text("Gato wins!");
+        $(".winImage").addClass("black");
         console.log('player two wins!');
     }else{
+        $(".winPara1").text("Hekin' Wao! You Tied!");
         console.log('holy shit you tied!');
     }
 }

@@ -244,9 +244,10 @@ body {
     position: absolute;
     display: inline-block;
     text-align: center;
-    height: 80vh;
+    height: 95vh;
     width: 25vw;
-    top: 10%;
+    top: 2%;
+    /*border: 2px solid navy;*/
     background-color: rgba(147, 112, 219, 0.98);
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
     left: 38%;
@@ -256,6 +257,8 @@ body {
 .winPara1, .winPara2 {
     display: inherit;
     font-size: 4vh;
+    position: relative;
+    top: 10%;
 }
 
 .winReset {
@@ -274,9 +277,20 @@ body {
     display: none;
 }
 
-.legalMove {
+.winImage {
+    position: relative;
+    height: 30%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 50%;
     background-color: rgba(218, 111, 219, 0.73);
 }
+.legalMove {
+
+}
+
+
 
 .audioControls {
     border-radius: 33%;
@@ -306,6 +320,5 @@ body {
     left: 77.2%;
     border-radius: 8%;
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
-
 
 }
