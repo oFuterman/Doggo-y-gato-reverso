@@ -509,17 +509,17 @@ var startTimeSeconds=0;
 function countDown(){
     var time='';
     var timer=setInterval(function(){
-        if(startTimeSeconds===0&&startTimeMinutes>0){
+        if(startTimeSeconds === 0 && startTimeMinutes > 0){
             startTimeMinutes--;
-            startTimeSeconds=59;
-        }else if(startTimeMinutes===0&&startTimeSeconds===0){
+            startTimeSeconds = 59;
+        }else if(startTimeMinutes === 0 && startTimeSeconds === 0){
             clearTimeout(timer);
             gameOver(countPieces());
-        }else if(startTimeSeconds>0){
+        }else if(startTimeSeconds > 0){
             startTimeSeconds--;
         }
-        if(startTimeSeconds<10){
-            time=startTimeMinutes+':0'+startTimeSeconds;
+        if(startTimeSeconds < 10){
+            time = startTimeMinutes + ':0' + startTimeSeconds;
         } else {
             time = startTimeMinutes + ':' + startTimeSeconds;
         }
