@@ -5,8 +5,7 @@ $(document).ready(initializeApp);
 
 /*-----------------Dylan's Code-----------------*/
 
-function determineValidMove(player) {
-
+function determineValidMove(player, antiPlayer) {
     var gameBoardArray =
         [
             [0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,70 +24,103 @@ function determineValidMove(player) {
             if (gameBoardArray[y][x] === player) {
                 // North
                 for (var yIndex = y; yIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1][x] !== player) {
+                    if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
                         yIndex -= 1;
-                    } else if (gameBoardArray[yIndex - 1][x] === 0) {
-                        addClickHandler(y, x);
+                    } else if (gameBoardArray[yIndex - 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
+                        addClickHandler(yIndex-1, x);
+                        gameBoardArray[yIndex-1][x] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
                 //East
                 for (var xIndex = x; xIndex < 8; ) {
-                    if(gameBoardArray[y][xIndex + 1] !== player) {
+                    if(gameBoardArray[y][xIndex + 1] === antiPlayer) {
                         xIndex += 1;
-                    } else if (gameBoardArray[y][xIndex + 1] === 0) {
-                        addClickHandler(y, x);
+                    } else if (gameBoardArray[y][xIndex + 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
+                        addClickHandler(y, xIndex + 1);
+                        gameBoardArray[y][xIndex + 1] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
                 //South
                 for (var yIndex = y; yIndex < 8;) {
-                    if (gameBoardArray[yIndex + 1][x] !== player) {
+                    if (gameBoardArray[yIndex + 1][x] === antiPlayer) {
                         yIndex += 1;
-                    } else if (gameBoardArray[yIndex + 1][x] === 0) {
-                        addClickHandler(y, x);
+                    } else if (gameBoardArray[yIndex + 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
+                        addClickHandler(yIndex + 1, x);
+                        gameBoardArray[yIndex + 1][x] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
                 //West
                 for (var xIndex = x; xIndex > 0; ) {
-                    if(gameBoardArray[y][xIndex -1 ] !== player) {
+                    if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
                         xIndex -= 1;
-                    } else if (gameBoardArray[y][xIndex - 1] === 0) {
-                        addClickHandler(y, x);
+                    } else if (gameBoardArray[y][xIndex - 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
+                        addClickHandler(yIndex, xIndex - 1);
+                        gameBoardArray[yIndex][xIndex - 1] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
                 // NorthEast
-                for (var yIndex = y, xIndex = x; yIndex >= 0, xIndex < 8;) {
-                    if (gameBoardArray[yIndex - 1][xIndex + 1] !== player) {
+                for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex < 8;) {
+                    if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer && gameBoardArray[yIndex][xIndex] === antiPlayer) {
                         yIndex -= 1;
                         xIndex += 1;
                     } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0) {
-                        addClickHandler(y, x);
+                        addClickHandler(yIndex-1, xIndex + 1);
+                        gameBoardArray[yIndex-1][xIndex + 1] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
                 //SouthEast
-                for (var yIndex = y, xIndex = x; yIndex < 8, xIndex < 8;) {
-                    if (gameBoardArray[yIndex + 1][xIndex + 1] !== player) {
+                for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex < 8;) {
+                    if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer && gameBoardArray[yIndex][xIndex] === antiPlayer) {
                         yIndex += 1;
                         xIndex += 1;
                     } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0) {
-                        addClickHandler(y, x);
+                        addClickHandler(yIndex + 1, xIndex + 1);
+                        gameBoardArray[yIndex + 1][xIndex + 1] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
                 //SouthWest
-                for (var yIndex = y, xIndex = x; yIndex < 8, xIndex >= 0;) {
-                    if (gameBoardArray[yIndex + 1][xIndex - 1] !== player) {
+                for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex >= 0;) {
+                    if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer && gameBoardArray[yIndex][xIndex] === antiPlayer) {
                         yIndex += 1;
                         xIndex -= 1;
                     } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0) {
-                        addClickHandler(y, x);
+                        addClickHandler(yIndex + 1, xIndex - 1);
+                        gameBoardArray[yIndex + 1][xIndex - 1] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
                 //NorthWest
-                for (var yIndex = y, xIndex = x; yIndex >= 0, xIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1][xIndex - 1] !== player) {
+                for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex >= 0;) {
+                    debugger;
+                    if (gameBoardArray[yIndex - 1][xIndex - 1] === antiPlayer) {
                         yIndex -= 1;
                         xIndex -= 1;
-                    } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0) {
-                        addClickHandler(y, x);
+                    } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+                        addClickHandler(yIndex - 1, xIndex - 1);
+                        gameBoardArray[yIndex - 1][xIndex - 1] = 3;
+                        break;
+                    } else {
+                        break;
                     }
                 }
             }
@@ -127,12 +159,12 @@ function resetGame() {
 
 
 function initializeApp(){
-    addClickHandler();//-----------
-    determineValidMove(oppositePlayer);//---------
     $("*").on("click", function(){
         $(".instructionModal").removeClass("instructionModal");
     });
     $('.square').on('click',addPiece);
+    addClickHandler();
+    determineValidMove(currentPlayer, oppositePlayer);
 }
 
 function addPiece(){
@@ -147,7 +179,7 @@ function addPiece(){
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=true;
     }
-    determineValidMove();//------------
+    determineValidMove(currentPlayer, oppositePlayer);
 }
 
 function clicked(rowNum,colNum){
@@ -292,10 +324,18 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
     }
 }
 
-function endTurn(){
-    removeClickHandlers();//--------------
-    updateStats(countPieces());
 
+function endTurn() {
+  updateStats(countPieces());
+  removeClickHandlers();
+  determineValidMove(currentPlayer, oppositePlayer);
+  for (var y = 0; y < 8; y++) {
+      for (var x = 0; x < 8; x++) {
+          if (gameBoardArray[y][x] === 3) {
+              gameBoardArray[y][x] = 0;
+          }
+      }
+  }
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
