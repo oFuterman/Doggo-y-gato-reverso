@@ -160,7 +160,7 @@ function resetGame() {
 
 function initializeApp(){
     $("*").on("click", function(){
-        $(".instructionModal").removeClass("instructionModal");
+        $(".instructionModal").addClass("hideModals");
     });
     $('.square').on('click',addPiece);
     addClickHandler();

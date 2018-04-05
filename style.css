@@ -202,7 +202,7 @@ body {
 
 .instructionModal {
     position: absolute;
-    display: none;
+    display: inline-block;
     text-align: center;
     height: 80vh;
     width: 25vw;
@@ -225,7 +225,7 @@ body {
 
 .winModal {
     position: absolute;
-    display: inline-block;
+    display: none;
     text-align: center;
     height: 80vh;
     width: 25vw;
