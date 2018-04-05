@@ -40,6 +40,9 @@ function determineValidMove(player, antiPlayer) {
             if (gameBoardArray[y][x] === player) {
                 // North
                 for (var yIndex = y; yIndex >= 0;) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
                         yIndex -= 1;
                     } else if (gameBoardArray[yIndex - 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
@@ -52,6 +55,9 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //East
                 for (var xIndex = x; xIndex < 8; ) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if(gameBoardArray[y][xIndex + 1] === antiPlayer) {
                         xIndex += 1;
                     } else if (gameBoardArray[y][xIndex + 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
@@ -64,6 +70,9 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //South
                 for (var yIndex = y; yIndex < 8;) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if (gameBoardArray[yIndex + 1][x] === antiPlayer) {
                         yIndex += 1;
                     } else if (gameBoardArray[yIndex + 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
@@ -76,6 +85,9 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //West
                 for (var xIndex = x; xIndex > 0; ) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
                         xIndex -= 1;
                     } else if (gameBoardArray[y][xIndex - 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
@@ -88,6 +100,9 @@ function determineValidMove(player, antiPlayer) {
                 }
                 // NorthEast
                 for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex < 8;) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer) {
                         yIndex -= 1;
                         xIndex += 1;
@@ -101,6 +116,9 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //SouthEast
                 for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex < 8;) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer) {
                         yIndex += 1;
                         xIndex += 1;
@@ -114,6 +132,9 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //SouthWest
                 for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex >= 0;) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer) {
                         yIndex += 1;
                         xIndex -= 1;
@@ -127,6 +148,9 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //NorthWest
                 for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex >= 0;) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                        break;
+                    }
                     if (gameBoardArray[yIndex - 1][xIndex - 1] === antiPlayer) {
                         yIndex -= 1;
                         xIndex -= 1;
