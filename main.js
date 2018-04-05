@@ -158,11 +158,14 @@ function resetGame() {
 
 
 function initializeApp(){
-    // $("*").on("click", function(){
-    //     $(".instructionModal").removeClass("instructionModal");
-    // });
-    //$('.square').on('click',addPiece);
+
+    $("*").on("click", function(){
+        $(".instructionModal").addClass("hideModals");
+    });
+    $('.square').on('click',addPiece);
+
     updateStats(countPieces());
+
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
 }
