@@ -345,6 +345,7 @@ function endTurn() {
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
 <<<<<<< HEAD
+<<<<<<< HEAD
   // recreateBoard();
 =======
   recreateBoardArray();
@@ -356,6 +357,9 @@ function endTurn() {
   //     }
   // }
 >>>>>>> 0c0723b7ae17f7546349dbdd022c4c335af5240d
+=======
+
+>>>>>>> 955f062583bd574efc4251370839a316c51d737d
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -383,6 +387,7 @@ function updateStats(arr){
     $('.scoreP2Count').text(blackScore);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 // var recreatedArray = [];
 // function recreateBoardArray() {
@@ -393,6 +398,9 @@ function updateStats(arr){
 //         }
 // }
 =======
+=======
+
+>>>>>>> 955f062583bd574efc4251370839a316c51d737d
 var newBoard=[
     [],
     [],
@@ -418,4 +426,8 @@ function recreateBoardArray() {
     }
     console.log(newBoard);
 }
+<<<<<<< HEAD
 >>>>>>> 0c0723b7ae17f7546349dbdd022c4c335af5240d
+=======
+
+>>>>>>> 955f062583bd574efc4251370839a316c51d737d
