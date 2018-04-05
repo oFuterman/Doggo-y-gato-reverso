@@ -36,6 +36,11 @@ function determineValidMove(player, antiPlayer) {
             }
         }
     }
+    var totalCount = whiteCount + blackCount;
+    if(totalCount === 64) {
+        console.log("game over");
+        //winGameFunction();
+    }
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
         for (var x = 0; x < 8; x++) {
@@ -44,7 +49,7 @@ function determineValidMove(player, antiPlayer) {
                 xIndex = x;
                 // North
                 for (var yIndex = y; yIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[yIndex - 1] === undefined) {
                         break;
                     }
                     if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
@@ -60,7 +65,7 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //East
                 for (var xIndex = x; xIndex < 8; ) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[xIndex + 1] === undefined) {
                         break;
                     }
                     if(gameBoardArray[y][xIndex + 1] === antiPlayer) {
@@ -76,7 +81,7 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //South
                 for (var yIndex = y; yIndex < 8;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[yIndex + 1 ] === undefined) {
                         break;
                     }
                     if (gameBoardArray[yIndex + 1][x] === antiPlayer) {
@@ -92,7 +97,7 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //West
                 for (var xIndex = x; xIndex > 0; ) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[xIndex - 1] === undefined) {
                         break;
                     }
                     if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
@@ -108,7 +113,7 @@ function determineValidMove(player, antiPlayer) {
                 }
                 // NorthEast
                 for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
                         break;
                     }
                     if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer) {
@@ -125,7 +130,7 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //SouthEast
                 for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
                         break;
                     }
                     if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer) {
@@ -142,7 +147,7 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //SouthWest
                 for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
                         break;
                     }
                     if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer) {
@@ -159,7 +164,7 @@ function determineValidMove(player, antiPlayer) {
                 }
                 //NorthWest
                 for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined || gameBoardArray[yIndex + 1 ] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
                         break;
                     }
                     if (gameBoardArray[yIndex - 1][xIndex - 1] === antiPlayer) {
@@ -177,6 +182,12 @@ function determineValidMove(player, antiPlayer) {
                 }
             }
         }
+    }
+
+    if(blackCount === 0) {
+        console.log("white win");
+    } else if (whiteCount === 0) {
+        console.log("black win");
     }
 
     if (oppositePlayer === 1) {
@@ -225,6 +236,7 @@ function resetGame() {
     $("#player2Marker").addClass('black');
     $("#player1Marker").show();
     $("#player2Marker").hide();
+    $(".winModal").hide();
     $('.scoreP1>div').addClass('white');
     $('.scoreP2>div').addClass('black');
 }
@@ -247,11 +259,17 @@ function initializeApp(){
         }
         pageClicks++;
     });
+
+    $(".winModal").hide();
+    //$('.square').on('click',addPiece);
+
+
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
     $("#player2Marker").hide();
     $('.resetButton').click(resetGame);
+    $(".winReset").click(resetGame);
 }
 
 function addPiece(){
@@ -425,9 +443,12 @@ function endTurn() {
   determineValidMove(currentPlayer, oppositePlayer);
 }
 
+var whiteCount=0;
+var blackCount=0;
+
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
-    var whiteCount=0;
-    var blackCount=0;
+    whiteCount=0;
+    blackCount=0;
     var squareSelector='';
     for(var x=0;x<=7;x++){
         for(var y=0;y<=7;y++){
