@@ -214,10 +214,12 @@ body {
 }
 .instrucPara1 {
     font-size: 4vh;
+    display: inherit;
 }
 
 .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
     font-size: 3vh;
+    display: inherit;
 
 }
 
