@@ -344,7 +344,18 @@ function endTurn() {
   updateStats(countPieces());
   removeClickHandlers();
   determineValidMove(currentPlayer, oppositePlayer);
+<<<<<<< HEAD
   // recreateBoard();
+=======
+  recreateBoardArray();
+  // for (var y = 0; y < 8; y++) {
+  //     for (var x = 0; x < 8; x++) {
+  //         if (gameBoardArray[y][x] === 3) {
+  //             gameBoardArray[y][x] = 0;
+  //         }
+  //     }
+  // }
+>>>>>>> 0c0723b7ae17f7546349dbdd022c4c335af5240d
 }
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
@@ -371,6 +382,7 @@ function updateStats(arr){
     $('.scoreP1Count').text(whiteScore);
     $('.scoreP2Count').text(blackScore);
 }
+<<<<<<< HEAD
 
 // var recreatedArray = [];
 // function recreateBoardArray() {
@@ -380,3 +392,30 @@ function updateStats(arr){
 //
 //         }
 // }
+=======
+var newBoard=[
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+];
+function recreateBoardArray() {
+    for(var y=0;y<=7;y++) {
+        for (var x = 0; x <= 7; x++) {
+            var squareSelector = 'div[row='+y+'][column='+x+']>div';
+            if($(squareSelector).hasClass('white')){
+                newBoard[y][x]=1;
+            }else if($(squareSelector).hasClass('black')){
+                newBoard[y][x]=2;
+            }else{
+                newBoard[y][x]=0;
+            }
+        }
+    }
+    console.log(newBoard);
+}
+>>>>>>> 0c0723b7ae17f7546349dbdd022c4c335af5240d
