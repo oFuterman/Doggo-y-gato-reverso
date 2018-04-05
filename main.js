@@ -79,8 +79,8 @@ function determineValidMove(player, antiPlayer) {
                     if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
                         xIndex -= 1;
                     } else if (gameBoardArray[y][xIndex - 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
-                        addClickHandler(yIndex, xIndex - 1);
-                        gameBoardArray[yIndex][xIndex - 1] = 3;
+                        addClickHandler(y, xIndex - 1);
+                        gameBoardArray[y][xIndex - 1] = 3;
                         break;
                     } else {
                         break;
@@ -133,6 +133,7 @@ function determineValidMove(player, antiPlayer) {
                     } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
                         addClickHandler(yIndex - 1, xIndex - 1);
                         gameBoardArray[yIndex - 1][xIndex - 1] = 3;
+
                         break;
                     } else {
                         break;
@@ -154,10 +155,15 @@ function determineValidMove(player, antiPlayer) {
 
 function addClickHandler(row, column) {
     $('div[row='+row+'][column='+column+']').click(addPiece);
+    $('div[row='+row+'][column='+column+']').addClass("legalMove");
+    if($(".square").hasClass("white") || $(".square").hasClass()) {
+        $("*").off("click").removeClass("legalMove");
+    }
 }
 
 function removeClickHandlers() {
     $('*').off("click");
+    $('*').removeClass("legalMove");
 }
 
 function resetGame() {
@@ -390,6 +396,13 @@ function recreateBoardArray() {
                 gameBoardArray[y][x]=2;
             }else{
                 gameBoardArray[y][x]=0;
+            }
+        }
+    }
+    for (var y = 0; y < 8; y++) {
+        for (var x = 0; x < 8; x++) {
+            if (gameBoardArray[y][x] === 3) {
+                gameBoardArray[y][x] = 0;
             }
         }
     }
