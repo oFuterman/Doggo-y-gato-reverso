@@ -211,6 +211,7 @@ function resetGame() {
     $("#player2Marker").addClass('black');
     $("#player1Marker").show();
     $("#player2Marker").hide();
+    $(".winModal").hide();
     $('.scoreP1>div').addClass('white');
     $('.scoreP2>div').addClass('black');
 }
@@ -228,12 +229,14 @@ function initializeApp(){
     $("*").on("click", function(){
         $(".instructionModal").addClass("hideModals");
     });
+    $(".winModal").hide();
     //$('.square').on('click',addPiece);
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
     $("#player2Marker").hide();
     $('.resetButton').click(resetGame);
+    $(".winReset").click(resetGame);
 }
 
 function addPiece(){
