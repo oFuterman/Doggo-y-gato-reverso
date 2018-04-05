@@ -19,6 +19,7 @@ var gameBoardArray =
 
 function updateGameBoard(row, column) {
     gameBoardArray[row][column] = currentPlayer;
+
 }
 
 function determineValidMove(player, antiPlayer) {
