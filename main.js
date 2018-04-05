@@ -218,6 +218,22 @@ function removeClickHandlers() {
     $('*').removeClass("legalMove");
 }
 
+function clickAudio(turn) {
+    // Making use of traditional if else conditional statements
+    var clickSound;
+    if (turn) {
+        clickSound = new Audio('sounds/player1.mp3');
+    } else {
+        clickSound = new Audio('sounds/player2.mp3');
+    }
+    clickSound.play();
+
+    // // Determining which audio file to play with a ternary
+    // var playerTurn = turn ? 'sounds/player1.mp3' : 'sounds/player2.mp3';
+    // var clickSound = new Audio(playerTurn);
+    // clickSound.play();
+}
+
 function resetGame() {
     startTimeMinutes=30;
     startTimeSeconds=0;
@@ -279,10 +295,10 @@ function initializeApp(){
 function addPiece(){
     var updateBoardRow = $(this).attr("row");
     var updateBoardColumn = $(this).attr("column");
+    clickAudio(whiteTurn);
     if(whiteTurn){
         $("#player1Marker").hide();
         $("#player2Marker").show();
-        $(".square").click();
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
         clicked($(this).attr('row'),$(this).attr('column'));
