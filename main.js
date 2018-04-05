@@ -26,7 +26,7 @@ function updateGameBoard(row, column) {
 }
 
 function determineValidMove(player, antiPlayer) {
-    
+
     var countPossibleMoves=0;
     // clear any previously declared valid moves
     for (var y = 0; y < 8; y++) {
@@ -217,6 +217,9 @@ function removeClickHandlers() {
 }
 
 function resetGame() {
+    startTimeMinutes=30;
+    startTimeSeconds=0;
+    countDown();
     whiteTurn=true;
     currentPlayer = 1;
     oppositePlayer = 2;
@@ -246,12 +249,16 @@ function resetGame() {
 
 /*-----------------Omer's Code-----------------*/
 
-
+var pageClicks=0;
 function initializeApp(){
+
     $("*").on("click", function(){
-        $(".instructionModal").addClass("hideModals");
+        if(pageClicks===0){
+            $(".instructionModal").addClass("hideModals");
+            countDown();
+        }
+        pageClicks++;
     });
-    //$('.square').on('click',addPiece);
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
@@ -488,4 +495,26 @@ function gameOver(arr){
     }else{
         console.log('holy shit you tied!');
     }
+}
+
+var startTimeMinutes=30;
+var startTimeSeconds=0;
+function countDown(){
+    var time='';
+    var timer=setInterval(function(){
+        if(startTimeSeconds===0&&startTimeMinutes>0){
+            startTimeMinutes--;
+            startTimeSeconds=59;
+        }else if(startTimeMinutes===0&&startTimeSeconds===0){
+            clearTimeout(timer);
+        }else if(startTimeSeconds>0){
+            startTimeSeconds--;
+        }
+        if(startTimeSeconds<10){
+            time=startTimeMinutes+':0'+startTimeSeconds;
+        } else {
+            time = startTimeMinutes + ':' + startTimeSeconds;
+        }
+        //$('.headerTitle').text(time);
+    },1000);
 }
