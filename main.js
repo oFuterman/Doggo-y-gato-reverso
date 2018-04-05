@@ -263,7 +263,7 @@ function winSound () {
 function resetGame() {
     startTimeMinutes=30;
     startTimeSeconds=0;
-    countDown();
+    //countDown();
     whiteTurn=true;
     currentPlayer = 1;
     oppositePlayer = 2;
@@ -545,6 +545,9 @@ function recreateBoardArray() {
 
 function gameOver(arr){
     winSound();
+    $('.scoreP1>div').addClass('white');
+    $('.scoreP2>div').addClass('black');
+    overRainbow();
     if(arr[0]>arr[1]){
         $(".winPara1").text("Doggo wins!");
         $(".winImage").addClass("white");
@@ -554,7 +557,6 @@ function gameOver(arr){
     }else{
         $(".winPara1").text("Hekin' Wao! You Tied!");
     }
-    overRainbow();
 }
 
 function overRainbow(){
