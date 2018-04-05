@@ -531,6 +531,6 @@ function countDown(){
         } else {
             time = startTimeMinutes + ':' + startTimeSeconds;
         }
-        //$('.headerTitle').text(time);
+        $('.timer').text(time);
     },1000);
 }
