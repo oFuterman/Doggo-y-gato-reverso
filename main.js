@@ -255,10 +255,11 @@ function resetGame() {
 
 var pageClicks=0;
 function initializeApp(){
-
+    $(".timer").hide();
     $("*").on("click", function(){
         if(pageClicks===0){
             $(".instructionModal").addClass("hideModals");
+            $(".timer").show();
             countDown();
         }
         pageClicks++;
