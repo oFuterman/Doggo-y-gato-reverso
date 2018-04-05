@@ -8,6 +8,11 @@ $(document).ready(initializeApp);
 
 /*-----------------Dylan's Code-----------------*/
 
+function muteAudio() {
+
+}
+
+
 var gameBoardArray =
     [
         [0, 0, 0, 0, 0, 0, 0, 0],
@@ -287,8 +292,7 @@ function initializeApp(){
 
     $(".winModal").hide();
     //$('.square').on('click',addPiece);
-
-
+    $(".audioMute").click(muteAudio);
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
@@ -409,7 +413,7 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
                 var j=2;
 
                 //performs check on squares in the same direction (automatically stops if out of bounds)
-                while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
+                while(currCol + colChange * j <= 7 && currCol + colChange * j >= 0 && currRow + rowChange * j <= 7 && currRow + rowChange * j >= 0){
                     squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
 
                     //if its black (opposite)
@@ -441,7 +445,7 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
                 currRow=parseInt(squareOn.attr('row'));
                 currCol=parseInt(squareOn.attr('column'));
                 var j=2;
-                while(currCol+colChange*j<=7&&currCol+colChange*j>=0&&currRow+rowChange*j<=7&&currRow+rowChange*j>=0){
+                while(currCol + colChange * j <= 7 && currCol + colChange * j >= 0 && currRow + rowChange * j <= 7 && currRow + rowChange * j >= 0 ){
                     squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
                     if($(squareOverSelectorJ).hasClass('white')){
                         $(squareOverSelectorJ).addClass('tag');
