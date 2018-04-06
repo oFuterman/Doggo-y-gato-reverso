@@ -2,6 +2,7 @@ var whiteTurn=true;
 var currentPlayer = 1;
 var oppositePlayer = 2;
 var mute = false;
+var mainMusic;
 $(document).ready(initializeApp);
 
 
@@ -10,13 +11,12 @@ $(document).ready(initializeApp);
 /*-----------------Dylan's Code-----------------*/
 
 function muteAudio() {
-   if (mute === false) {
-       mute = true;
-       $(".audioIcon").attr("src", "images/mute-icon.svg")
-   } else {
-       mute = false;
+    mainMusic.muted=!mainMusic.muted;
+    mute = !mute;
+    if (mute === false) {
        $(".audioIcon").attr("src", "images/audio-icon.svg")
-
+   } else {
+       $(".audioIcon").attr("src", "images/mute-icon.svg")
    }
 
 }
@@ -236,7 +236,7 @@ function clickAudio(turn) {
     if (mute === true) {
         return;
     }
-    // Making use of traditional if else conditional statements
+
     var clickSound;
     if (turn) {
         clickSound = new Audio('sounds/player1.mp3');
@@ -245,10 +245,7 @@ function clickAudio(turn) {
     }
     clickSound.play();
 
-    // // Determining which audio file to play with a ternary
-    // var playerTurn = turn ? 'sounds/player1.mp3' : 'sounds/player2.mp3';
-    // var clickSound = new Audio(playerTurn);
-    // clickSound.play();
+
 }
 
 function winSound () {
@@ -259,6 +256,13 @@ function winSound () {
     winTone.play();
 }
 
+function backGroundMusic () {
+    if (mute === true) {
+        return;
+    }
+    // var mainMusic = new Audio("sounds/background-music.mp3");
+    mainMusic.play();
+}
 
 function resetGame() {
     startTimeMinutes=30;
@@ -296,12 +300,14 @@ function resetGame() {
 
 var pageClicks=0;
 function initializeApp(){
+    mainMusic = new Audio("sounds/background-music.mp3");
     $(".timer").hide();
     $("*").on("click", function(){
         if(pageClicks===0){
             $(".instructionModal").addClass("hideModals");
             $(".timer").show();
             countDown();
+            backGroundMusic();
         }
         pageClicks++;
     });
