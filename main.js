@@ -301,6 +301,7 @@ function resetGame() {
 var pageClicks=0;
 function initializeApp(){
     mainMusic = new Audio("sounds/background-music.mp3");
+    mainMusic.loop = true;
     $(".timer").hide();
     $("*").on("click", function(){
         if(pageClicks===0){
