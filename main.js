@@ -200,10 +200,8 @@ function determineValidMove(player, antiPlayer) {
 
     if(blackCount === 0) {
         $(".winPara1").text("Doggo wins!");
-        console.log("white win");
     } else if (whiteCount === 0) {
         $(".winPara1").text("Gato wins!");
-        console.log("black win");
     }
 
     if (oppositePlayer === 1) {
