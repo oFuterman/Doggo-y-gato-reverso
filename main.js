@@ -52,9 +52,9 @@ function determineValidMove(player, antiPlayer) {
         }
     }
     var totalCount = whiteCount + blackCount;
-    if(totalCount === 64) {
-        gameOver(countPieces());
-    }
+    // if(totalCount === 64) {
+    //     gameOver(countPieces());
+    // }
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
         for (var x = 0; x < 8; x++) {
