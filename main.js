@@ -387,6 +387,7 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
 
     switch(num){
         case 0:
+            debugger
             rowChange=-1;
             colChange=-1;
             break;
