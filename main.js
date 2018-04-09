@@ -34,13 +34,11 @@ var gameBoardArray =
     ];
 
 function updateGameBoard(row, column) {
-    debugger;
     gameBoardArray[row][column] = currentPlayer;
 
 }
 
 function determineValidMove(player, antiPlayer) {
-debugger;
     var countPossibleMoves=0;
     // clear any previously declared valid moves
     // is this redundent?
@@ -218,7 +216,6 @@ debugger;
 }
 
 function addClickHandler(row, column) {
-    debugger;
     $('div[row='+row+'][column='+column+']').click(addPiece);
     $('div[row='+row+'][column='+column+']').addClass("legalMove");
     if($(".square").hasClass("white") || $(".square").hasClass()) // is this or check needed?
@@ -228,7 +225,6 @@ function addClickHandler(row, column) {
 }
 
 function removeClickHandlers() {
-    debugger;
     $('.square').off("click");
     $('*').removeClass("legalMove");
 }
@@ -266,7 +262,6 @@ function backGroundMusic () {
 }
 
 function resetGame() {
-    debugger;
     startTimeMinutes=30;
     startTimeSeconds=0;
     //countDown();
@@ -304,7 +299,6 @@ function resetGame() {
 
 var pageClicks=0;
 function initializeApp(){
-    debugger;
     mainMusic = new Audio("sounds/background-music.mp3");
     mainMusic.loop = true;
     $(".timer").hide();
@@ -330,7 +324,6 @@ function initializeApp(){
 }
 
 function addPiece(){
-    debugger;
     var updateBoardRow = $(this).attr("row");
     var updateBoardColumn = $(this).attr("column");
     clickAudio(whiteTurn);
@@ -353,7 +346,6 @@ function addPiece(){
 }
 
 function clicked(rowNum,colNum){
-    debugger;
     var outterSquareSelector='div[row='+rowNum+'][column='+colNum+']';
     for(var i=0;i<8;i++){
         switch(i){
@@ -387,7 +379,6 @@ function clicked(rowNum,colNum){
 }
 
 function sideFlip(num, squareSelector){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and flips the tokens that need to be flipped
-    debugger;
     var squareOn=$(squareSelector);
     var currRow=parseInt(squareOn.attr('row'));
     var currCol=parseInt(squareOn.attr('column'));
@@ -396,7 +387,6 @@ function sideFlip(num, squareSelector){//takes in number and checks correspondin
 
     switch(num){
         case 0:
-            debugger
             rowChange=-1;
             colChange=-1;
             break;
@@ -512,7 +502,6 @@ var whiteCount=0;
 var blackCount=0;
 
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
-    debugger;
     whiteCount=0;
     blackCount=0;
     var squareSelector='';
@@ -531,7 +520,6 @@ function countPieces(){//when called returns an array with the amount of white a
 }
 
 function updateStats(arr){
-    debugger;
     var whiteScore=arr[0];
     var blackScore=arr[1];
     $('.scoreP1Count').text(whiteScore);
@@ -539,7 +527,6 @@ function updateStats(arr){
 }
 
 function recreateBoardArray() {
-    debugger;
     for(var y=0;y<=7;y++) {
         for (var x = 0; x <= 7; x++) {
             var squareSelector = 'div[row='+y+'][column='+x+']>div';
@@ -563,7 +550,6 @@ function recreateBoardArray() {
 }
 
 function gameOver(arr){
-    debugger;
     winSound();
     overRainbow();
     if(arr[0]>arr[1]){
@@ -580,7 +566,6 @@ function gameOver(arr){
 }
 
 function overRainbow(){
-    debugger;
     var rainbowCount=0;
     var rowStart=0;
     var colStart=0;
