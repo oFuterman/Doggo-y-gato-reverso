@@ -9,6 +9,35 @@ $(document).ready(initializeApp);
 
 /*-----------------Dylan's Code-----------------*/
 
+function appendDivs(){
+    var newSquare;
+    var newToken;
+    for(var x=0;x<8;x++){
+        for(var y=0;y<8;y++){
+            newSquare=$('<div />',{
+                'class':'square',
+                'row':''+x,
+                'column':''+y
+            });
+            newSquare.appendTo('.gameBoard');
+            if(x===3 && y===3 || x===4 && y===4){
+                newToken=$('<div />',{
+                    'class':'white'
+                })
+            }else if(x===4 && y===3 || x===3 && y===4){
+                newToken=$('<div />',{
+                    'class':'black'
+                })
+            }else{
+                newToken=$('<div />',{
+                    'class':'empty'
+                })
+            }
+            newToken.appendTo('[row='+x+'][column='+y+']');
+        }
+    }
+}
+
 function muteAudio() {
     mainMusic.muted=!mainMusic.muted;
     mute = !mute;
@@ -299,6 +328,7 @@ function resetGame() {
 
 var pageClicks=0;
 function initializeApp(){
+    appendDivs();
     mainMusic = new Audio("sounds/background-music.mp3");
     mainMusic.loop = true;
     $(".timer").hide();
