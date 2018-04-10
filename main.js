@@ -310,7 +310,7 @@ function resetGame() {
     $("#player1Marker").addClass('white');
     $("#player2Marker").addClass('black');
     $("#player1Marker").show();
-    $("#player2Marker").hide();
+    $("#player2Marker").show();
     $(".winModal").hide();
     $('.scoreP1>div').addClass('white');
     $('.scoreP2>div').addClass('black');
@@ -348,7 +348,8 @@ function initializeApp(){
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
-    $("#player2Marker").hide();
+    $('#player1Marker').addClass('highlightPlayerTurn');
+    //$("#player2Marker").hide();
     $('.resetButton').click(resetGame);
     $(".winReset").click(resetGame);
 }
@@ -358,15 +359,15 @@ function addPiece(){
     var updateBoardColumn = $(this).attr("column");
     clickAudio(whiteTurn);
     if(whiteTurn){
-        $("#player1Marker").hide();
-        $("#player2Marker").show();
+        $("#player1Marker").removeClass('highlightPlayerTurn');
+        $("#player2Marker").addClass('highlightPlayerTurn');
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=false;
     }else{
-        $("#player1Marker").show();
-        $("#player2Marker").hide();
+        $("#player1Marker").addClass('highlightPlayerTurn');
+        $("#player2Marker").removeClass('highlightPlayerTurn');
         $('div',this).removeClass('empty');
         $('div',this).addClass('black');
         clicked($(this).attr('row'),$(this).attr('column'));
@@ -546,23 +547,15 @@ function recreateBoardArray() {
             }
         }
     }
-    // is this also redundent?
-    // for (var y = 0; y < 8; y++) {
-    //     for (var x = 0; x < 8; x++) {
-    //         if (gameBoardArray[y][x] === 3) {
-    //             gameBoardArray[y][x] = 0;
-    //         }
-    //     }
-    // }
 }
 
-function gameOver(arr){
+function gameOver(scoreArr){
     winSound();
     overRainbow();
-    if(arr[0]>arr[1]){
+    if(scoreArr[0]>scoreArr[1]){
         $(".winPara1").text("Doggo wins!");
         $(".winImage").addClass("white");
-    }else if(arr[1]>arr[0]){
+    }else if(scoreArr[1]>scoreArr[0]){
         $(".winPara1").text("Gato wins!");
         $(".winImage").addClass("black");
     }else{
@@ -580,115 +573,15 @@ function overRainbow(){
     $('.black').removeClass('black');
     $('.empty').removeClass('empty');
     $('.square>div').addClass('white');
-    //$('.square>div').addClass('empty');
     var timer=setInterval(function(){
-        switch(rainbowCount){
-            case 0:
-                rowStart=0;
-                colStart=0;
-                for(var i=0;i<1;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 1:
-                rowStart=0;
-                colStart=1;
-                for(var i=0;i<=2;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 2:
-                rowStart=0;
-                colStart=2;
-                for(var i=0;i<=3;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 3:
-                rowStart=0;
-                colStart=3;
-                for(var i=0;i<=4;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 4:
-                rowStart=0;
-                colStart=4;
-                for(var i=0;i<=5;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 5:
-                rowStart=0;
-                colStart=5;
-                for(var i=0;i<=6;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 6:
-                rowStart=0;
-                colStart=6;
-                for(var i=0;i<=7;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 7:
-                rowStart=0;
-                colStart=7;
-                for(var i=0;i<=8;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 8:
-                rowStart=1;
-                colStart=7;
-                for(var i=0;i<=7;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 9:
-                rowStart=2;
-                colStart=7;
-                for(var i=0;i<=6;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 10:
-                rowStart=3;
-                colStart=7;
-                for(var i=0;i<=5;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 11:
-                rowStart=4;
-                colStart=7;
-                for(var i=0;i<=4;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 12:
-                rowStart=5;
-                colStart=7;
-                for(var i=0;i<=3;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 13:
-                rowStart=6;
-                colStart=7;
-                for(var i=0;i<=2;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                break;
-            case 14:
-                rowStart=7;
-                colStart=7;
-                for(var i=0;i<=1;i++){
-                    $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
-                }
-                clearTimeout(timer);
-                break;
+        rowStart=rainbowCount-7;
+        if(rowStart<0){ rowStart=0; }
+        colStart=rainbowCount-rowStart;
+        for(var i=0;i<=colStart - rowStart + 1;i++){
+            $("[row='"+(rowStart+i)+"'][column='"+(colStart-i)+"'] > div").addClass('animate2');
+        }
+        if(rainbowCount===14){
+            clearTimeout(timer);
         }
         rainbowCount++;
     },200);
