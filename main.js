@@ -376,79 +376,56 @@ function addPiece(){
 }
 
 function clicked(rowNum,colNum){
-    var outterSquareSelector='div[row='+rowNum+'][column='+colNum+']';
+    var outerSquareSelector='div[row='+rowNum+'][column='+colNum+']';
     for(var i=0;i<8;i++){
-        switch(i){
-            case 0:
-                sideFlip(0, outterSquareSelector);
-                break;
-            case 1:
-                sideFlip(1, outterSquareSelector);
-                break;
-            case 2:
-                sideFlip(2, outterSquareSelector);
-                break;
-            case 3:
-                sideFlip(3, outterSquareSelector);
-                break;
-            case 4:
-                sideFlip(4, outterSquareSelector);
-                break;
-            case 5:
-                sideFlip(5, outterSquareSelector);
-                break;
-            case 6:
-                sideFlip(6, outterSquareSelector);
-                break;
-            case 7:
-                sideFlip(7, outterSquareSelector);
-                break;
-        }
+        sideFlip(i, outerSquareSelector);
     }
     endTurn();
 }
 
-function sideFlip(num, squareSelector){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and flips the tokens that need to be flipped
+function sideFlip(sideToCheck, squareSelector){//takes in number and checks corresponding adjacent side (1 is top left, rest is clockwise, so left is 7) and flips the tokens that need to be flipped
     var squareOn=$(squareSelector);
     var currRow=parseInt(squareOn.attr('row'));
     var currCol=parseInt(squareOn.attr('column'));
     var colChange=0;
     var rowChange=0;
+    var directionArray=[
+        function(){
+            rowChange=-1;
+            colChange=-1;
+        },
+        function(){
+            rowChange=-1;
+            colChange=0;
+        },
+        function(){
+            rowChange=-1;
+            colChange=1;
+        },
+        function(){
+            rowChange=0;
+            colChange=1;
+        },
+        function(){
+            rowChange=1;
+            colChange=1;
+        },
+        function(){
+            rowChange=1;
+            colChange=0;
+        },
+        function(){
+            rowChange=1;
+            colChange=-1;
+        },
+        function(){
+            rowChange=0;
+            colChange=-1;
+        },
+    ];
+    directionArray[sideToCheck]();
 
-    switch(num){
-        case 0:
-            rowChange=-1;
-            colChange=-1;
-            break;
-        case 1:
-            rowChange=-1;
-            colChange=0;
-            break;
-        case 2:
-            rowChange=-1;
-            colChange=1;
-            break;
-        case 3:
-            rowChange=0;
-            colChange=1;
-            break;
-        case 4:
-            rowChange=1;
-            colChange=1;
-            break;
-        case 5:
-            rowChange=1;
-            colChange=0;
-            break;
-        case 6:
-            rowChange=1;
-            colChange=-1;
-            break;
-        case 7:
-            rowChange=0;
-            colChange=-1;
-            break;
-    }
+
 
     var squareOverSelector='div[row='+(currRow+rowChange)+'][column='+(currCol+colChange)+']>div';
     var squareOverSelectorJ='div[row='+(currRow+rowChange*j)+'][column='+(currCol+colChange*j)+']>div';
