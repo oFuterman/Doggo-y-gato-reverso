@@ -62,18 +62,6 @@ function createGameBoardArray() {
     return gameBoardArray;
 }
 
-// var gameBoardArray =
-//     [
-//         [0, 0, 0, 0, 0, 0, 0, 0],
-//         [0, 0, 0, 0, 0, 0, 0, 0],
-//         [0, 0, 0, 0, 0, 0, 0, 0],
-//         [0, 0, 0, 1, 2, 0, 0, 0],
-//         [0, 0, 0, 2, 1, 0, 0, 0],
-//         [0, 0, 0, 0, 0, 0, 0, 0],
-//         [0, 0, 0, 0, 0, 0, 0, 0],
-//         [0, 0, 0, 0, 0, 0, 0, 0]
-//     ];
-
 function updateGameBoard(row, column) {
     gameBoardArray[row][column] = currentPlayer;
 
@@ -547,14 +535,6 @@ function recreateBoardArray() {
             }
         }
     }
-    // is this also redundent?
-    // for (var y = 0; y < 8; y++) {
-    //     for (var x = 0; x < 8; x++) {
-    //         if (gameBoardArray[y][x] === 3) {
-    //             gameBoardArray[y][x] = 0;
-    //         }
-    //     }
-    // }
 }
 
 function gameOver(arr){
