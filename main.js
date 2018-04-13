@@ -147,8 +147,6 @@ function determineValidMove(player, antiPlayer) {
             }
         }
     }
-
-
     //Dylan's Changes
     function checkingVerticalBounds(startY, yDirection) {
         // if the next y position is undefined,
