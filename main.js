@@ -6,9 +6,6 @@ var mainMusic;
 $(document).ready(initializeApp);
 
 
-
-/*-----------------Dylan's Code-----------------*/
-
 function appendDivs(){
     var newSquare;
     var newToken;
@@ -49,6 +46,22 @@ function muteAudio() {
 
 }
 
+// creating Game board dynamically
+var gameBoardArr = [];
+function createGameBoardArray() {
+    for(var i =0; i < 8; i ++) {
+        gameBoardArr.push([]);
+        for(var e = 0; e < 8; e++) {
+            gameBoardArr[i][e] = 0
+        }
+     }
+
+    gameBoardArr[3][3] = 1;
+    gameBoardArr[3][4] = 2;
+    gameBoardArr[4][3] = 2;
+    gameBoardArr[4][4] = 1;
+    return gameBoardArr;
+}
 
 var gameBoardArray =
     [
@@ -69,161 +82,193 @@ function updateGameBoard(row, column) {
 
 function determineValidMove(player, antiPlayer) {
     var countPossibleMoves=0;
-    // clear any previously declared valid moves
-    // is this redundent?
-    // for (var y = 0; y < 8; y++) {
-    //     for (var x = 0; x < 8; x++) {
-    //         if (gameBoardArray[y][x] === 3) {
-    //             gameBoardArray[y][x] = 0;
-    //         }
-    //     }
-    // }
-    var totalCount = whiteCount + blackCount;
-    // if(totalCount === 64) {
-    //     gameOver(countPieces());
-    // }
+    var directions = [
+        [-1, 0],    // N
+        [1, 0],     // S
+        [0, 1],     // E
+        [0, -1],    // W
+        [-1, -1],   // NW
+        [-1, 1],    // NE
+        [1, 1],     // SE
+        [1, -1]     // SW
+    ];
     //Player 1 turn (white, 1)
     for (var y = 0; y < 8; y++) {
         for (var x = 0; x < 8; x++) {
             if (gameBoardArray[y][x] === player) {
-                yIndex = y;
-                xIndex = x;
-                // North
-                for (var yIndex = y; yIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
-                        yIndex -= 1;
-                    } else if (gameBoardArray[yIndex - 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex-1, x);
-                        gameBoardArray[yIndex-1][x] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //East
-                for (var xIndex = x; xIndex < 8; ) {
-                    if (gameBoardArray[xIndex + 1] === undefined) {
-                        break;
-                    }
-                    if(gameBoardArray[y][xIndex + 1] === antiPlayer) {
-                        xIndex += 1;
-                    } else if (gameBoardArray[y][xIndex + 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(y, xIndex + 1);
-                        gameBoardArray[y][xIndex + 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //South
-                for (var yIndex = y; yIndex < 8;) {
-                    if (gameBoardArray[yIndex + 1 ] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex + 1][x] === antiPlayer) {
-                        yIndex += 1;
-                    } else if (gameBoardArray[yIndex + 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex + 1, x);
-                        gameBoardArray[yIndex + 1][x] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //West
-                for (var xIndex = x; xIndex > 0; ) {
-                    if (gameBoardArray[xIndex - 1] === undefined) {
-                        break;
-                    }
-                    if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
-                        xIndex -= 1;
-                    } else if (gameBoardArray[y][xIndex - 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(y, xIndex - 1);
-                        gameBoardArray[y][xIndex - 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                // NorthEast
-                for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer) {
-                        yIndex -= 1;
-                        xIndex += 1;
-                    } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex-1, xIndex + 1);
-                        gameBoardArray[yIndex-1][xIndex + 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //SouthEast
-                for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer) {
-                        yIndex += 1;
-                        xIndex += 1;
-                    } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex + 1, xIndex + 1);
-                        gameBoardArray[yIndex + 1][xIndex + 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //SouthWest
-                for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex >= 0;) {
-                    if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer) {
-                        yIndex += 1;
-                        xIndex -= 1;
-                    } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex + 1, xIndex - 1);
-                        gameBoardArray[yIndex + 1][xIndex - 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //NorthWest
-                for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex - 1][xIndex - 1] === antiPlayer) {
-                        yIndex -= 1;
-                        xIndex -= 1;
-                    } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex - 1, xIndex - 1);
-                        gameBoardArray[yIndex - 1][xIndex - 1] = 3;
-
-                        break;
-                    } else {
-                        break;
+                for(var directionIndex = 0; directionIndex < 8; directionIndex++) {
+                    var yDirection = directions[directionIndex][0];
+                    var xDirection = directions[directionIndex][1];
+                    if (gameBoardArray[y + yDirection] !== undefined) {
+                        checkInDirection(y, x, yDirection, xDirection, player, antiPlayer);
                     }
                 }
             }
         }
     }
+    // remaking determine valid move function
+    function checkInDirection(startY, startX, yDirection, xDirection, player, antiPlayer) {
+        if (gameBoardArray[startY + yDirection][startX + xDirection] === undefined) {
+            return;
+        }
+
+        if(gameBoardArray[startY + yDirection][startX + xDirection] === 0) {
+            return;
+        }
+
+        if(gameBoardArray[startY + yDirection][startX + xDirection] === antiPlayer) {
+            while(gameBoardArray[startY + yDirection][startX + xDirection] === antiPlayer) {
+                startY += yDirection;
+                startX += xDirection;
+                if (gameBoardArray[startY + yDirection] === undefined) {
+                    return;
+                }
+
+                if (gameBoardArray[startY + yDirection][startX + xDirection] === undefined) {
+                    return;
+                }
+                if (gameBoardArray[startY + yDirection][startX + xDirection] === 0) {
+                    countPossibleMoves++;
+                    addClickHandler(startY + yDirection, startX + xDirection);
+                    gameBoardArray[startY + yDirection][startX + xDirection] = 3;
+                    return;
+                }
+            }
+        }
+    }
+    // // North
+    // for (var yIndex = y; yIndex >= 0;) {
+    //     if (gameBoardArray[yIndex - 1] === undefined) {
+    //         break;
+    //     }
+    //     if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
+    //         yIndex -= 1;
+    //     } else if (gameBoardArray[yIndex - 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(yIndex-1, x);
+    //         gameBoardArray[yIndex-1][x] = 3;
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // //East
+    // for (var xIndex = x; xIndex < 8; ) {
+    //     if (gameBoardArray[xIndex + 1] === undefined) {
+    //         break;
+    //     }
+    //     if(gameBoardArray[y][xIndex + 1] === antiPlayer) {
+    //         xIndex += 1;
+    //     } else if (gameBoardArray[y][xIndex + 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(y, xIndex + 1);
+    //         gameBoardArray[y][xIndex + 1] = 3;
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // //South
+    // for (var yIndex = y; yIndex < 8;) {
+    //     if (gameBoardArray[yIndex + 1 ] === undefined) {
+    //         break;
+    //     }
+    //     if (gameBoardArray[yIndex + 1][x] === antiPlayer) {
+    //         yIndex += 1;
+    //     } else if (gameBoardArray[yIndex + 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(yIndex + 1, x);
+    //         gameBoardArray[yIndex + 1][x] = 3;
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // //West
+    // for (var xIndex = x; xIndex > 0; ) {
+    //     if (gameBoardArray[xIndex - 1] === undefined) {
+    //         break;
+    //     }
+    //     if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
+    //         xIndex -= 1;
+    //     } else if (gameBoardArray[y][xIndex - 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(y, xIndex - 1);
+    //         gameBoardArray[y][xIndex - 1] = 3;
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // // NorthEast
+    // for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex < 8;) {
+    //     if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+    //         break;
+    //     }
+    //     if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer) {
+    //         yIndex -= 1;
+    //         xIndex += 1;
+    //     } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(yIndex-1, xIndex + 1);
+    //         gameBoardArray[yIndex-1][xIndex + 1] = 3;
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // //SouthEast
+    // for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex < 8;) {
+    //     if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
+    //         break;
+    //     }
+    //     if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer) {
+    //         yIndex += 1;
+    //         xIndex += 1;
+    //     } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(yIndex + 1, xIndex + 1);
+    //         gameBoardArray[yIndex + 1][xIndex + 1] = 3;
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // //SouthWest
+    // for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex >= 0;) {
+    //     if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
+    //         break;
+    //     }
+    //     if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer) {
+    //         yIndex += 1;
+    //         xIndex -= 1;
+    //     } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(yIndex + 1, xIndex - 1);
+    //         gameBoardArray[yIndex + 1][xIndex - 1] = 3;
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // //NorthWest
+    // for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex >= 0;) {
+    //     if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
+    //         break;
+    //     }
+    //     if (gameBoardArray[yIndex - 1][xIndex - 1] === antiPlayer) {
+    //         yIndex -= 1;
+    //         xIndex -= 1;
+    //     } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
+    //         countPossibleMoves++;
+    //         addClickHandler(yIndex - 1, xIndex - 1);
+    //         gameBoardArray[yIndex - 1][xIndex - 1] = 3;
+    //
+    //         break;
+    //     } else {
+    //         break;
+    //     }
+    // }
 
     if(blackCount === 0) {
         $(".winPara1").text("Doggo wins!");
@@ -341,7 +386,7 @@ function initializeApp(){
         }
         pageClicks++;
     });
-
+    createGameBoardArray();
     $(".winModal").hide();
     //$('.square').on('click',addPiece);
     $(".audioMute").click(muteAudio);
