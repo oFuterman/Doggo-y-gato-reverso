@@ -512,19 +512,9 @@ var blackCount=0;
 function countPieces(){//when called returns an array with the amount of white and black pieces ordered respectively
     whiteCount=0;
     blackCount=0;
-    var squareSelector='';
-    for(var x=0;x<=7;x++){
-        for(var y=0;y<=7;y++){
-            squareSelector = 'div[row='+x+'][column='+y+']>div';
-            if($(squareSelector).hasClass('white')){
-                whiteCount++;
-            }else if($(squareSelector).hasClass('black')){
-                blackCount++;
-            }
-        }
-    }
-    var pieceCountArr=[whiteCount, blackCount];
-    return pieceCountArr;
+    whiteCount=$('.gameBoard .white').length;
+    blackCount=$('.gameBoard .black').length;
+    return [whiteCount, blackCount];
 }
 
 function updateStats(arr){
@@ -589,6 +579,7 @@ function overRainbow(){
 
 var startTimeMinutes=30;
 var startTimeSeconds=0;
+
 function countDown(){
     var time='';
     var timer=setInterval(function(){
