@@ -6,9 +6,6 @@ var mainMusic;
 $(document).ready(initializeApp);
 
 
-
-/*-----------------Dylan's Code-----------------*/
-
 function appendDivs(){
     var newSquare;
     var newToken;
@@ -49,18 +46,21 @@ function muteAudio() {
 
 }
 
-
-var gameBoardArray =
-    [
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 1, 2, 0, 0, 0],
-        [0, 0, 0, 2, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0]
-    ];
+// creating Game board dynamically
+var gameBoardArray = [];
+function createGameBoardArray() {
+    for(var i =0; i < 8; i ++) {
+        gameBoardArray.push([]);
+        for(var e = 0; e < 8; e++) {
+            gameBoardArray[i][e] = 0
+        }
+     }
+    gameBoardArray[3][3] = 1;
+    gameBoardArray[3][4] = 2;
+    gameBoardArray[4][3] = 2;
+    gameBoardArray[4][4] = 1;
+    return gameBoardArray;
+}
 
 function updateGameBoard(row, column) {
     gameBoardArray[row][column] = currentPlayer;
@@ -69,162 +69,107 @@ function updateGameBoard(row, column) {
 
 function determineValidMove(player, antiPlayer) {
     var countPossibleMoves=0;
-    // clear any previously declared valid moves
-    // is this redundent?
-    // for (var y = 0; y < 8; y++) {
-    //     for (var x = 0; x < 8; x++) {
-    //         if (gameBoardArray[y][x] === 3) {
-    //             gameBoardArray[y][x] = 0;
-    //         }
-    //     }
-    // }
-    var totalCount = whiteCount + blackCount;
-    // if(totalCount === 64) {
-    //     gameOver(countPieces());
-    // }
-    //Player 1 turn (white, 1)
+    // Coordinates for all 8 possible directions to look
+    var directions = [
+        [-1, 0],    // N
+        [1, 0],     // S
+        [0, 1],     // E
+        [0, -1],    // W
+        [-1, -1],   // NW
+        [-1, 1],    // NE
+        [1, 1],     // SE
+        [1, -1]     // SW
+    ];
+    // Looking through every single array
     for (var y = 0; y < 8; y++) {
+        //Looking through every single item in the outer array
         for (var x = 0; x < 8; x++) {
+            //if the spot we are looking at is the current player,
             if (gameBoardArray[y][x] === player) {
-                yIndex = y;
-                xIndex = x;
-                // North
-                for (var yIndex = y; yIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
-                        yIndex -= 1;
-                    } else if (gameBoardArray[yIndex - 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex-1, x);
-                        gameBoardArray[yIndex-1][x] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //East
-                for (var xIndex = x; xIndex < 8; ) {
-                    if (gameBoardArray[xIndex + 1] === undefined) {
-                        break;
-                    }
-                    if(gameBoardArray[y][xIndex + 1] === antiPlayer) {
-                        xIndex += 1;
-                    } else if (gameBoardArray[y][xIndex + 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(y, xIndex + 1);
-                        gameBoardArray[y][xIndex + 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //South
-                for (var yIndex = y; yIndex < 8;) {
-                    if (gameBoardArray[yIndex + 1 ] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex + 1][x] === antiPlayer) {
-                        yIndex += 1;
-                    } else if (gameBoardArray[yIndex + 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex + 1, x);
-                        gameBoardArray[yIndex + 1][x] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //West
-                for (var xIndex = x; xIndex > 0; ) {
-                    if (gameBoardArray[xIndex - 1] === undefined) {
-                        break;
-                    }
-                    if(gameBoardArray[y][xIndex - 1 ] === antiPlayer) {
-                        xIndex -= 1;
-                    } else if (gameBoardArray[y][xIndex - 1] === 0 && gameBoardArray[y][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(y, xIndex - 1);
-                        gameBoardArray[y][xIndex - 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                // NorthEast
-                for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex - 1][xIndex + 1] === antiPlayer) {
-                        yIndex -= 1;
-                        xIndex += 1;
-                    } else if (gameBoardArray[yIndex - 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex-1, xIndex + 1);
-                        gameBoardArray[yIndex-1][xIndex + 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //SouthEast
-                for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex < 8;) {
-                    if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex + 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex + 1][xIndex + 1] === antiPlayer) {
-                        yIndex += 1;
-                        xIndex += 1;
-                    } else if (gameBoardArray[yIndex + 1][xIndex + 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex + 1, xIndex + 1);
-                        gameBoardArray[yIndex + 1][xIndex + 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //SouthWest
-                for (var yIndex = y, xIndex = x; yIndex < 8 && xIndex >= 0;) {
-                    if (gameBoardArray[yIndex + 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex + 1][xIndex - 1] === antiPlayer) {
-                        yIndex += 1;
-                        xIndex -= 1;
-                    } else if (gameBoardArray[yIndex + 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex + 1, xIndex - 1);
-                        gameBoardArray[yIndex + 1][xIndex - 1] = 3;
-                        break;
-                    } else {
-                        break;
-                    }
-                }
-                //NorthWest
-                for (var yIndex = y, xIndex = x; yIndex >= 0 && xIndex >= 0;) {
-                    if (gameBoardArray[yIndex - 1] === undefined || gameBoardArray[xIndex - 1] === undefined) {
-                        break;
-                    }
-                    if (gameBoardArray[yIndex - 1][xIndex - 1] === antiPlayer) {
-                        yIndex -= 1;
-                        xIndex -= 1;
-                    } else if (gameBoardArray[yIndex - 1][xIndex - 1] === 0 && gameBoardArray[yIndex][xIndex] === antiPlayer) {
-                        countPossibleMoves++;
-                        addClickHandler(yIndex - 1, xIndex - 1);
-                        gameBoardArray[yIndex - 1][xIndex - 1] = 3;
-
-                        break;
-                    } else {
-                        break;
+                // for all 8 directions
+                for(var directionIndex = 0; directionIndex < 8; directionIndex++) {
+                    // setting yDirection equal to the 0th item of the directions variable coordinates
+                    var yDirection = directions[directionIndex][0];
+                    // setting xDirection equal to the 0th item of the directions variable coordinates
+                    var xDirection = directions[directionIndex][1];
+                    // if the square of the current position PLUS the y direction of interest is NOT undefined,
+                    if (gameBoardArray[y + yDirection] !== undefined) {
+                        // run the checInDirection function, passing in the current y, current x, yDirection of interest, xDirection of interest,
+                        // the current player, and the opposite player
+                        checkInDirection(y, x, yDirection, xDirection, player, antiPlayer);
                     }
                 }
             }
         }
     }
+    // this function will look until finding an empty space, and will stop if the reaching a position that is undefined(outside the grid)
+    function checkInDirection(startY, startX, yDirection, xDirection, player, antiPlayer) {
+        // if current position plus the direction of interest for both X and Y is undefined(outside the grid)
+        if (gameBoardArray[startY + yDirection][startX + xDirection] === undefined) {
+            // stop the function
+            return;
+        }
+        // if current position plus the direction of interest for both X and Y is 0,
+        if(gameBoardArray[startY + yDirection][startX + xDirection] === 0) {
+            // stop the function.
+            return;
+        }
+        // if current position plus the direction of interest for both X and Y is the opposite player (antiplayer),
+        if(gameBoardArray[startY + yDirection][startX + xDirection] === antiPlayer) {
+            // as long as the current position plus the y and x direction of interest is the opposite player (antiplayer),
+            while(gameBoardArray[startY + yDirection][startX + xDirection] === antiPlayer) {
+                //increment both Y and X
+                // this is so you can keep checking until the end of the board
+                // us the initial condition to check if within board, then increment to do work
+                startY += yDirection;
+                startX += xDirection;
+                // if the next y position is undefined,
+                if (checkingVerticalBounds(startY, yDirection, startX, xDirection)) {
+                    // stop the function
+                    return;
+                }
+                // if the next y and x position is undefined
+                if (checkingHorizontalBounds(startY, yDirection, startX, xDirection)) {
+                    // stop the function
+                    return;
+                }
+                // if the next position for y and x is empty
+                if (checkEmptySpace(startY, yDirection, startX, xDirection)) {
+                    // increase possible moves
+                    countPossibleMoves++;
+                    // add a click handler to the next position for where we are looking at
+                    addClickHandler(startY + yDirection, startX + xDirection);
+                    // change the value of the corresponding gameboard array to 3 (numeric representation of a valid move)
+                    gameBoardArray[startY + yDirection][startX + xDirection] = 3;
+                    // then stop the function
+                    return;
+                }
+            }
+        }
+    }
+    function checkingVerticalBounds(startY, yDirection) {
+        // if the next y position is undefined,
+        if (gameBoardArray[startY + yDirection] === undefined) {
+            // stop the function
+            return true;
+        }
+    }
 
+    function checkingHorizontalBounds(startY, yDirection, startX, xDirection) {
+        // if the next y and x position is undefined
+        if (gameBoardArray[startY + yDirection][startX + xDirection] === undefined) {
+            // stop the function
+            return true;
+        }
+    }
+
+    function checkEmptySpace(startY, yDirection, startX, xDirection) {
+        // if current position plus the direction of interest for both X and Y is 0,
+        if(gameBoardArray[startY + yDirection][startX + xDirection] === 0) {
+            // stop the function.
+            return true;
+        }
+    }
     if(blackCount === 0) {
         $(".winPara1").text("Doggo wins!");
     } else if (whiteCount === 0) {
@@ -270,8 +215,6 @@ function clickAudio(turn) {
         clickSound = new Audio('sounds/player2.mp3');
     }
     clickSound.play();
-
-
 }
 
 function winSound () {
@@ -286,14 +229,12 @@ function backGroundMusic () {
     if (mute === true) {
         return;
     }
-    // var mainMusic = new Audio("sounds/background-music.mp3");
     mainMusic.play();
 }
 
 function resetGame() {
     startTimeMinutes=30;
     startTimeSeconds=0;
-    //countDown();
     whiteTurn=true;
     currentPlayer = 1;
     oppositePlayer = 2;
@@ -341,9 +282,8 @@ function initializeApp(){
         }
         pageClicks++;
     });
-
+    createGameBoardArray();
     $(".winModal").hide();
-    //$('.square').on('click',addPiece);
     $(".audioMute").click(muteAudio);
     updateStats(countPieces());
     addClickHandler();
