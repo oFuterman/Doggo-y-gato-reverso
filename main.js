@@ -147,7 +147,6 @@ function determineValidMove(player, antiPlayer) {
             }
         }
     }
-    //Dylan's Changes
     function checkingVerticalBounds(startY, yDirection) {
         // if the next y position is undefined,
         if (gameBoardArray[startY + yDirection] === undefined) {
@@ -156,7 +155,6 @@ function determineValidMove(player, antiPlayer) {
         }
     }
 
-    // Andy's Changes
     function checkingHorizontalBounds(startY, yDirection, startX, xDirection) {
         // if the next y and x position is undefined
         if (gameBoardArray[startY + yDirection][startX + xDirection] === undefined) {
@@ -172,23 +170,6 @@ function determineValidMove(player, antiPlayer) {
             return true;
         }
     }
-    // // North
-    // for (var yIndex = y; yIndex >= 0;) {
-    //     if (gameBoardArray[yIndex - 1] === undefined) {
-    //         break;
-    //     }
-    //     if (gameBoardArray[yIndex - 1][x] === antiPlayer) {
-    //         yIndex -= 1;
-    //     } else if (gameBoardArray[yIndex - 1][x] === 0 && gameBoardArray[yIndex][x] === antiPlayer) {
-    //         countPossibleMoves++;
-    //         addClickHandler(yIndex-1, x);
-    //         gameBoardArray[yIndex-1][x] = 3;
-    //         break;
-    //     } else {
-    //         break;
-    //     }
-    // }
-
     if(blackCount === 0) {
         $(".winPara1").text("Doggo wins!");
     } else if (whiteCount === 0) {
@@ -234,8 +215,6 @@ function clickAudio(turn) {
         clickSound = new Audio('sounds/player2.mp3');
     }
     clickSound.play();
-
-
 }
 
 function winSound () {
@@ -250,14 +229,12 @@ function backGroundMusic () {
     if (mute === true) {
         return;
     }
-    // var mainMusic = new Audio("sounds/background-music.mp3");
     mainMusic.play();
 }
 
 function resetGame() {
     startTimeMinutes=30;
     startTimeSeconds=0;
-    //countDown();
     whiteTurn=true;
     currentPlayer = 1;
     oppositePlayer = 2;
@@ -307,7 +284,6 @@ function initializeApp(){
     });
     createGameBoardArray();
     $(".winModal").hide();
-    //$('.square').on('click',addPiece);
     $(".audioMute").click(muteAudio);
     updateStats(countPieces());
     addClickHandler();
