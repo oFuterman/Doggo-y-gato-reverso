@@ -341,33 +341,8 @@ function addPiece(){
 
 function clicked(rowNum,colNum){
     var outterSquareSelector='div[row='+rowNum+'][column='+colNum+']';
-    for(var i=0;i<8;i++){
-        switch(i){
-            case 0:
-                sideFlip(0, outterSquareSelector);
-                break;
-            case 1:
-                sideFlip(1, outterSquareSelector);
-                break;
-            case 2:
-                sideFlip(2, outterSquareSelector);
-                break;
-            case 3:
-                sideFlip(3, outterSquareSelector);
-                break;
-            case 4:
-                sideFlip(4, outterSquareSelector);
-                break;
-            case 5:
-                sideFlip(5, outterSquareSelector);
-                break;
-            case 6:
-                sideFlip(6, outterSquareSelector);
-                break;
-            case 7:
-                sideFlip(7, outterSquareSelector);
-                break;
-        }
+    for(var i = 0 ; i < 8 ; i++){
+        sideFlip(i,outterSquareSelector);
     }
     endTurn();
 }
