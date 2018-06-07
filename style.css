@@ -62,69 +62,6 @@ body {
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
 }
 
-@media screen and (min-width: 993px) {
-    .gameInfo {
-
-    }
-
-    .gameBoard {
-        min-height: 500px
-
-
-    }
-
-
-}
-
-
-@media screen and (max-width: 992px) {
-
-    .gameInfo {
-
-    }
-
-    .gameBoard {
-
-
-    }
-
-}
-
-
-@media screen and (max-width: 768px) {
-
-    .gameInfo {
-        min-height: 320px;
-
-
-    }
-
-    .gameBoard {
-        min-height: 530px;
-        min-width: 530px;
-
-
-    }
-
-}
-
-@media screen and (max-width: 576px) {
-
-    .gameInfo {
-        min-height: 257px;
-        max-width: 240px;
-
-    }
-
-    .gameBoard {
-        min-height: 257px;
-        max-width: 299px;
-        min-width: 299px
-
-    }
-
-}
-
 .turnInfo {
     position: relative;
     display: inline-block;
@@ -159,7 +96,7 @@ body {
 .scoreArea {
     position: relative;
     display: inline-block;
-    height: 50%;
+    height: 100%;
 }
 
 .scoreTitle {
@@ -383,6 +320,7 @@ body {
     font-size: 1rem;
     position: relative;
     text-align: center;
+    min-width: 105px;
     color:hotpink;
 }
 
@@ -405,5 +343,82 @@ body {
 
 .highlightPlayerTurn{
     box-shadow:0px 0px 15px 10px hotpink;
+
+}
+
+
+@media screen and (min-width: 993px) {
+    .gameInfo {
+
+    }
+
+    .gameBoard {
+        min-height: 500px
+
+
+    }
+
+
+}
+
+
+@media screen and (max-width: 992px) {
+
+    .gameInfo {
+
+    }
+
+    .gameBoard {
+
+
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .gameInfo {
+        min-height: 180px;
+        min-width: 357px;
+
+    }
+
+    .gameBoard {
+        min-height: 530px;
+        min-width: 530px;
+
+
+    }
+
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .gameInfo {
+        min-height: 118px;
+        max-width: 240px;
+        min-width: 230px;
+        padding-bottom: 21px;
+    }
+
+    .gameBoard {
+        min-height: 257px;
+        max-width: 299px;
+        min-width: 299px
+
+    }
+    .timer, .resetButton {
+        font-size: .7rem;
+        min-height: 19px;
+    }
+
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 1rem;
+    }
+
+
+
 
 }
