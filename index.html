@@ -5,259 +5,70 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="main.js"></script>
-    <title>Doggo Versus Gato Reverso</title>
+    <title>Doggo Vs. Gato Reverso</title>
 </head>
 <body class="backgroundImage">
-    <header class="header">
-        <h1 class="headerTitle">Doggo & Gato Reverso</h1>
-    </header>
-    <div class="gameInfo">
-        <div class="turnInfo">
-            <div class="turnTitle">Turn:</div>
-            <div class="turnIcon">
-                <div class="turnIconSquare1">
-                    <div id="player1Marker" class="white"></div>
+    <div class="container">
+        <div class="row align-content-">
+            <header class="header col-12">
+                <h1 class="headerTitle">Doggo y Gato Reverso</h1>
+            </header>
+            <div class="gameInfo col-8 offset-2  col-md-3 my-5 ">
+                <div class="turnInfo row no-gutters">
+                    <div class="turnTitle col-12">Turn:</div>
+                    <div class="turnIcon col-12 ">
+                        <div class="col-6 turnIconSquare1">
+                            <div id="player1Marker" class="white player-marker col-12"></div>
+                        </div>
+                        <div class=" col-6 turnIconSquare2">
+                            <div id="player2Marker" class="black player-marker col-12"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="turnIconSquare2">
-                    <div id="player2Marker" class="black"></div>
+                <div class=" row no-gutters scoreArea">
+                    <div class="col-12 scoreTitle">Score:</div>
+                    <div class=" col-3 scoreP1">
+                        <div class="white player-marker"></div>
+                    </div>
+                    <div class=" col-3 scoreP1Count"></div>
+                    <div class=" col-3 scoreP2">
+                        <div class="black player-marker"></div>
+                    </div>
+                    <div class=" col-3 scoreP2Count"></div>
+                    <div class="gameReset">
+                        <div class="timer"></div>
+                        <button class="resetButton">Reset Game</button>
+                    </div>
                 </div>
+
             </div>
-        </div>
-        <div class="scoreArea">
-            <div class="scoreTitle">Score:</div>
-            <div class="scoreP1">
-                <div class="white"></div>
+            <div class="audioMute"><img class="audioIcon" src="images/audio-icon.svg"></div>
+            <div class="gameBoard card col-10 offset-1 col-md-7"></div>
+            <div class="instructionModal col-8 offset-2">
+                <p class="instrucPara1">Welcome to Doggo & Gato Reverso!</p>
+                <p class="instrucPara2">The object is to flip as many tiles to your furry friend as possible!</p>
+                <p class="instrucPara3">Player 1 is Doggo. Player 2 is Gato.</p>
+                <p class="instrucPara4">Flip tiles by bracketing your opponents little buddy with your own!</p>
+                <p class="instrucPara5">Moves are only possible if they result in a flip.</p>
+                <p class="instrucPara6">The player with the highest amount of fur babies on the board when there are are no more moves, or the board is full, wins!</p>
             </div>
-            <div class="scoreP1Count"></div>
-            <div class="scoreP2">
-                <div class="black"></div>
+
+            <div class="winModal">
+                <div class="winImage"></div>
+                <br>
+                <p class="winPara1">Player X has Won!</p>
+
+                <p class="winPara2">Thank you for Playing!</p>
+                <p class="winPara3"></p>
+                <button class="winReset">Play again! </button>
             </div>
-            <div class="scoreP2Count"></div>
-        </div>
-        <div class="gameReset">
-            <button class="resetButton">Reset Game</button>
-        </div>
-    </div>
-    <div class="audioMute"><img class="audioIcon" src="images/audio-icon.svg"></div>
-    <div class="gameBoard">
-        <div class="square" row="0" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="0" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="0" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="0" column="3">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="0" column="4">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="0" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="0" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="0" column="7">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="3">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="4">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="1" column="7">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="3">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="4">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="2" column="7">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="3" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="3" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="3" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="3" column="3">
-            <div class="white"></div>
-        </div>
-        <div class="square" row="3" column="4">
-            <div class="black"></div>
-        </div>
-        <div class="square" row="3" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="3" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="3" column="7">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="4" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="4" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="4" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="4" column="3">
-            <div class="black"></div>
-        </div>
-        <div class="square" row="4" column="4">
-            <div class="white"></div>
-        </div>
-        <div class="square" row="4" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="4" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="4" column="7">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="3">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="4">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="5" column="7">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="3">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="4">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="6" column="7">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="0">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="1">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="2">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="3">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="4">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="5">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="6">
-            <div class="empty"></div>
-        </div>
-        <div class="square" row="7" column="7">
-            <div class="empty"></div>
-        </div>
-    </div>
-    <div class="instructionModal">
-        <p class="instrucPara1">Welcome to Doggo & Gato Reverso!</p>
-        <p class="instrucPara2">The object is to flip as many tiles to your furry friend as possible!</p>
-        <p class="instrucPara3">Player 1 is Doggo. Player 2 is Gato.</p>
-        <p class="instrucPara4">Flip tiles by bracketing your opponents little buddy with your own!</p>
-        <p class="instrucPara5">Moves are only possible if they result in a flip.</p>
-        <p class="instrucPara6">The player with the highest amount of fur babies on the board when there are are no more moves, or the board is full, wins!</p>
-    </div>
 
-    <div class="winModal">
-        <div class="winImage"></div>
-        <br>
-        <p class="winPara1">Player X has Won!</p>
-
-        <p class="winPara2">Thank you for Playing!</p>
-        <p class="winPara3"></p>
-        <button class="winReset">Would you like to play again?</button>
+        </div>
     </div>
-    <div class="timer">
-
-    </div>
-
 
 </body>
 </html>

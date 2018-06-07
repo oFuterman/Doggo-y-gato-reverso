@@ -1,5 +1,9 @@
 * {
     box-sizing: border-box;
+    border: black 1px solid;
+}
+.backgroundImage {
+    min-height: 100vh;
 }
 
 .backgroundImage::before {
@@ -8,7 +12,7 @@
     position: absolute;
     background-image: url("images/toaster-cat.png");
     content: "";
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: block;
     opacity: .8;
@@ -16,54 +20,119 @@
 
 html {
     border: none;
-    font-size: 0;
 }
 
 body {
     margin: 0;
     border: none;
+    font-family:comic sans ms,arial,sans-serif;
+    width: 100vw
 }
 
+
+
+/* ////////////////////////////////////////////////////// Header Section //////////////////////////////////////////////////////////// */
+
 .header {
-    position: absolute;
+    position: relative;
     display: inline;
-    height: 15vh;
-    width: 50%;
-    font-size: 4vh;
+    height: 70px;
+    width: 100%;
+    font-size: 1rem;
     text-align: center;
-    left: 26.5%;
 }
 
 .headerTitle {
     text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
+    font-size: 1.7rem;
+    padding-top: 11px;
+    color: #cfdbfb;
 }
 
+/* ////////////////////////////////////////////////////// Game Stats and Info //////////////////////////////////////////////////////////// */
+
+
 .gameInfo {
+    font-size: 0;
     border-radius: 5%;
     text-align: center;
-    position: absolute;
+    position: relative;
     display: inline-block;
-    height: 80vh;
-    width: 20vw;
-    top: 18%;
-    left: 5%;
     background-color: rgba(147, 112, 219, 0.54);
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
+}
+
+@media screen and (min-width: 993px) {
+    .gameInfo {
+
+    }
+
+    .gameBoard {
+        min-height: 500px
+
+
+    }
+
+
+}
+
+
+@media screen and (max-width: 992px) {
+
+    .gameInfo {
+
+    }
+
+    .gameBoard {
+
+
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .gameInfo {
+
+    }
+
+    .gameBoard {
+        min-height: 500px;
+        min-width: 500px;
+
+
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .gameInfo {
+        min-height: 257px;
+        max-width: 240px;
+
+    }
+
+    .gameBoard {
+        min-height: 257px;
+        max-width: 299px;
+        min-width: 299px
+
+    }
+
 }
 
 .turnInfo {
     position: relative;
     display: inline-block;
     height: 30%;
-    width: 100%;
 }
 
 .turnTitle {
     position: relative;
     display: inline-block;
-    height: 25%;
-    width: 100%;
-    font-size: 4vh;
+    font-size: 1.5rem;
     text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
 }
 
@@ -71,110 +140,82 @@ body {
     position: relative;
     display: inline-block;
     height: 75%;
-    width: 100%;
 }
 
 .turnIconSquare1 {
     position: relative;
     display: inline-block;
     height: 100%;
-    width: 50%;
 }
 
 .turnIconSquare2 {
     position: relative;
     display: inline-block;
     height: 100%;
-    width: 50%;
 }
 
 .scoreArea {
     position: relative;
     display: inline-block;
     height: 50%;
-    width: 100%;
 }
 
 .scoreTitle {
     position: relative;
     display: inline-block;
-    height: 10%;
-    width: 100%;
-    font-size: 4vh;
+    font-size: 1.5rem;
     text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
 }
 
-.scoreP1 {
+.scoreP1, .scoreP2 {
     position: relative;
     display: inline-block;
     height: 45%;
-    width: 50%;
 }
 
-.scoreP1Count {
+.scoreP1Count, .scoreP2Count{
     vertical-align: top;
     position: relative;
     display: inline-block;
     height: 45%;
-    width: 50%;
     text-align: center;
-    font-size: 15vh;
+    /*changed font size to vw instead of vh*/
+    font-size: 1.5rem;
     text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
 }
 
-.scoreP2 {
-    position: relative;
-    display: inline-block;
-    height: 45%;
-    width: 50%;
-}
-
-.scoreP2Count {
-    vertical-align: top;
-    position: relative;
-    display: inline-block;
-    height: 45%;
-    width: 50%;
-    text-align: center;
-    font-size: 15vh;
-    text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
-}
+/* ////////////////////////////////////////////////////// game reset //////////////////////////////////////////////////////////// */
 
 .gameReset {
     border-radius: 5%;
     position: relative;
     display: inline-block;
-    height: 20%;
-    width: 100%;
-    background-color: rgba(147, 112, 219, 0.54);
 }
 
 .resetButton {
     border-radius: 5%;
     position: relative;
     display: inline-block;
-    height: 50%;
-    width: 50%;
-    top: 25%;
-    font-size: 2.5vh;
+    font-size: 1rem;
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
     background-color: rgba(147, 112, 219, 0.54);
 
 }
 
+/* ////////////////////////////////////////////////////// Main Game Board //////////////////////////////////////////////////////////// */
+
 .gameBoard {
+    font-size: 0;
     border-radius: 5%;
-    position: absolute;
+    position: relative;
     display: inline-block;
-    height: 80vh;
-    width: 80vh;
-    top: 18%;
-    left: 30%;
     background-color: rgba(147, 112, 219, 0.54);
     border: .25px black solid;
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
 
 }
+
+
 
 .square {
     position: relative;
@@ -216,28 +257,27 @@ body {
 
 }
 
+/* ////////////////////////////////////////////////////// Instruction and Win Modal //////////////////////////////////////////////////////////// */
+
 .instructionModal {
     border-radius: 10%;
     position: absolute;
     display: inline-block;
     text-align: center;
-    height: 95vh;
-    width: 25vw;
-    top: 2%;
     background-color: #2e6da4;
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
     background-color: rgba(147, 112, 219, 0.98);
-    left: 38%;
     padding: 0.5%;
 }
 
 .instrucPara1 {
-    font-size: 4vh;
+    font-size: 2rem;
     display: inherit;
+    border-bottom: 2mm dotted slateblue;
 }
 
 .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
-    font-size: 3vh;
+    font-size: 1rem;
     display: inherit;
 }
 
@@ -247,8 +287,7 @@ body {
     text-align: center;
     height: 95vh;
     width: 25vw;
-    top: 2%;
-    background-color: rgba(147, 112, 219, 0.98);
+    background-color: rgba(147, 112, 219, 0.75);
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
     left: 38%;
     border-radius: 5%;
@@ -256,7 +295,7 @@ body {
 
 .winPara1, .winPara2 {
     display: inherit;
-    font-size: 4vh;
+    font-size: 2rem;
     position: relative;
     top: 10%;
 }
@@ -265,7 +304,7 @@ body {
     position: relative;
     display: inherit;
     top: 22vh;
-    font-size: 4vh;
+    font-size: 2rem;
     border-radius: 8%;
     left: 10%;
     width: 80%;
@@ -288,7 +327,7 @@ body {
 }
 
 .legalMove {
-    background-color: rgba(218, 111, 219, 0.73);
+    background-color: purple;
 }
 
 .animate{
@@ -317,6 +356,8 @@ body {
 }
 
 
+/* ////////////////////////////////////////////////////// Audio and Timer //////////////////////////////////////////////////////////// */
+
 
 .audioControls {
     border-radius: 33%;
@@ -336,18 +377,10 @@ body {
 }
 
 .timer {
-    font-size: 6vh;
-    position: absolute;
-    display: block;
+    font-size: 1rem;
+    position: relative;
     text-align: center;
-    border: 1px solid black;
-    width: 15%;
-    height: 7%;
-    top: 9%;
-    left: 7.5%;
-    border-radius: 8%;
-    box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
-
+    color:hotpink;
 }
 
 .audioMute {
@@ -359,4 +392,15 @@ body {
 .audioIcon {
     width: 6%;
     position: absolute;
+    border-radius: 100%;
+    box-shadow: 3px 3px 10px 3px hotpink;
+}
+
+.legalMove:hover{
+    background-color: rgba(255, 111, 219, 0.73);
+}
+
+.highlightPlayerTurn{
+    box-shadow:0px 0px 15px 10px hotpink;
+
 }
