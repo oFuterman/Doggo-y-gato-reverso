@@ -94,12 +94,14 @@ body {
 @media screen and (max-width: 768px) {
 
     .gameInfo {
+        min-height: 320px;
+
 
     }
 
     .gameBoard {
-        min-height: 500px;
-        min-width: 500px;
+        min-height: 530px;
+        min-width: 530px;
 
 
     }
@@ -126,7 +128,7 @@ body {
 .turnInfo {
     position: relative;
     display: inline-block;
-    height: 30%;
+    height: 32%;
 }
 
 .turnTitle {
@@ -377,6 +379,7 @@ body {
 }
 
 .timer {
+    display: inline-block;
     font-size: 1rem;
     position: relative;
     text-align: center;
