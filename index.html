@@ -17,33 +17,34 @@
             <header class="header col-12">
                 <h1 class="headerTitle">Doggo y Gato Reverso</h1>
             </header>
-            <div class="gameInfo col-10 offset-1 col-md-3 card">
-                <div class="turnInfo">
-                    <div class="turnTitle">Turn:</div>
-                    <div class="turnIcon">
-                        <div class="turnIconSquare1">
-                            <div id="player1Marker" class="white"></div>
+            <div class="gameInfo col-8 offset-2  col-md-3 my-5 ">
+                <div class="turnInfo row no-gutters">
+                    <div class="turnTitle col-12">Turn:</div>
+                    <div class="turnIcon col-12 ">
+                        <div class="col-6 turnIconSquare1">
+                            <div id="player1Marker" class="white player-marker col-12"></div>
                         </div>
-                        <div class="turnIconSquare2">
-                            <div id="player2Marker" class="black"></div>
+                        <div class=" col-6 turnIconSquare2">
+                            <div id="player2Marker" class="black player-marker col-12"></div>
                         </div>
                     </div>
                 </div>
-                <div class="scoreArea">
-                    <div class="scoreTitle">Score:</div>
-                    <div class="scoreP1">
-                        <div class="white"></div>
-                        <div class="white"></div>
+                <div class=" row no-gutters scoreArea">
+                    <div class="col-12 scoreTitle">Score:</div>
+                    <div class=" col-3 scoreP1">
+                        <div class="white player-marker"></div>
                     </div>
-                    <div class="scoreP1Count"></div>
-                    <div class="scoreP2">
-                        <div class="black"></div>
+                    <div class=" col-3 scoreP1Count"></div>
+                    <div class=" col-3 scoreP2">
+                        <div class="black player-marker"></div>
                     </div>
-                    <div class="scoreP2Count"></div>
+                    <div class=" col-3 scoreP2Count"></div>
+                    <div class="gameReset">
+                        <div class="timer"></div>
+                        <button class="resetButton">Reset Game</button>
+                    </div>
                 </div>
-                <div class="gameReset">
-                    <button class="resetButton">Reset Game</button>
-                </div>
+
             </div>
             <div class="audioMute"><img class="audioIcon" src="images/audio-icon.svg"></div>
             <div class="gameBoard card col-10 offset-1 col-md-7"></div>
@@ -65,9 +66,7 @@
                 <p class="winPara3"></p>
                 <button class="winReset">Play again! </button>
             </div>
-            <div class="timer">
 
-            </div>
         </div>
     </div>
 
