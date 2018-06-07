@@ -84,7 +84,6 @@ body {
     }
 
     .gameBoard {
-        min-height: 500px
 
 
     }
@@ -99,6 +98,9 @@ body {
     }
 
     .gameBoard {
+        min-height: 500px;
+        min-width: 500px;
+
 
     }
 
@@ -108,11 +110,15 @@ body {
 
     .gameInfo {
         min-height: 257px;
+        max-width: 240px;
 
     }
 
     .gameBoard {
         min-height: 257px;
+        max-width: 299px;
+        min-width: 299px
+
     }
 
 }
