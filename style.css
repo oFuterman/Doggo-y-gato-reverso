@@ -353,7 +353,13 @@ body {
     }
 
     .gameBoard {
-        min-height: 500px
+        min-height: 630px;
+        min-width: 630px;
+
+
+    }
+    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
+        max-height: 90px;
 
 
     }
@@ -365,10 +371,20 @@ body {
 @media screen and (max-width: 992px) {
 
     .gameInfo {
+        max-width: 156px;
+        margin-left: 13px;
 
     }
 
     .gameBoard {
+        min-height: 530px;
+        min-width: 530px;
+        margin-left: 14px;
+
+    }
+
+    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
+        max-height: 90px;
 
 
     }
@@ -381,12 +397,14 @@ body {
     .gameInfo {
         min-height: 180px;
         min-width: 357px;
+        margin-left: 0;
 
     }
 
     .gameBoard {
         min-height: 530px;
         min-width: 530px;
+        margin-left: 0;
 
 
     }
