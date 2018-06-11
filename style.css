@@ -53,6 +53,8 @@ body {
 
 
 .gameInfo {
+    margin-left: auto;
+    margin-right: auto;
     font-size: 0;
     border-radius: 5%;
     text-align: center;
@@ -144,6 +146,8 @@ body {
 /* ////////////////////////////////////////////////////// Main Game Board //////////////////////////////////////////////////////////// */
 
 .gameBoard {
+    margin-left: auto;
+    margin-right: auto;
     font-size: 0;
     border-radius: 5%;
     position: relative;
@@ -199,14 +203,18 @@ body {
 /* ////////////////////////////////////////////////////// Instruction and Win Modal //////////////////////////////////////////////////////////// */
 
 .instructionModal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 10%;
-    position: absolute;
+    position: fixed;
     display: inline-block;
     text-align: center;
     background-color: #2e6da4;
     box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
     background-color: rgba(147, 112, 219, 0.98);
     padding: 0.5%;
+    min-width: 285px;
 }
 
 .instrucPara1 {
@@ -349,12 +357,14 @@ body {
 
 @media screen and (min-width: 993px) {
     .gameInfo {
+        max-width: 180px;
+
 
     }
 
     .gameBoard {
-        min-height: 630px;
-        min-width: 630px;
+        min-height: 575px;
+        min-width: 575px;
 
 
     }
@@ -372,22 +382,24 @@ body {
 
     .gameInfo {
         max-width: 156px;
-        margin-left: 13px;
 
     }
 
     .gameBoard {
-        min-height: 530px;
-        min-width: 530px;
-        margin-left: 14px;
+        min-height: 500px;
+        min-width: 500px;
 
     }
 
     .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
-        max-height: 90px;
+        max-height: 85px;
 
 
     }
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 1rem;
+    }
+
 
 }
 
@@ -397,14 +409,12 @@ body {
     .gameInfo {
         min-height: 180px;
         min-width: 357px;
-        margin-left: 0;
 
     }
 
     .gameBoard {
-        min-height: 530px;
-        min-width: 530px;
-        margin-left: 0;
+        min-height: 500px;
+        min-width: 500px;
 
 
     }
@@ -416,15 +426,15 @@ body {
 
     .gameInfo {
         min-height: 118px;
-        max-width: 240px;
-        min-width: 230px;
+        max-width: 260px;
+        min-width: 260px;
         padding-bottom: 21px;
     }
 
     .gameBoard {
         min-height: 257px;
-        max-width: 299px;
-        min-width: 299px
+        max-width: 315px;
+        min-width: 315px
 
     }
     .timer, .resetButton {
@@ -435,7 +445,16 @@ body {
     .scoreTitle, .scoreP1Count, .scoreP2Count {
         font-size: 1rem;
     }
+    .instrucPara1 {
+        font-size: 1.5rem;
+        display: inherit;
+        border-bottom: 2mm dotted slateblue;
+    }
 
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: .9rem;
+        display: inherit;
+    }
 
 
 
