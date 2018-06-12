@@ -9,7 +9,7 @@
 .backgroundImage::before {
     box-sizing: border-box;
     background-size: cover;
-    position: absolute;
+    position: fixed;
     background-image: url("images/toaster-cat.png");
     content: "";
     min-height: 100vh;
@@ -29,7 +29,7 @@ body {
     width: 100vw
 }
 
-.container {
+.game-container {
     padding-top: 15px;
 }
 
@@ -369,8 +369,8 @@ body {
 
 .audioIcon {
     top: 18px;
-    left: 4%;
-    width: 25px;
+    left: 2.5%;
+    width: 20px;
     position: relative;
     border-radius: 50%;
     box-shadow: 3px 3px 10px 3px hotpink;
@@ -397,8 +397,8 @@ body {
     }
 
     .gameBoard {
-        min-height: 600px;
-        min-width: 600px;
+        min-height: 520px;
+        min-width: 520px;
         max-width: 600px;
 
 
@@ -407,6 +407,22 @@ body {
         max-height: 90px;
 
 
+    }
+
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 2.3rem;
+    }
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: 1.5rem;
+        display: inherit;
+    }
+    .audioIcon {
+        width: 55px;
+        top: 5px;
+        left: 8.5%;
+    }
+    .game-container {
+        padding-top: 45px;
     }
 
 
@@ -432,8 +448,26 @@ body {
 
     }
     .scoreTitle, .scoreP1Count, .scoreP2Count {
-        font-size: 1rem;
+        font-size: 2rem;
     }
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: 1.2rem;
+        display: inherit;
+    }
+    .audioIcon {
+        width: 45px;
+        top: 11px;
+        left: 8.5%;
+    }
+
+    .game-container {
+        padding-top: 45px;
+    }
+    .headerTitle {
+        font-size: 2.5rem;
+    }
+
+
 
 
 }
@@ -453,6 +487,28 @@ body {
 
 
     }
+
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 1.8rem;
+    }
+
+    .gameReset {
+        padding-bottom: 25px;
+    }
+    .timer, .resetButton {
+        font-size: 1rem;
+        min-height: 28px;
+    }
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: 1rem;
+        display: inherit;
+    }
+    .headerTitle {
+        font-size: 1.3rem;
+    }
+
+
+
 
 
 }
@@ -500,7 +556,7 @@ body {
     }
 
     .headerTitle {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .headerTitleContainer {
@@ -511,6 +567,24 @@ body {
     .legalMove {
         background-color: purple;
         box-shadow: 0px 0px 10px 3px hotpink;
+    }
+
+    .gameReset {
+        padding-bottom: 0px;
+    }
+
+    .winModal {
+        height: 78%;
+        min-width: 230px;
+    }
+    .winPara1, .winPara2, .winReset {
+        font-size: 1.2rem;
+    }
+    .audioIcon {
+        width: 25px;
+        top: 18px;
+        left: 2.5%;
+
     }
 
 
