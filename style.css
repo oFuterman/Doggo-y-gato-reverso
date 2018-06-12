@@ -42,6 +42,17 @@ body {
     text-align: center;
 }
 
+.headerTitleContainer {
+    background-color: rgba(147, 112, 219, 0.54);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 18%;
+    box-shadow: 0px 0px 10px 5px hotpink;
+
+
+}
+
 .headerTitle {
     text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
     font-size: 1.7rem;
@@ -61,7 +72,7 @@ body {
     position: relative;
     display: inline-block;
     background-color: rgba(147, 112, 219, 0.54);
-    box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
+    box-shadow: 0px 0px 10px 5px hotpink;
 }
 
 .turnInfo {
@@ -138,8 +149,10 @@ body {
     position: relative;
     display: inline-block;
     font-size: 1rem;
-    box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
-    background-color: rgba(147, 112, 219, 0.54);
+    background-color: #c87bef;
+    box-shadow: 0px 0px 10px 5px hotpink;
+    color: #cfdbfb;
+    text-shadow: 1px 1px 20px purple;
 
 }
 
@@ -154,7 +167,7 @@ body {
     display: inline-block;
     background-color: rgba(147, 112, 219, 0.54);
     border: .25px black solid;
-    box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
+    box-shadow: 0px 0px 10px 5px hotpink;
 
 }
 
@@ -202,7 +215,7 @@ body {
 
 /* ////////////////////////////////////////////////////// Instruction and Win Modal //////////////////////////////////////////////////////////// */
 
-.instructionModal {
+.instructionModal, .winModal {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -211,7 +224,7 @@ body {
     display: inline-block;
     text-align: center;
     background-color: #2e6da4;
-    box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
+    box-shadow: 0px 0px 10px 5px hotpink;
     background-color: rgba(147, 112, 219, 0.98);
     padding: 0.5%;
     min-width: 285px;
@@ -229,18 +242,12 @@ body {
 }
 
 .winModal {
-    position: absolute;
-    display: inline-block;
-    text-align: center;
-    height: 95vh;
-    width: 25vw;
-    background-color: rgba(147, 112, 219, 0.75);
-    box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
-    left: 38%;
-    border-radius: 5%;
+    height: 80%;
 }
 
 .winPara1, .winPara2 {
+    color: #cfdbfb;
+    text-shadow: 1px 1px 20px purple;
     display: inherit;
     font-size: 2rem;
     position: relative;
@@ -250,13 +257,14 @@ body {
 .winReset {
     position: relative;
     display: inherit;
-    top: 22vh;
     font-size: 2rem;
     border-radius: 8%;
+    top: 10%;
     left: 10%;
     width: 80%;
-    box-shadow: 4px 2px rgba(0, 0, 0, 0.71);
-    background-color: aquamarine;
+    box-shadow: 0px 0px 10px 5px hotpink;
+    color: #cfdbfb;
+    text-shadow: 1px 1px 20px purple;
 }
 
 
@@ -266,15 +274,13 @@ body {
 
 .winImage {
     position: relative;
-    height: 30%;
-    width: 80%;
-    top: 10%;
-    left: 10%;
-    border-radius: 50%;
+    height: 50%;
+
 }
 
 .legalMove {
     background-color: purple;
+    box-shadow: 0px 0px 10px 5px hotpink;
 }
 
 .animate{
@@ -356,6 +362,9 @@ body {
 
 
 @media screen and (min-width: 993px) {
+    .headerTitle {
+        font-size: 2.5rem;
+    }
     .gameInfo {
         max-width: 180px;
 
