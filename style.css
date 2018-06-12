@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    border: black 1px solid;
+    /*border: black 1px solid;*/
 }
 .backgroundImage {
     min-height: 100vh;
@@ -29,6 +29,9 @@ body {
     width: 100vw
 }
 
+.container {
+    padding-top: 15px;
+}
 
 
 /* ////////////////////////////////////////////////////// Header Section //////////////////////////////////////////////////////////// */
@@ -47,7 +50,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 18%;
+    border-radius: 5%;
     box-shadow: 0px 0px 10px 5px hotpink;
 
 
@@ -57,6 +60,7 @@ body {
     text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
     font-size: 1.7rem;
     padding-top: 11px;
+    padding-bottom: 11px;
     color: #cfdbfb;
 }
 
@@ -116,7 +120,8 @@ body {
     position: relative;
     display: inline-block;
     font-size: 1.5rem;
-    text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
+    color: #cfdbfb;
+    text-shadow: 1px 1px 0px purple;
 }
 
 .scoreP1, .scoreP2 {
@@ -136,6 +141,15 @@ body {
     text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
 }
 
+.player-one-score, .player-two-score {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #cfdbfb;
+    text-shadow: 1px 1px 0px purple;
+}
+
 /* ////////////////////////////////////////////////////// game reset //////////////////////////////////////////////////////////// */
 
 .gameReset {
@@ -152,7 +166,7 @@ body {
     background-color: #c87bef;
     box-shadow: 0px 0px 10px 5px hotpink;
     color: #cfdbfb;
-    text-shadow: 1px 1px 20px purple;
+    text-shadow: 1px 1px 0px purple;
 
 }
 
@@ -180,7 +194,7 @@ body {
     width: 12%;
     top: 2%;
     left: 2%;
-    border: .25px black solid;
+    border: inherit;
 }
 
 .empty {
@@ -234,11 +248,15 @@ body {
     font-size: 2rem;
     display: inherit;
     border-bottom: 2mm dotted slateblue;
+    color: #cfdbfb;
+    text-shadow: 1px 1px 0px purple;
 }
 
 .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
     font-size: 1rem;
     display: inherit;
+    color: #cfdbfb;
+    text-shadow: 1px 1px 0px purple;
 }
 
 .winModal {
@@ -247,7 +265,7 @@ body {
 
 .winPara1, .winPara2 {
     color: #cfdbfb;
-    text-shadow: 1px 1px 20px purple;
+    text-shadow: 1px 1px 0px purple;
     display: inherit;
     font-size: 2rem;
     position: relative;
@@ -264,7 +282,8 @@ body {
     width: 80%;
     box-shadow: 0px 0px 10px 5px hotpink;
     color: #cfdbfb;
-    text-shadow: 1px 1px 20px purple;
+    text-shadow: 1px 1px 0px purple;
+    background-color: #c87bef
 }
 
 
@@ -280,7 +299,7 @@ body {
 
 .legalMove {
     background-color: purple;
-    box-shadow: 0px 0px 10px 5px hotpink;
+    box-shadow: 0px 0px 10px 4px hotpink;
 }
 
 .animate{
@@ -331,23 +350,27 @@ body {
 
 .timer {
     display: inline-block;
+    padding-bottom: 10px;
+    padding-top: 10px;
     font-size: 1rem;
     position: relative;
     text-align: center;
     min-width: 105px;
     color:hotpink;
+    text-shadow: 1px 1px 0px purple;
+
 }
 
 .audioMute {
     position: absolute;
-    display: flex;
     width: 70%;
 }
 
 .audioIcon {
-    width: 6%;
-    position: absolute;
-    border-radius: 100%;
+    left: 4%;
+    width: 25px;
+    position: relative;
+    border-radius: 50%;
     box-shadow: 3px 3px 10px 3px hotpink;
 }
 
@@ -372,8 +395,9 @@ body {
     }
 
     .gameBoard {
-        min-height: 575px;
-        min-width: 575px;
+        min-height: 600px;
+        min-width: 600px;
+        max-width: 600px;
 
 
     }
@@ -434,10 +458,10 @@ body {
 @media screen and (max-width: 576px) {
 
     .gameInfo {
-        min-height: 118px;
+        min-height: 185px;
         max-width: 260px;
         min-width: 260px;
-        padding-bottom: 21px;
+        padding-bottom: 10px;
     }
 
     .gameBoard {
@@ -447,13 +471,21 @@ body {
 
     }
     .timer, .resetButton {
-        font-size: .7rem;
-        min-height: 19px;
+        font-size: 1rem;
+        min-height: 35px;
     }
 
     .scoreTitle, .scoreP1Count, .scoreP2Count {
         font-size: 1rem;
     }
+
+    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
+        max-height: 58px;
+
+
+    }
+
+
     .instrucPara1 {
         font-size: 1.5rem;
         display: inherit;
@@ -465,6 +497,19 @@ body {
         display: inherit;
     }
 
+    .headerTitle {
+        font-size: 1.3rem;
+    }
+
+    .headerTitleContainer {
+        min-width: 245px;
+        max-width: 245px;
+    }
+
+    .legalMove {
+        background-color: purple;
+        box-shadow: 0px 0px 10px 3px hotpink;
+    }
 
 
 }

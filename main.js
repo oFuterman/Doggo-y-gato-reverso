@@ -272,7 +272,7 @@ function initializeApp(){
     appendDivs();
     mainMusic = new Audio("sounds/background-music.mp3");
     mainMusic.loop = true;
-    $(".timer").hide();
+    // $(".timer").hide();
     $("*").on("click", function(){
         if(pageClicks===0){
             $(".instructionModal").addClass("hideModals");
@@ -460,8 +460,8 @@ function countPieces(){//when called returns an array with the amount of white a
 function updateStats(arr){
     var whiteScore=arr[0];
     var blackScore=arr[1];
-    $('.scoreP1Count').text(whiteScore);
-    $('.scoreP2Count').text(blackScore);
+    $('#player-one-score').text(whiteScore);
+    $('#player-two-score').text(blackScore);
 }
 
 function recreateBoardArray() {
