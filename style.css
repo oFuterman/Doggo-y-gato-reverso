@@ -50,18 +50,19 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 5%;
+    border-radius: 10px;
     box-shadow: 0px 0px 10px 5px hotpink;
 
 
 }
 
 .headerTitle {
-    text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
     font-size: 1.7rem;
     padding-top: 11px;
     padding-bottom: 11px;
     color: #cfdbfb;
+    text-shadow: 1px 1px 0px purple;
+
 }
 
 /* ////////////////////////////////////////////////////// Game Stats and Info //////////////////////////////////////////////////////////// */
@@ -71,7 +72,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-size: 0;
-    border-radius: 5%;
+    border-radius: 10px;
     text-align: center;
     position: relative;
     display: inline-block;
@@ -89,7 +90,8 @@ body {
     position: relative;
     display: inline-block;
     font-size: 1.5rem;
-    text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
+    text-shadow: 1px 1px 0px purple;
+
 }
 
 .turnIcon {
@@ -153,13 +155,13 @@ body {
 /* ////////////////////////////////////////////////////// game reset //////////////////////////////////////////////////////////// */
 
 .gameReset {
-    border-radius: 5%;
+    border-radius: 10px;
     position: relative;
     display: inline-block;
 }
 
 .resetButton {
-    border-radius: 5%;
+    border-radius: 10px;
     position: relative;
     display: inline-block;
     font-size: 1rem;
@@ -176,11 +178,10 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-size: 0;
-    border-radius: 5%;
+    border-radius: 10px;
     position: relative;
     display: inline-block;
     background-color: rgba(147, 112, 219, 0.54);
-    border: .25px black solid;
     box-shadow: 0px 0px 10px 5px hotpink;
 
 }
@@ -194,7 +195,8 @@ body {
     width: 12%;
     top: 2%;
     left: 2%;
-    border: inherit;
+    border: .15px #cfdbfb solid;
+    box-shadow:  1px 1px 0px 1px purple;
 }
 
 .empty {
@@ -233,7 +235,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10%;
+    border-radius: 10px;
     position: fixed;
     display: inline-block;
     text-align: center;
@@ -276,7 +278,7 @@ body {
     position: relative;
     display: inherit;
     font-size: 2rem;
-    border-radius: 8%;
+    border-radius: 10px;
     top: 10%;
     left: 10%;
     width: 80%;
@@ -350,7 +352,6 @@ body {
 
 .timer {
     display: inline-block;
-    padding-bottom: 10px;
     padding-top: 10px;
     font-size: 1rem;
     position: relative;
@@ -367,6 +368,7 @@ body {
 }
 
 .audioIcon {
+    top: 18px;
     left: 4%;
     width: 25px;
     position: relative;
@@ -476,7 +478,7 @@ body {
     }
 
     .scoreTitle, .scoreP1Count, .scoreP2Count {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 
     .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
