@@ -14,30 +14,34 @@
 <body class="backgroundImage">
     <div class="container">
         <div class="row align-content-">
-            <header class="header my-3 col-12">
-                <div class=" headerTitleContainer col-6">
+            <header class="header col-12">
+                <div class=" headerTitleContainer col-8">
                     <h1 class="headerTitle">Doggo y Gato Reverso</h1>
                 </div>
             </header>
-            <div class="gameInfo col-12 offset-2 col-md-3 offset-md-0 my-4 ">
+            <div class="gameInfo col-12 offset-2 col-md-3 offset-md-0 my-3">
                 <div class="row no-gutters scoreArea my-2">
                     <div class="col-12 scoreTitle">Score:</div>
                     <div class=" col-3 col-md-8 scoreP1">
                         <div class="white player-marker"></div>
                     </div>
-                    <div class=" col-3 col-md-8 scoreP1Count"></div>
+                    <div class="col-3 col-md-8 scoreP1Count">
+                        <p id="player-one-score" class="player-one-score"></p>
+                    </div>
                     <div class=" col-3 col-md-8 scoreP2">
                         <div class="black player-marker"></div>
                     </div>
-                    <div class=" col-3 col-md-8 scoreP2Count"></div>
+                    <div class=" col-3 col-md-8 scoreP2Count">
+                        <p id="player-two-score" class="player-two-score" ></p>
+                    </div>
                     <div class="gameReset col-12 my-2">
-                        <div class="timer col-4 "></div>
                         <button class="resetButton col-8 col-md-12 ">Reset Game</button>
+                        <div class="timer col-4 "></div>
                     </div>
                 </div>
             </div>
             <div class="audioMute"><img class="audioIcon" src="images/audio-icon.svg"></div>
-            <div class="gameBoard card col-12 offset-1 offset-sm-0 offset-md-1 col-md-8"></div>
+            <div class="gameBoard card col-12 offset-1 offset-sm-0 offset-md-1 col-md-8 my-3"></div>
             <div class="instructionModal">
                 <p class="instrucPara1">Welcome to Doggo Y Gato Reverso!</p>
                 <p class="instrucPara2">The object is to flip as many tiles to your furry friend as possible!</p>
