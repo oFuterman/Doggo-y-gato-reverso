@@ -57,11 +57,12 @@ body {
 }
 
 .headerTitle {
-    text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
     font-size: 1.7rem;
     padding-top: 11px;
     padding-bottom: 11px;
     color: #cfdbfb;
+    text-shadow: 1px 1px 0px purple;
+
 }
 
 /* ////////////////////////////////////////////////////// Game Stats and Info //////////////////////////////////////////////////////////// */
@@ -89,7 +90,8 @@ body {
     position: relative;
     display: inline-block;
     font-size: 1.5rem;
-    text-shadow: 2px 1px rgba(158, 124, 143, 0.76);
+    text-shadow: 1px 1px 0px purple;
+
 }
 
 .turnIcon {
@@ -180,7 +182,6 @@ body {
     position: relative;
     display: inline-block;
     background-color: rgba(147, 112, 219, 0.54);
-    border: .25px black solid;
     box-shadow: 0px 0px 10px 5px hotpink;
 
 }
@@ -194,7 +195,8 @@ body {
     width: 12%;
     top: 2%;
     left: 2%;
-    border: inherit;
+    border: .15px #cfdbfb solid;
+    box-shadow:  1px 1px 0px 1px purple;
 }
 
 .empty {
@@ -350,7 +352,6 @@ body {
 
 .timer {
     display: inline-block;
-    padding-bottom: 10px;
     padding-top: 10px;
     font-size: 1rem;
     position: relative;
@@ -367,6 +368,7 @@ body {
 }
 
 .audioIcon {
+    top: 18px;
     left: 4%;
     width: 25px;
     position: relative;
@@ -476,7 +478,7 @@ body {
     }
 
     .scoreTitle, .scoreP1Count, .scoreP2Count {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 
     .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
