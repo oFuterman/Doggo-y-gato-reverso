@@ -50,7 +50,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 5%;
+    border-radius: 10px;
     box-shadow: 0px 0px 10px 5px hotpink;
 
 
@@ -72,7 +72,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-size: 0;
-    border-radius: 5%;
+    border-radius: 10px;
     text-align: center;
     position: relative;
     display: inline-block;
@@ -155,13 +155,13 @@ body {
 /* ////////////////////////////////////////////////////// game reset //////////////////////////////////////////////////////////// */
 
 .gameReset {
-    border-radius: 5%;
+    border-radius: 10px;
     position: relative;
     display: inline-block;
 }
 
 .resetButton {
-    border-radius: 5%;
+    border-radius: 10px;
     position: relative;
     display: inline-block;
     font-size: 1rem;
@@ -178,7 +178,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     font-size: 0;
-    border-radius: 5%;
+    border-radius: 10px;
     position: relative;
     display: inline-block;
     background-color: rgba(147, 112, 219, 0.54);
@@ -235,7 +235,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10%;
+    border-radius: 10px;
     position: fixed;
     display: inline-block;
     text-align: center;
@@ -278,7 +278,7 @@ body {
     position: relative;
     display: inherit;
     font-size: 2rem;
-    border-radius: 8%;
+    border-radius: 10px;
     top: 10%;
     left: 10%;
     width: 80%;
