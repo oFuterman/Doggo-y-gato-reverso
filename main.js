@@ -5,7 +5,6 @@ var mute = false;
 var mainMusic;
 var effectsVol = .05;
 var musicVol = .05;
-var winVol = .1;
 $(document).ready(initializeApp);
 
 
@@ -64,9 +63,6 @@ function effectsVolumeAdjust(value) {
     effectsVol = value / 10;
 }
 
-function winModalVolume(value) {
-    winVol = value / 10;
-}
 
 function clickAudio(turn) {
     if (mute === true) {
@@ -91,7 +87,7 @@ function winSound () {
         return;
     }
     var winTone = new Audio("sounds/win.mp3");
-    winTone.volume = winVol;
+    winTone.volume = effectsVol;
     winTone.play();
 }
 
@@ -256,6 +252,8 @@ function addClickHandler(row, column) {
          {
         $("*").off("click").removeClass("legalMove");
     }
+
+
 }
 
 function removeClickHandlers() {
@@ -316,32 +314,50 @@ function initializeApp(){
         pageClicks++;
     });
     createGameBoardArray();
-    $(".winModal").hide();
+    $(".winModal").addClass("hideModals");
     $("#volume-modal").hide();
-    $("#audio-icon").click(adjustAudio);
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
-    $('#player1Marker').addClass('highlightPlayerTurn');
-    $('.resetButton').click(resetGame);
-    $(".winReset").click(resetGame);
+    $('#player-1-marker').addClass('highlightPlayerTurn');
+    clickHandlers();
+
 
 }
+
+function hideVolModal() {
+    var currentElement = event.target;
+    console.log("current element" , currentElement);
+    if (currentElemen)
+
+
+}
+
+function clickHandlers() {
+    $('.resetButton').click(resetGame);
+    $(".winReset").click(resetGame);
+    $("#audio-icon").click(adjustAudio);
+    $("#main-body").click(hideVolModal)
+
+
+}
+
+
 
 function addPiece(){
     var updateBoardRow = $(this).attr("row");
     var updateBoardColumn = $(this).attr("column");
     clickAudio(whiteTurn);
     if(whiteTurn){
-        $("#player1Marker").removeClass('highlightPlayerTurn');
-        $("#player2Marker").addClass('highlightPlayerTurn');
+        $("#player-1-marker").removeClass('highlightPlayerTurn');
+        $("#player-2-marker").addClass('highlightPlayerTurn');
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=false;
     }else{
-        $("#player1Marker").addClass('highlightPlayerTurn');
-        $("#player2Marker").removeClass('highlightPlayerTurn');
+        $("#player-1-marker").addClass('highlightPlayerTurn');
+        $("#player-2-marker").removeClass('highlightPlayerTurn');
         $('div',this).removeClass('empty');
         $('div',this).addClass('black');
         clicked($(this).attr('row'),$(this).attr('column'));

@@ -11,7 +11,7 @@
     <script src="main.js"></script>
     <title>Doggo Vs. Gato Reverso</title>
 </head>
-<body class="backgroundImage">
+<body id="main-body" class="backgroundImage">
     <div class="container game-container">
         <div class="row align-content-">
             <header class="header col-12">
@@ -23,13 +23,13 @@
                 <div class="row no-gutters scoreArea my-2">
                     <div class="col-12 scoreTitle">Score:</div>
                     <div class=" col-3 col-md-8 scoreP1">
-                        <div class="white player-marker"></div>
+                        <div id="player-1-marker" class="white player-marker"></div>
                     </div>
                     <div class="col-3 col-md-8 scoreP1Count">
                         <p id="player-one-score" class="player-one-score"></p>
                     </div>
                     <div class=" col-3 col-md-8 scoreP2">
-                        <div class="black player-marker"></div>
+                        <div id="player-2-marker" class="black player-marker"></div>
                     </div>
                     <div class=" col-3 col-md-8 scoreP2Count">
                         <p id="player-two-score" class="player-two-score" ></p>
@@ -64,9 +64,7 @@
                     <p>Music Volume</p>
                     <input id="music-vol-control" class="music-vol-control" type="range" min="0" max=2 step=".2" onchange="musicVolumeAdjust(this.value)">
                     <p>Effects Volume</p>
-                    <input id="effects-vol-control" class="effects-vol-control" type="range" min="0" max="2" step=".2" onchange="effectsVolumeAdjust(this.value)">
-                    <p>Win Volume</p>
-                    <input id="win-vol-control" class="win-vol-control" type="range" min="0" max="2" step=".2" onchange="winModalVolume(this.value)">
+                    <input id="win-vol-control" class="win-vol-control" type="range" min="0" max="2" step=".2" onchange="effectsVolumeAdjust(this.value)">
 
                     <button class=" mute-button col-8 col-md-8 my-3 " onclick="muteAudio()">Mute Audio</button>
                 </div>

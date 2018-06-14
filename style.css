@@ -161,6 +161,7 @@ body {
 }
 
 .resetButton, .mute-button {
+    outline: none;
     border-radius: 10px;
     position: relative;
     display: inline-block;
