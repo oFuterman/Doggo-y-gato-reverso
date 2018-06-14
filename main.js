@@ -3,6 +3,9 @@ var currentPlayer = 1;
 var oppositePlayer = 2;
 var mute = false;
 var mainMusic;
+var effectsVol = .05;
+var musicVol = .05;
+var winVol = .1;
 $(document).ready(initializeApp);
 
 
@@ -35,6 +38,9 @@ function appendDivs(){
     }
 }
 
+
+/////////////////////////////////////////// game audio ///////////////////////////////////////////
+
 function muteAudio() {
     mainMusic.muted=!mainMusic.muted;
     mute = !mute;
@@ -45,6 +51,60 @@ function muteAudio() {
    }
 
 }
+
+function adjustAudio() {
+    $("#volume-modal").show();
+}
+
+function musicVolumeAdjust(value) {
+    mainMusic.volume = value / 10;
+}
+
+function effectsVolumeAdjust(value) {
+    effectsVol = value / 10;
+}
+
+function winModalVolume(value) {
+    winVol = value / 10;
+}
+
+function clickAudio(turn) {
+    if (mute === true) {
+        return;
+    }
+
+    var clickSound;
+    if (turn) {
+        clickSound = new Audio('sounds/player1.mp3');
+        clickSound.volume = effectsVol;
+
+    } else {
+        clickSound = new Audio('sounds/player2.mp3');
+        clickSound.volume = effectsVol;
+
+    }
+    clickSound.play();
+}
+
+function winSound () {
+    if (mute === true) {
+        return;
+    }
+    var winTone = new Audio("sounds/win.mp3");
+    winTone.volume = winVol;
+    winTone.play();
+}
+
+function backGroundMusic () {
+    if (mute === true) {
+        return;
+    }
+    mainMusic.volume = musicVol;
+    mainMusic.play();
+}
+
+
+
 
 // creating Game board dynamically
 var gameBoardArray = [];
@@ -203,36 +263,11 @@ function removeClickHandlers() {
     $('*').removeClass("legalMove");
 }
 
-function clickAudio(turn) {
-    if (mute === true) {
-        return;
-    }
-
-    var clickSound;
-    if (turn) {
-        clickSound = new Audio('sounds/player1.mp3');
-    } else {
-        clickSound = new Audio('sounds/player2.mp3');
-    }
-    clickSound.play();
-}
-
-function winSound () {
-    if (mute === true) {
-        return;
-    }
-    var winTone = new Audio("sounds/win.mp3");
-    winTone.play();
-}
-
-function backGroundMusic () {
-    if (mute === true) {
-        return;
-    }
-    mainMusic.play();
-}
 
 function resetGame() {
+    mainMusic.pause();
+    mainMusic.currentTime = 0;
+    backGroundMusic();
     startTimeMinutes=30;
     startTimeSeconds=0;
     whiteTurn=true;
@@ -271,8 +306,6 @@ var pageClicks=0;
 function initializeApp(){
     appendDivs();
     mainMusic = new Audio("sounds/background-music.mp3");
-    mainMusic.loop = true;
-    // $(".timer").hide();
     $("*").on("click", function(){
         if(pageClicks===0){
             $(".instructionModal").addClass("hideModals");
@@ -284,14 +317,15 @@ function initializeApp(){
     });
     createGameBoardArray();
     $(".winModal").hide();
-    $(".audioMute").click(muteAudio);
+    $("#volume-modal").hide();
+    $("#audio-icon").click(adjustAudio);
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
     $('#player1Marker').addClass('highlightPlayerTurn');
-    //$("#player2Marker").hide();
     $('.resetButton').click(resetGame);
     $(".winReset").click(resetGame);
+
 }
 
 function addPiece(){

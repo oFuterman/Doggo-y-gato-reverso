@@ -160,7 +160,7 @@ body {
     display: inline-block;
 }
 
-.resetButton {
+.resetButton, .mute-button {
     border-radius: 10px;
     position: relative;
     display: inline-block;
@@ -231,7 +231,7 @@ body {
 
 /* ////////////////////////////////////////////////////// Instruction and Win Modal //////////////////////////////////////////////////////////// */
 
-.instructionModal, .winModal {
+.instructionModal, .winModal, .volume-modal{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -375,6 +375,8 @@ body {
     border-radius: 50%;
     box-shadow: 3px 3px 10px 3px hotpink;
 }
+
+
 
 .legalMove:hover{
     background-color: rgba(255, 111, 219, 0.73);
