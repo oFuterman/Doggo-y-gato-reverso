@@ -264,14 +264,14 @@ body {
 }
 
 .winModal {
-    height: 80%;
+    height: 460px;
 }
 
 .winPara1, .winPara2 {
     color: #cfdbfb;
     text-shadow: 1px 1px 0px purple;
     display: inherit;
-    font-size: 2rem;
+    font-size: 1.7rem;
     position: relative;
     top: 10%;
 }
@@ -279,7 +279,7 @@ body {
 .winReset {
     position: relative;
     display: inherit;
-    font-size: 2rem;
+    font-size: 1.7rem;
     border-radius: 10px;
     top: 10%;
     left: 10%;
@@ -590,7 +590,7 @@ body {
     }
 
     .winModal {
-        height: 78%;
+        max-height: 365px;
         min-width: 230px;
     }
     .winPara1, .winPara2, .winReset {
