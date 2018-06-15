@@ -62,9 +62,9 @@
                 <div id="volume-controls" class="volume-controls">
                     <h3>Adjust Game Volume</h3>
                     <p>Music Volume</p>
-                    <input id="music-vol-control" class="music-vol-control" type="range" min="0" max=2 step=".2" onchange="musicVolumeAdjust(this.value)">
+                    <input id="music-vol-control" class="music-vol-control" type="range" min="0" max=2 step=".2"  value="0.05" onchange="musicVolumeAdjust(this.value)">
                     <p>Effects Volume</p>
-                    <input id="win-vol-control" class="win-vol-control" type="range" min="0" max="2" step=".2" onchange="effectsVolumeAdjust(this.value)">
+                    <input id="win-vol-control" class="win-vol-control" type="range" min="0" max="2" step=".2" value="0.05"  onchange="effectsVolumeAdjust(this.value)">
 
                     <button class=" mute-button col-8 col-md-8 my-3 " onclick="muteAudio()">Mute Audio</button>
                 </div>
