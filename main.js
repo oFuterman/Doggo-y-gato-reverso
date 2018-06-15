@@ -52,8 +52,19 @@ function muteAudio() {
 }
 
 function adjustAudio() {
-    $("#volume-modal").show();
+    $("#volume-modal").removeClass("hideModals");
+
+    $("#main-body").click(function(event){
+        event.stopPropagation();
+        if ( $("#volume-modal").hasClass("hideModals")) {
+            $("#volume-modal").removeClass("hideModals");
+        } else {
+            $("#volume-modal").addClass("hideModals");
+
+        }
+    });
 }
+
 
 function musicVolumeAdjust(value) {
     mainMusic.volume = value / 10;
@@ -281,10 +292,6 @@ function resetGame() {
     removeClickHandlers();
     updateStats(countPieces());
     determineValidMove(1, 2);
-    $("#player1Marker").addClass('white');
-    $("#player2Marker").addClass('black');
-    $("#player1Marker").show();
-    $("#player2Marker").show();
     $(".winModal").hide();
     $('.scoreP1>div').addClass('white');
     $('.scoreP2>div').addClass('black');
@@ -315,7 +322,7 @@ function initializeApp(){
     });
     createGameBoardArray();
     $(".winModal").addClass("hideModals");
-    $("#volume-modal").hide();
+    $("#volume-modal").addClass("hideModals");
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
@@ -326,10 +333,8 @@ function initializeApp(){
 }
 
 function hideVolModal() {
-    var currentElement = event.target;
-    console.log("current element" , currentElement);
-    if (currentElemen)
-
+    console.log("hide modal function");
+    $("#volume-modal").addClass("hideModals");
 
 }
 
@@ -337,7 +342,6 @@ function clickHandlers() {
     $('.resetButton').click(resetGame);
     $(".winReset").click(resetGame);
     $("#audio-icon").click(adjustAudio);
-    $("#main-body").click(hideVolModal)
 
 
 }
