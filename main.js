@@ -5,7 +5,6 @@ var mute = false;
 var mainMusic;
 var effectsVol = .05;
 var musicVol = .05;
-var winVol = .1;
 $(document).ready(initializeApp);
 
 
@@ -38,6 +37,24 @@ function appendDivs(){
     }
 }
 
+function shadowModal() {
+    var shadowDiv = $("<div>", {
+        "class": "shadowDiv",
+        "id": "shadowDiv",
+        'on': {
+            'click': removeModal
+        }
+    });
+    $("body").append(shadowDiv)
+}
+
+
+
+function removeModal() {
+    $('#volume-modal').addClass("hideModals");
+    $('#shadowDiv').remove();
+    this.remove()
+}
 
 /////////////////////////////////////////// game audio ///////////////////////////////////////////
 
@@ -53,8 +70,15 @@ function muteAudio() {
 }
 
 function adjustAudio() {
-    $("#volume-modal").show();
+    shadowModal();
+
+    $("#volume-modal").removeClass("hideModals");
+
+
+
+
 }
+
 
 function musicVolumeAdjust(value) {
     mainMusic.volume = value / 10;
@@ -64,9 +88,6 @@ function effectsVolumeAdjust(value) {
     effectsVol = value / 10;
 }
 
-function winModalVolume(value) {
-    winVol = value / 10;
-}
 
 function clickAudio(turn) {
     if (mute === true) {
@@ -91,7 +112,7 @@ function winSound () {
         return;
     }
     var winTone = new Audio("sounds/win.mp3");
-    winTone.volume = winVol;
+    winTone.volume = effectsVol;
     winTone.play();
 }
 
@@ -256,6 +277,8 @@ function addClickHandler(row, column) {
          {
         $("*").off("click").removeClass("legalMove");
     }
+
+
 }
 
 function removeClickHandlers() {
@@ -283,10 +306,6 @@ function resetGame() {
     removeClickHandlers();
     updateStats(countPieces());
     determineValidMove(1, 2);
-    $("#player1Marker").addClass('white');
-    $("#player2Marker").addClass('black');
-    $("#player1Marker").show();
-    $("#player2Marker").show();
     $(".winModal").hide();
     $('.scoreP1>div').addClass('white');
     $('.scoreP2>div').addClass('black');
@@ -316,32 +335,47 @@ function initializeApp(){
         pageClicks++;
     });
     createGameBoardArray();
-    $(".winModal").hide();
-    $("#volume-modal").hide();
-    $("#audio-icon").click(adjustAudio);
+    $(".winModal").addClass("hideModals");
+    $("#volume-modal").addClass("hideModals");
     updateStats(countPieces());
     addClickHandler();
     determineValidMove(currentPlayer, oppositePlayer);
-    $('#player1Marker').addClass('highlightPlayerTurn');
-    $('.resetButton').click(resetGame);
-    $(".winReset").click(resetGame);
+    $('#player-1-marker').addClass('highlightPlayerTurn');
+    clickHandlers();
+
 
 }
+
+function hideVolModal() {
+    console.log("hide modal function");
+    $("#volume-modal").addClass("hideModals");
+
+}
+
+function clickHandlers() {
+    $('.resetButton').click(resetGame);
+    $(".winReset").click(resetGame);
+    $("#audio-icon").click(adjustAudio);
+
+
+}
+
+
 
 function addPiece(){
     var updateBoardRow = $(this).attr("row");
     var updateBoardColumn = $(this).attr("column");
     clickAudio(whiteTurn);
     if(whiteTurn){
-        $("#player1Marker").removeClass('highlightPlayerTurn');
-        $("#player2Marker").addClass('highlightPlayerTurn');
+        $("#player-1-marker").removeClass('highlightPlayerTurn');
+        $("#player-2-marker").addClass('highlightPlayerTurn');
         $('div',this).removeClass('empty');
         $('div',this).addClass('white');
         clicked($(this).attr('row'),$(this).attr('column'));
         whiteTurn=false;
     }else{
-        $("#player1Marker").addClass('highlightPlayerTurn');
-        $("#player2Marker").removeClass('highlightPlayerTurn');
+        $("#player-1-marker").addClass('highlightPlayerTurn');
+        $("#player-2-marker").removeClass('highlightPlayerTurn');
         $('div',this).removeClass('empty');
         $('div',this).addClass('black');
         clicked($(this).attr('row'),$(this).attr('column'));
