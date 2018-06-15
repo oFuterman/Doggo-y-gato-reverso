@@ -245,6 +245,7 @@ body {
     background-color: rgba(147, 112, 219, 0.98);
     padding: 0.5%;
     min-width: 285px;
+    z-index: 3;
 }
 
 .instrucPara1 {
@@ -290,6 +291,16 @@ body {
 }
 
 
+.shadowDiv {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+
+
 .hideModals {
     display: none;
 }
@@ -329,6 +340,8 @@ body {
     66% {background-color: deepskyblue}
     100% {background-color: mediumpurple}
 }
+
+
 
 
 /* ////////////////////////////////////////////////////// Audio and Timer //////////////////////////////////////////////////////////// */

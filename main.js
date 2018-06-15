@@ -37,6 +37,24 @@ function appendDivs(){
     }
 }
 
+function shadowModal() {
+    var shadowDiv = $("<div>", {
+        "class": "shadowDiv",
+        "id": "shadowDiv",
+        'on': {
+            'click': removeModal
+        }
+    });
+    $("body").append(shadowDiv)
+}
+
+
+
+function removeModal() {
+    $('#volume-modal').addClass("hideModals");
+    $('#shadowDiv').remove();
+    this.remove()
+}
 
 /////////////////////////////////////////// game audio ///////////////////////////////////////////
 
@@ -52,17 +70,13 @@ function muteAudio() {
 }
 
 function adjustAudio() {
+    shadowModal();
+
     $("#volume-modal").removeClass("hideModals");
 
-    $("#main-body").click(function(event){
-        event.stopPropagation();
-        if ( $("#volume-modal").hasClass("hideModals")) {
-            $("#volume-modal").removeClass("hideModals");
-        } else {
-            $("#volume-modal").addClass("hideModals");
 
-        }
-    });
+
+
 }
 
 
