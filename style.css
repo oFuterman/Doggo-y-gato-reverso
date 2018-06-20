@@ -816,18 +816,25 @@ and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
 
 
+    .game-container {
+        padding-top: 0;
 
+
+    }
     .gameInfo {
-        min-height: 185px;
+        min-height: 1px;
+        max-height: 150px;
         max-width: 260px;
         min-width: 260px;
-        padding-bottom: 10px;
+        padding-bottom: 0px;
+        bottom: 16px;
     }
 
     .gameBoard {
         min-height: 257px;
         max-width: 300px;
-        min-width: 300px
+        min-width: 300px;
+        bottom: 43px;
 
     }
     .timer, .resetButton {
@@ -861,6 +868,9 @@ and (orientation: portrait) {
     .headerTitle {
         font-size: 1.2rem;
     }
+    .header {
+        height: 60px;
+    }
 
     .headerTitleContainer {
         min-width: 245px;
@@ -885,8 +895,8 @@ and (orientation: portrait) {
     }
     .audioIcon {
         width: 25px;
-        top: 18px;
-        left: 2.5%;
+        top: 63px;
+        left: 34px;
 
     }
 
