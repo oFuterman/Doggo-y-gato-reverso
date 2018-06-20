@@ -401,6 +401,9 @@ body {
 }
 
 
+/* ////////////////////////////////////////////////////// Media Queries  //////////////////////////////////////////////////////////// */
+
+
 @media screen and (min-width: 993px) {
     .headerTitle {
         font-size: 2.5rem;
@@ -604,6 +607,14 @@ body {
 
 
 }
+
+/* ////////////////////////////////////////////////////// Media Queries For Devices by type //////////////////////////////////////////////////////////// */
+
+
+
+/* ////////////////////////////////////////////////////// Media Queries Iphone X //////////////////////////////////////////////////////////// */
+
+
 /* landscape */
 @media only screen
 and (min-device-width: 375px)
@@ -705,6 +716,9 @@ and (orientation: landscape) {
 
 
 }
+
+/* ////////////////////////////////////////////////////// Media Queries For Iphone 4/4s //////////////////////////////////////////////////////////// */
+
 
 
 /* Landscape */
@@ -905,4 +919,106 @@ and (orientation: portrait) {
 
 }
 
+/* ////////////////////////////////////////////////////// Media Queries For Ipad //////////////////////////////////////////////////////////// */
 
+
+
+
+/* Portrait */
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+    .gameInfo {
+        min-height: 270px;
+        max-width: 260px;
+        min-width: 550px;
+        padding-bottom: 10px;
+        bottom: 32px;
+    }
+
+    .gameBoard {
+        min-height: 625px;
+        max-width: 650px;
+        min-width: 625px;
+        bottom: 80px;
+
+    }
+
+    .game-container{
+        padding-top: 15px;
+    }
+
+    .timer, .resetButton {
+        font-size: 1.7rem;
+        min-height: 35px;
+    }
+
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 2rem;
+    }
+
+    .scoreArea {
+        width: 100%;
+    }
+
+    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
+        max-height: 111px;
+        max-width: 125px;
+
+
+    }
+
+
+    .instrucPara1 {
+        font-size: 3rem;
+        display: inherit;
+        border-bottom: 2mm dotted slateblue;
+    }
+
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: 2rem;
+        display: inherit;
+    }
+
+    .headerTitle {
+        font-size: 2.7rem;
+    }
+
+    .headerTitleContainer {
+        min-width: 245px;
+        max-width: 550px;
+    }
+
+    .legalMove {
+        background-color: purple;
+        box-shadow: 0px 0px 10px 3px hotpink;
+    }
+
+    .gameReset {
+        padding-bottom: 0px;
+    }
+
+    .winModal {
+        min-height: 900px;
+        min-width: 230px;
+    }
+    .winPara1, .winPara2, .winReset {
+        font-size: 3rem;
+    }
+
+    .audioMute {
+        left: 120px;
+        top: 103px;
+    }
+
+    .audioIcon {
+        width: 40px;
+
+    }
+
+
+
+}
