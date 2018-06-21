@@ -611,178 +611,77 @@ body {
 /* ////////////////////////////////////////////////////// Media Queries For Devices by type //////////////////////////////////////////////////////////// */
 
 
-/* ////////////////////////////////////////////////////// Media Queries For Iphone 4/4s //////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////// Media Queries For Ipad //////////////////////////////////////////////////////////// */
 
 
 
-/* Landscape */
-@media only screen
-and (min-device-width: 320px)
-and (max-device-width: 480px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) {
-
-    .game-container {
-        padding-top: 0;
-    }
-
-
-    .gameBoard {
-        min-height: 257px;
-        max-width: 285px;
-        min-width: 285px;
-        bottom: 55px;
-
-    }
-
-    .gameInfo {
-        top: 17px;
-        max-height: 168px;
-        min-height: 185px;
-        min-width: 150px;
-        max-width: 150px;
-        padding-bottom: 10px;
-    }
-
-    .timer, .resetButton {
-        font-size: 1rem;
-        min-height: 35px;
-        min-width: 120px;
-    }
-
-    .scoreTitle, .scoreP1Count, .scoreP2Count {
-        font-size: 1rem;
-    }
-
-    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
-        max-height: 26px;
-
-
-    }
-
-
-    .instrucPara1 {
-        font-size: .8rem;
-        display: inherit;
-        border-bottom: 2mm dotted slateblue;
-    }
-
-    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
-        font-size: .7rem;
-        display: inherit;
-    }
-
-    .header {
-        right: 154px;
-        top: 27px;
-    }
-
-    .headerTitle {
-        font-size: 1rem;
-    }
-
-    .headerTitleContainer {
-        min-width: 150px;
-        max-width: 150px;
-    }
-
-    .legalMove {
-        background-color: purple;
-        box-shadow: 0px 0px 10px 3px hotpink;
-    }
-
-    .gameReset {
-        padding-bottom: 0px;
-        padding-top: 15px;
-    }
-
-    .winModal {
-        max-height: 292px;
-        min-width: 201px;
-    }
-    .winPara1, .winPara2, .winReset {
-        font-size: 1.0rem;
-    }
-    .audioIcon {
-        width: 25px;
-        top: 18px;
-        left: 2.5%;
-
-    }
-    .audioMute {
-        top: 45px;
-        left: 10px;
-    }
-
-}
 
 /* Portrait */
 @media only screen
-and (min-device-width: 320px)
-and (max-device-width: 480px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 1) {
 
-
-    .game-container {
-        padding-top: 0;
-
-
-    }
     .gameInfo {
-        min-height: 1px;
-        max-height: 150px;
+        min-height: 270px;
         max-width: 260px;
-        min-width: 260px;
-        padding-bottom: 0px;
-        bottom: 16px;
+        min-width: 550px;
+        padding-bottom: 10px;
+        bottom: 32px;
     }
 
     .gameBoard {
-        min-height: 257px;
-        max-width: 300px;
-        min-width: 300px;
-        bottom: 43px;
+        min-height: 625px;
+        max-width: 650px;
+        min-width: 625px;
+        bottom: 80px;
 
     }
+
+    .game-container{
+        padding-top: 15px;
+    }
+
     .timer, .resetButton {
-        font-size: 1rem;
-        min-height: 29px;
+        font-size: 1.7rem;
+        min-height: 35px;
     }
 
     .scoreTitle, .scoreP1Count, .scoreP2Count {
-        font-size: 1.4rem;
+        font-size: 2rem;
+    }
+
+    .scoreArea {
+        width: 100%;
     }
 
     .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
-        max-height: 30px;
-        max-width: 30px;
+        max-height: 111px;
+        max-width: 125px;
 
 
     }
 
 
     .instrucPara1 {
-        font-size: 1.5rem;
+        font-size: 3rem;
         display: inherit;
         border-bottom: 2mm dotted slateblue;
     }
 
     .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
-        font-size: .9rem;
+        font-size: 2rem;
         display: inherit;
     }
 
     .headerTitle {
-        font-size: 1.2rem;
-    }
-    .header {
-        height: 60px;
+        font-size: 2.7rem;
     }
 
     .headerTitleContainer {
         min-width: 245px;
-        max-width: 245px;
+        max-width: 550px;
     }
 
     .legalMove {
@@ -795,19 +694,22 @@ and (orientation: portrait) {
     }
 
     .winModal {
-        max-height: 365px;
+        min-height: 900px;
         min-width: 230px;
     }
     .winPara1, .winPara2, .winReset {
-        font-size: 1.2rem;
+        font-size: 3rem;
     }
+
+    .audioMute {
+        left: 120px;
+        top: 103px;
+    }
+
     .audioIcon {
-        width: 25px;
-        top: 63px;
-        left: 34px;
+        width: 40px;
 
     }
-
 
 
 
@@ -921,12 +823,17 @@ and (orientation: landscape) {
 
 
 }
+/* portrait*/
 
 @media only screen
 and (min-device-width: 375px)
 and (max-device-width: 812px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: portrait) {
+
+    .game-container{
+        padding-top: 0px;
+    }
     .gameInfo {
         min-height: 230px;
         max-width: 325px;
@@ -1007,78 +914,74 @@ and (orientation: portrait) {
 
 }
 
+/* ////////////////////////////////////////////////////// Media Queries For Galaxy S4, S5, Note 3 //////////////////////////////////////////////////////////// */
 
-/* ////////////////////////////////////////////////////// Media Queries For Ipad //////////////////////////////////////////////////////////// */
+/* Landscape */
+@media screen
+and (max-device-width: 640px)
+and (max-device-height: 360px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: landscape) {
 
+    .game-container {
+        padding-top: 0px;
+        max-width: 610px;
+    }
 
-
-
-/* Portrait */
-@media only screen
-and (min-device-width: 768px)
-and (max-device-width: 1024px)
-and (orientation: portrait)
-and (-webkit-min-device-pixel-ratio: 1) {
 
     .gameInfo {
-        min-height: 270px;
-        max-width: 260px;
-        min-width: 550px;
-        padding-bottom: 10px;
-        bottom: 32px;
+        min-height: 282px;
+        max-width: 245px;
+        min-width: 245px;
+        padding-bottom: 0px;
+        bottom: 19px;
     }
 
     .gameBoard {
-        min-height: 625px;
-        max-width: 650px;
-        min-width: 625px;
-        bottom: 80px;
-
+        min-height: 340px;
+        max-width: 340px;
+        min-width: 340px;
+        bottom: 77px;
     }
-
-    .game-container{
-        padding-top: 15px;
-    }
-
     .timer, .resetButton {
-        font-size: 1.7rem;
+        font-size: 1rem;
         min-height: 35px;
     }
 
     .scoreTitle, .scoreP1Count, .scoreP2Count {
-        font-size: 2rem;
-    }
-
-    .scoreArea {
-        width: 100%;
+        font-size: 1.4rem;
     }
 
     .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
-        max-height: 111px;
-        max-width: 125px;
+        max-height: 75px;
 
 
     }
 
 
     .instrucPara1 {
-        font-size: 3rem;
+        font-size: 1.5rem;
         display: inherit;
         border-bottom: 2mm dotted slateblue;
     }
 
     .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
-        font-size: 2rem;
+        font-size: .9rem;
         display: inherit;
     }
 
     .headerTitle {
-        font-size: 2.7rem;
+        font-size: 1.2rem;
     }
 
     .headerTitleContainer {
         min-width: 245px;
-        max-width: 550px;
+        max-width: 245px;
+    }
+
+    .header {
+        right: 148px;
+        top: -3px;
     }
 
     .legalMove {
@@ -1091,22 +994,225 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
 
     .winModal {
-        min-height: 900px;
+        max-height: 330px;
         min-width: 230px;
     }
     .winPara1, .winPara2, .winReset {
-        font-size: 3rem;
+        font-size: 1.2rem;
     }
-
-    .audioMute {
-        left: 120px;
-        top: 103px;
-    }
-
     .audioIcon {
         width: 40px;
 
+
     }
+
+    .audioMute {
+        top: 65px;
+        left: 24px;
+
+    }
+
+}
+
+
+
+/* ////////////////////////////////////////////////////// Media Queries For Iphone 4/4s //////////////////////////////////////////////////////////// */
+
+
+
+/* Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+
+    .game-container {
+        padding-top: 0;
+    }
+
+
+    .gameBoard {
+        min-height: 257px;
+        max-width: 285px;
+        min-width: 285px;
+        bottom: 55px;
+
+    }
+
+    .gameInfo {
+        top: 17px;
+        max-height: 168px;
+        min-height: 185px;
+        min-width: 150px;
+        max-width: 150px;
+        padding-bottom: 10px;
+    }
+
+    .timer, .resetButton {
+        font-size: 1rem;
+        min-height: 35px;
+        min-width: 120px;
+    }
+
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 1rem;
+    }
+
+    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
+        max-height: 26px;
+
+
+    }
+
+
+    .instrucPara1 {
+        font-size: .8rem;
+        display: inherit;
+        border-bottom: 2mm dotted slateblue;
+    }
+
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: .7rem;
+        display: inherit;
+    }
+
+    .header {
+        right: 154px;
+        top: 27px;
+    }
+
+    .headerTitle {
+        font-size: 1rem;
+    }
+
+    .headerTitleContainer {
+        min-width: 150px;
+        max-width: 150px;
+    }
+
+    .legalMove {
+        background-color: purple;
+        box-shadow: 0px 0px 10px 3px hotpink;
+    }
+
+    .gameReset {
+        padding-bottom: 0px;
+        padding-top: 15px;
+    }
+
+    .winModal {
+        max-height: 292px;
+        min-width: 201px;
+    }
+    .winPara1, .winPara2, .winReset {
+        font-size: 1.0rem;
+    }
+    .audioIcon {
+        width: 25px;
+        top: 18px;
+        left: 2.5%;
+
+    }
+    .audioMute {
+        top: 45px;
+        left: 10px;
+    }
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 320px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+
+
+    .game-container {
+        padding-top: 0;
+
+
+    }
+    .gameInfo {
+        min-height: 1px;
+        max-height: 150px;
+        max-width: 260px;
+        min-width: 260px;
+        padding-bottom: 0px;
+        bottom: 16px;
+    }
+
+    .gameBoard {
+        min-height: 257px;
+        max-width: 300px;
+        min-width: 300px;
+        bottom: 43px;
+
+    }
+    .timer, .resetButton {
+        font-size: 1rem;
+        min-height: 29px;
+    }
+
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 1.4rem;
+    }
+
+    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
+        max-height: 30px;
+        max-width: 30px;
+
+
+    }
+
+
+    .instrucPara1 {
+        font-size: 1.5rem;
+        display: inherit;
+        border-bottom: 2mm dotted slateblue;
+    }
+
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: .9rem;
+        display: inherit;
+    }
+
+    .headerTitle {
+        font-size: 1.2rem;
+    }
+    .header {
+        height: 60px;
+    }
+
+    .headerTitleContainer {
+        min-width: 245px;
+        max-width: 245px;
+    }
+
+    .legalMove {
+        background-color: purple;
+        box-shadow: 0px 0px 10px 3px hotpink;
+    }
+
+    .gameReset {
+        padding-bottom: 0px;
+    }
+
+    .winModal {
+        max-height: 365px;
+        min-width: 230px;
+    }
+    .winPara1, .winPara2, .winReset {
+        font-size: 1.2rem;
+    }
+    .audioIcon {
+        width: 25px;
+        top: 63px;
+        left: 34px;
+
+    }
+
 
 
 
