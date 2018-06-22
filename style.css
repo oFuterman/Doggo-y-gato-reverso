@@ -905,7 +905,7 @@ and (orientation: portrait) {
     }
     .audioIcon {
         width: 30px;
-        top: 66px;
+        top: 75px;
         left: 80px;
 
     }
@@ -1010,6 +1010,96 @@ and (orientation: landscape) {
         top: 65px;
         left: 24px;
 
+    }
+
+}
+
+/* Portrait */
+@media screen
+and (max-device-width: 360px)
+and (max-device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+    .game-container {
+        padding-top: 0px;
+
+    }
+    .gameInfo {
+        min-height: 185px;
+        max-width: 286px;
+        min-width: 260px;
+        padding-bottom: 10px;
+    }
+
+    .gameBoard {
+        min-height: 315px;
+        max-width: 345px;
+        min-width: 315px
+
+    }
+    .timer, .resetButton {
+        font-size: 1rem;
+        min-height: 35px;
+    }
+
+    .scoreTitle, .scoreP1Count, .scoreP2Count {
+        font-size: 1.4rem;
+    }
+
+    .scoreP1, .scoreP1Count, .scoreP2, .scoreP2Count {
+        max-height: 64px;
+
+
+    }
+
+
+    .instrucPara1 {
+        font-size: 1.5rem;
+        display: inherit;
+        border-bottom: 2mm dotted slateblue;
+    }
+
+    .instrucPara2, .instrucPara3, .instrucPara4, .instrucPara5, .instrucPara6 {
+        font-size: .9rem;
+        display: inherit;
+    }
+
+    .headerTitle {
+        font-size: 1.2rem;
+    }
+
+    .headerTitleContainer {
+        min-width: 245px;
+        max-width: 245px;
+    }
+
+    .legalMove {
+        background-color: purple;
+        box-shadow: 0px 0px 10px 3px hotpink;
+    }
+
+    .gameReset {
+        padding-bottom: 0px;
+    }
+
+    .winModal {
+        max-height: 365px;
+        min-width: 230px;
+    }
+    .winPara1, .winPara2, .winReset {
+        font-size: 1.2rem;
+    }
+    .audioIcon {
+        width: 30px;
+        top: 18px;
+        left: 2.5%;
+
+    }
+
+    .audioMute {
+        top: 74px;
+        left: 42px;
     }
 
 }
