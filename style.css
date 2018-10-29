@@ -170,7 +170,10 @@ body {
     box-shadow: 0px 0px 10px 5px hotpink;
     color: #cfdbfb;
     text-shadow: 1px 1px 0px purple;
+}
 
+.resetButton:hover {
+    background-color: rgba(255, 111, 219, 0.73);
 }
 
 /* ////////////////////////////////////////////////////// Main Game Board //////////////////////////////////////////////////////////// */
@@ -299,8 +302,6 @@ body {
     z-index: 1;
 }
 
-
-
 .hideModals {
     display: none;
 }
@@ -386,10 +387,12 @@ body {
     width: 20px;
     position: relative;
     border-radius: 50%;
-    box-shadow: 3px 3px 10px 3px hotpink;
+    box-shadow: 0px 0px 10px 5px hotpink;
 }
 
-
+.winReset:hover {
+    background-color: rgba(255, 111, 219, 0.73)
+}
 
 .legalMove:hover{
     background-color: rgba(255, 111, 219, 0.73);
