@@ -1,48 +1,5 @@
-# 318_othellothon
+# Doggo-y-gato-reverso
 
-Scope: 
-- Make an othello (reversi) game
-  - basic rule description: http://www.flyordie.com/games/help/reversi/en/games_rules_reversi.html
-  - at least 2 players
-  - at least 8x8 board size
-  - players alternate in some way or form between players
-  - one player should be able to win (by having the most squares)
-- Additional requirements:
-  - Must be able to flip the tokens based upon square placement
-  - players must be able to choose which symbol they use.
- 
- 
-Mystery requirement: 
-- <b>COMING SOON!</b>
+This is a responsive, modern stylized reversi game made in HTML, CSS and Javascript.
 
-#### Team 1
-- Jean Paul
-- Sasan
-- Daniel
-
-#### Team 2
-- Brett
-- Omer
-- Dylan
-
-#### Team 3
-- Alia
-- Andrew
-- Sam
-
-#### Team 4
-- Bora
-- Katy
-- Christina
-
-#### Team 5
-- Harrison
-- Keith
-- Dona
-
-#### Team 6
-- Hanh
-- Mark
-- Corey
-
-
+If you don't know how to play reversi reffer to this page: https://www.itsyourturn.com/t_helptopic2060.html
